@@ -1,0 +1,230 @@
+/* 简化的手机端导航样式 */
+
+/* 背景遮罩 */
+.simple-nav__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10001;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.simple-nav__backdrop--open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* 侧边栏 */
+.simple-nav__sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 320px;
+  height: 100vh;
+  background: var(--ifm-background-color);
+  border-left: 1px solid var(--ifm-color-emphasis-200);
+  z-index: 10001;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.simple-nav__sidebar--open {
+  transform: translateX(0);
+}
+
+/* 头部区域 */
+.simple-nav__header {
+  padding: 1rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-color-emphasis-100);
+}
+
+.simple-nav__brand {
+  margin-bottom: 1rem;
+}
+
+.simple-nav__brand-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+}
+
+/* 搜索框 */
+.simple-nav__search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.simple-nav__search-icon {
+  position: absolute;
+  left: 12px;
+  color: var(--ifm-color-emphasis-600);
+  z-index: 1;
+}
+
+.simple-nav__search-input {
+  width: 100%;
+  padding: 8px 12px 8px 36px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.simple-nav__search-input:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 2px rgba(var(--ifm-color-primary-rgb), 0.2);
+}
+
+.simple-nav__search-clear {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  color: var(--ifm-color-emphasis-600);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.simple-nav__search-clear:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+/* 导航内容 */
+.simple-nav__content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem 0;
+}
+
+.simple-nav__list {
+  padding: 0 1rem;
+}
+
+.simple-nav__item {
+  margin-bottom: 4px;
+}
+
+.simple-nav__item--level-0 {
+  margin-bottom: 8px;
+}
+
+.simple-nav__item--level-1 {
+  margin-left: 16px;
+}
+
+.simple-nav__item--level-2 {
+  margin-left: 32px;
+}
+
+/* 导航项头部 */
+.simple-nav__item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--ifm-font-color-base);
+}
+
+.simple-nav__item-header:hover {
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.simple-nav__item-header--expandable {
+  background: var(--ifm-color-emphasis-50);
+  font-weight: 500;
+}
+
+.simple-nav__item-header--link {
+  color: var(--ifm-font-color-base);
+}
+
+.simple-nav__item-header--link:hover {
+  color: var(--ifm-color-primary);
+}
+
+.simple-nav__item-title {
+  flex: 1;
+  font-size: 14px;
+}
+
+.simple-nav__item-arrow {
+  transition: transform 0.2s ease;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.simple-nav__item-arrow--expanded {
+  transform: rotate(90deg);
+}
+
+/* 子项容器 */
+.simple-nav__item-children {
+  margin-top: 4px;
+  padding-left: 12px;
+  border-left: 2px solid var(--ifm-color-emphasis-200);
+}
+
+/* 空状态 */
+.simple-nav__empty {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 14px;
+}
+
+/* 关闭按钮 */
+.simple-nav__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--ifm-color-emphasis-600);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.simple-nav__close:hover {
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-primary);
+}
+
+/* 响应式调整 */
+@media (max-width: 480px) {
+  .simple-nav__sidebar {
+    width: 100vw;
+  }
+}
+
+/* 深色模式适配 */
+[data-theme='dark'] .simple-nav__sidebar {
+  border-left-color: var(--ifm-color-emphasis-300);
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .simple-nav__backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}

@@ -5,7 +5,11 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "docusaurus build",
+    "start:dev": "concurrently \"npm run start\" \"npm run watch:search\"",
+    "build": "docusaurus build && node scripts/build-search-index.js",
+    "build:docs": "docusaurus build",
+    "build:search": "node scripts/build-search-index.js",
+    "watch:search": "node scripts/watch-and-index.js",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -19,7 +23,11 @@
     "@docusaurus/preset-classic": "3.8.1",
     "@docusaurus/theme-search-algolia": "^3.8.1",
     "@mdx-js/react": "^3.0.0",
+    "algoliasearch": "^5.36.0",
     "clsx": "^2.0.0",
+    "gray-matter": "^4.0.3",
+    "minisearch": "^7.1.2",
+    "nodejieba": "^3.5.2",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -29,6 +37,8 @@
     "@docusaurus/module-type-aliases": "3.8.1",
     "@docusaurus/tsconfig": "3.8.1",
     "@docusaurus/types": "3.8.1",
+    "chokidar": "^4.0.3",
+    "concurrently": "^9.2.1",
     "typescript": "~5.6.2"
   },
   "browserslist": {

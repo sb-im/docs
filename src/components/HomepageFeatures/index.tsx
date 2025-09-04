@@ -5,61 +5,104 @@ import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
+  icon: ReactNode;
   description: ReactNode;
+  link?: string;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'SuperDock 自动机场',
+    icon: '🏭',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Pro V4、Mini 2、Pro 三大系列自动机场，支持DJI全系列无人机，
+        提供自动起降、充电换电、环境监控等完整功能。
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: '无限跳飞技术',
+    icon: '🚁',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        独创的多机场协调技术，支持无人机在机场间无限跳飞，
+        大幅扩展巡检范围，实现超远距离自动化作业。
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'AI 智能识别',
+    icon: '🤖',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        内置AI识别引擎，自动识别人员、车辆、设备异常，
+        支持自定义模型训练，识别准确率超过95%。
+      </>
+    ),
+  },
+  {
+    title: 'DJI API 兼容',
+    icon: '🔗',
+    description: (
+      <>
+        完全兼容DJI上云API，支持现有系统无缝迁移，
+        提供标准RESTful接口，轻松实现第三方集成。
+      </>
+    ),
+  },
+  {
+    title: '全天候作业',
+    icon: '🌤️',
+    description: (
+      <>
+        内置气象站和环境监控，自动判断飞行条件，
+        支持恶劣天气下的安全作业，确保任务连续性。
+      </>
+    ),
+  },
+  {
+    title: '行业解决方案',
+    icon: '🏗️',
+    description: (
+      <>
+        覆盖电网、交通、油气、工业等多个行业，
+        提供定制化解决方案，满足不同场景需求。
       </>
     ),
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+function Feature({title, icon, description}: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+    <div className={clsx('col col--4', styles.feature)}>
+      <div className="card">
+        <div className={styles.iconContainer}>
+          <span className={styles.featureIcon}>{icon}</span>
+        </div>
+        <div className="card__body">
+          <Heading as="h3" className={styles.title}>
+            {title}
+          </Heading>
+          <p className={styles.description}>{description}</p>
+        </div>
       </div>
     </div>
   );
 }
 
-export default function HomepageFeatures(): ReactNode {
+export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
       <div className="container">
+        <div className={styles.featuresHeader}>
+          <Heading as="h2" className={styles.featuresTitle}>
+            为什么选择草莓创新？
+          </Heading>
+          <p className={styles.featuresSubtitle}>
+            草莓创新提供全程无人化的自动巡检解决方案，助力各行业实现智能化升级
+          </p>
+        </div>
         <div className="row">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />

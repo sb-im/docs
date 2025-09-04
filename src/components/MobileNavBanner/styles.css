@@ -1,0 +1,301 @@
+/* 移动端导航横幅样式 - 基于 SM.md 案例研究 */
+
+.mobile-nav-banner {
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary) 0%,
+    var(--ifm-color-primary-dark) 100%
+  );
+  color: white;
+  padding: 1.5rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0 0 16px 16px;
+  overflow: hidden;
+}
+
+.mobile-nav-banner__container {
+  position: relative;
+  z-index: 2;
+}
+
+/* 品牌信息区域 */
+.mobile-nav-banner__brand {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.mobile-nav-banner__logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.75rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 4px;
+}
+
+.mobile-nav-banner__text {
+  flex: 1;
+}
+
+.mobile-nav-banner__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem 0;
+  color: white;
+}
+
+.mobile-nav-banner__subtitle {
+  font-size: 0.875rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+}
+
+/* 快速链接按钮 */
+.mobile-nav-banner__actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.mobile-nav-banner__button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  flex: 1;
+  justify-content: center;
+}
+
+.mobile-nav-banner__button--primary {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.mobile-nav-banner__button--primary:hover {
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.mobile-nav-banner__button--secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mobile-nav-banner__button--secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+/* 状态指示器 */
+.mobile-nav-banner__status {
+  display: flex;
+  gap: 1rem;
+}
+
+.mobile-nav-banner__status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mobile-nav-banner__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.mobile-nav-banner__status-dot--online {
+  background: #10b981;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+}
+
+.mobile-nav-banner__status-dot--updated {
+  background: #f59e0b;
+  box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+}
+
+.mobile-nav-banner__status-text {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* 装饰性背景 */
+.mobile-nav-banner__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.mobile-nav-banner__pattern {
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.mobile-nav-banner__pattern::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: float 4s ease-in-out infinite reverse;
+}
+
+/* 动画效果 */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+/* 深色模式适配 */
+[data-theme='dark'] .mobile-nav-banner {
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-darker) 0%,
+    var(--ifm-color-primary-darkest) 100%
+  );
+}
+
+[data-theme='dark'] .mobile-nav-banner__button--primary {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+[data-theme='dark'] .mobile-nav-banner__button--primary:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+[data-theme='dark'] .mobile-nav-banner__button--secondary {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme='dark'] .mobile-nav-banner__button--secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* 响应式调整 */
+@media (max-width: 480px) {
+  .mobile-nav-banner {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .mobile-nav-banner__actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .mobile-nav-banner__button {
+    flex: none;
+  }
+
+  .mobile-nav-banner__status {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* 微交互效果 */
+.mobile-nav-banner__button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* 无障碍支持 */
+.mobile-nav-banner__button:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* 渐入动画 */
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-nav-banner {
+  animation: slideInFromTop 0.4s ease-out;
+}
+
+/* 特殊状态：紧急通知 */
+.mobile-nav-banner--urgent {
+  background: linear-gradient(
+    135deg,
+    #ef4444 0%,
+    #dc2626 100%
+  );
+}
+
+.mobile-nav-banner--urgent .mobile-nav-banner__status-dot--online {
+  background: #fbbf24;
+}
+
+/* 特殊状态：维护模式 */
+.mobile-nav-banner--maintenance {
+  background: linear-gradient(
+    135deg,
+    #6b7280 0%,
+    #4b5563 100%
+  );
+}
+
+.mobile-nav-banner--maintenance .mobile-nav-banner__status-dot--online {
+  background: #9ca3af;
+  animation: none;
+}

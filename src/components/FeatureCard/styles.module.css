@@ -1,0 +1,64 @@
+.featureCard {
+  height: 100%;
+  transition: all 0.3s ease;
+  border: 1px solid var(--sbim-gray-200);
+  background: var(--sbim-gradient-card);
+}
+
+.featureCard:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--sbim-shadow-lg);
+  border-color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .featureCard {
+  border-color: var(--sbim-gray-700);
+  background: var(--sbim-gradient-card);
+}
+
+[data-theme='dark'] .featureCard:hover {
+  border-color: var(--ifm-color-primary);
+}
+
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.cardLink:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.iconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  margin: 1.5rem auto 1rem;
+  background: var(--ifm-color-primary-lightest);
+  border-radius: 50%;
+  color: var(--ifm-color-primary);
+  font-size: 1.5rem;
+}
+
+[data-theme='dark'] .iconContainer {
+  background: var(--sbim-gray-800);
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--ifm-color-primary);
+  text-align: center;
+}
+
+.description {
+  color: var(--ifm-color-content-secondary);
+  line-height: 1.6;
+  text-align: center;
+  margin: 0;
+}

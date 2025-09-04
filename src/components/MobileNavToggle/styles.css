@@ -1,0 +1,153 @@
+/* 手机端导航切换按钮 - 重新设计 */
+.mobile-nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 10px;
+  border: none;
+  background: linear-gradient(135deg,
+    var(--ifm-color-emphasis-100) 0%,
+    var(--ifm-color-emphasis-200) 100%
+  );
+  cursor: pointer;
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 10000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--ifm-color-emphasis-300);
+}
+
+.mobile-nav-toggle:hover {
+  background: linear-gradient(135deg,
+    var(--ifm-color-primary-lightest) 0%,
+    var(--ifm-color-primary-light) 100%
+  );
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border-color: var(--ifm-color-primary);
+}
+
+.mobile-nav-toggle:focus {
+  outline: none;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    0 0 0 3px color-mix(in srgb, var(--ifm-color-primary) 30%, transparent 70%);
+}
+
+.mobile-nav-toggle:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 汉堡菜单线条 - 更现代的设计 */
+.mobile-nav-toggle__line {
+  display: block;
+  width: 22px;
+  height: 3px;
+  background: linear-gradient(90deg,
+    var(--ifm-color-primary) 0%,
+    var(--ifm-color-primary-dark) 100%
+  );
+  border-radius: 2px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-nav-toggle__line:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.mobile-nav-toggle:hover .mobile-nav-toggle__line {
+  background: linear-gradient(90deg,
+    var(--ifm-color-primary-dark) 0%,
+    var(--ifm-color-primary-darker) 100%
+  );
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 打开状态的动画 - 更流畅的X形变换 */
+.mobile-nav-toggle--open {
+  background: linear-gradient(135deg,
+    var(--ifm-color-primary) 0%,
+    var(--ifm-color-primary-dark) 100%
+  );
+  transform: rotate(180deg);
+}
+
+.mobile-nav-toggle--open .mobile-nav-toggle__line {
+  background: white;
+}
+
+.mobile-nav-toggle--open .mobile-nav-toggle__line:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-nav-toggle--open .mobile-nav-toggle__line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0) rotate(180deg);
+}
+
+.mobile-nav-toggle--open .mobile-nav-toggle__line:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* 响应式显示 */
+@media (max-width: 996px) {
+  .mobile-nav-toggle {
+    display: flex;
+  }
+}
+
+/* 深色模式适配 */
+[data-theme='dark'] .mobile-nav-toggle {
+  background: linear-gradient(135deg,
+    var(--ifm-color-emphasis-200) 0%,
+    var(--ifm-color-emphasis-300) 100%
+  );
+  border-color: var(--ifm-color-emphasis-400);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .mobile-nav-toggle:hover {
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--ifm-color-primary) 30%, var(--ifm-color-emphasis-200) 70%) 0%,
+    color-mix(in srgb, var(--ifm-color-primary) 50%, var(--ifm-color-emphasis-300) 50%) 100%
+  );
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme='dark'] .mobile-nav-toggle--open {
+  background: linear-gradient(135deg,
+    var(--ifm-color-primary) 0%,
+    var(--ifm-color-primary-dark) 100%
+  );
+}
+
+/* 微动画效果 */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.mobile-nav-toggle:active {
+  animation: pulse 0.2s ease-in-out;
+}
+
+/* 增强的焦点指示器 */
+.mobile-nav-toggle:focus-visible {
+  outline: none;
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    0 0 0 3px color-mix(in srgb, var(--ifm-color-primary) 40%, transparent 60%),
+    inset 0 0 0 2px var(--ifm-color-primary);
+}
