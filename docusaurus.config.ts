@@ -24,10 +24,10 @@ const config: Config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
-  // Internationalization
+  // Internationalization - 暂时只使用中文
   i18n: {
     defaultLocale: 'zh-Hans',
-    locales: ['zh-Hans', 'en'],
+    locales: ['zh-Hans'],
   },
 
   presets: [
@@ -51,26 +51,27 @@ const config: Config = {
   ],
 
   plugins: [
-    [
-      'redocusaurus',
-      {
-        specs: [
-          {
-            id: 'api-v2',
-            spec: './content/api/v2/openapi.yaml',
-            route: '/api/v2/',
-          },
-        ],
-        theme: {
-          primaryColor: '#1890ff',
-          redocOptions: {
-            hideDownloadButton: false,
-            disableSearch: false,
-            nativeScrollbars: true,
-          },
-        },
-      },
-    ],
+    // 暂时禁用 API 文档插件，避免构建错误
+    // [
+    //   'redocusaurus',
+    //   {
+    //     specs: [
+    //       {
+    //         id: 'api-v2',
+    //         spec: './content/api/v2/openapi.yaml',
+    //         route: '/api/v2/',
+    //       },
+    //     ],
+    //     theme: {
+    //       primaryColor: '#1890ff',
+    //       redocOptions: {
+    //         hideDownloadButton: false,
+    //         disableSearch: false,
+    //         nativeScrollbars: true,
+    //       },
+    //     },
+    //   },
+    // ],
   ],
 
   themeConfig: {
@@ -113,10 +114,11 @@ const config: Config = {
               label: '快速开始',
               to: '/docs/intro',
             },
-            {
-              label: 'API参考',
-              to: '/api/v2/',
-            },
+            // 暂时移除 API 参考链接
+            // {
+            //   label: 'API参考',
+            //   to: '/api/v2/',
+            // },
           ],
         },
         {

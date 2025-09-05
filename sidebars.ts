@@ -30,7 +30,7 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: '常见问题',
       items: [
-        'faq/index',
+        'faq/faq',
         {
           type: 'category',
           label: '快速入门问题',
