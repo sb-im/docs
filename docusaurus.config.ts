@@ -18,8 +18,8 @@ const config: Config = {
   baseUrl: '/',
 
   // GitHub pages deployment config
-  organizationName: 'gitgitgogogo',
-  projectName: 'sbim-docs-website',
+  organizationName: 'JiajiaHuang',
+  projectName: 'sbim_web',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -38,7 +38,7 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           path: '../content/docs',
           routeBasePath: 'docs',
-          editUrl: 'https://github.com/gitgitgogogo/sbim-docs-content/tree/main/',
+          editUrl: 'https://github.com/JiajiaHuang/sbim_docs/tree/main/',
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
         },
