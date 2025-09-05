@@ -30,8 +30,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Clone docs content
+      - name: Clean and clone docs content
         run: |
+          # 删除可能存在的 content 目录或符号链接
+          rm -rf content
+          # 克隆文档仓库
           git clone https://github.com/JiajiaHuang/sbim_docs.git content
           echo "Content cloned successfully"
 
