@@ -531,6 +531,33 @@ body.mobile-nav-open .row {
   color: #a0aec0;
 }
 
+/* 深色模式下的分组样式 - 这些是缺失的样式 */
+[data-theme='dark'] .simplified-nav__section-header {
+  background: #2d3748;
+  border-bottom: 1px solid #4a5568;
+}
+
+[data-theme='dark'] .simplified-nav__section-title {
+  color: #f7fafc;
+}
+
+[data-theme='dark'] .simplified-nav__section-count {
+  color: #a0aec0;
+}
+
+[data-theme='dark'] .simplified-nav__section-items {
+  background: #1a202c;
+}
+
+/* 深色模式下的链接样式 */
+[data-theme='dark'] .simplified-nav__list-item-link {
+  color: #f7fafc;
+}
+
+[data-theme='dark'] .simplified-nav__list-item-link:hover {
+  color: #60a5fa;
+}
+
 /* 响应式调整 */
 @media (max-width: 480px) {
   .simplified-nav__sidebar {

@@ -106,20 +106,20 @@
 /* 深色模式适配 */
 [data-theme='dark'] .mobile-nav-toggle {
   background: linear-gradient(135deg,
-    var(--ifm-color-emphasis-200) 0%,
-    var(--ifm-color-emphasis-300) 100%
+    var(--sbim-gray-800) 0%,
+    var(--sbim-gray-700) 100%
   );
-  border-color: var(--ifm-color-emphasis-400);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border-color: var(--sbim-gray-600);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 [data-theme='dark'] .mobile-nav-toggle:hover {
   background: linear-gradient(135deg,
-    color-mix(in srgb, var(--ifm-color-primary) 30%, var(--ifm-color-emphasis-200) 70%) 0%,
-    color-mix(in srgb, var(--ifm-color-primary) 50%, var(--ifm-color-emphasis-300) 50%) 100%
+    rgba(64, 169, 255, 0.2) 0%,
+    rgba(64, 169, 255, 0.1) 100%
   );
   border-color: var(--ifm-color-primary);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
 }
 
 [data-theme='dark'] .mobile-nav-toggle--open {
@@ -127,6 +127,19 @@
     var(--ifm-color-primary) 0%,
     var(--ifm-color-primary-dark) 100%
   );
+  border-color: var(--ifm-color-primary-light);
+}
+
+[data-theme='dark'] .mobile-nav-toggle__line {
+  background: var(--sbim-gray-200);
+}
+
+[data-theme='dark'] .mobile-nav-toggle:hover .mobile-nav-toggle__line {
+  background: var(--ifm-color-primary-light);
+}
+
+[data-theme='dark'] .mobile-nav-toggle--open .mobile-nav-toggle__line {
+  background: white;
 }
 
 /* 微动画效果 */

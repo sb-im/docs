@@ -40,7 +40,7 @@ export default function Header({ className }: HeaderProps) {
       return (
         <Link
           key={index}
-          to="/docs/"
+          to="/docs/intro"
           className="header__nav-link"
           activeClassName="header__nav-link--active"
         >
@@ -75,14 +75,20 @@ export default function Header({ className }: HeaderProps) {
     }
 
     if (item.type === 'search') {
+      // 动态导入 SearchBar 组件
+      const SearchBar = React.lazy(() => import('@theme/SearchBar'));
       return (
         <div key={index} className="header__search">
-          <button className="header__search-button" aria-label="搜索">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="11" cy="11" r="8"/>
-              <path d="M21 21l-4.35-4.35"/>
-            </svg>
-          </button>
+          <React.Suspense fallback={
+            <button className="header__search-button" aria-label="搜索">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="M21 21l-4.35-4.35"/>
+              </svg>
+            </button>
+          }>
+            <SearchBar />
+          </React.Suspense>
         </div>
       );
     }

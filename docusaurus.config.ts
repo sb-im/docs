@@ -80,7 +80,7 @@ const config: Config = {
       title: '草莓创新',
       logo: {
         alt: 'StrawBerry Innovation Logo',
-        src: 'img/logo.svg',
+        src: '/img/logo.svg',
       },
       items: [
         // 主要文档导航
@@ -200,19 +200,6 @@ const config: Config = {
       searchPagePath: 'search',
       // 自定义搜索建议
       placeholder: '搜索文档内容...',
-      // 搜索结果转换
-      transformItems(items) {
-        return items.map((item) => {
-          // 优化URL显示
-          const url = new URL(item.url);
-          return {
-            ...item,
-            url: item.url,
-            // 添加面包屑导航
-            _breadcrumbs: item.hierarchy ? Object.values(item.hierarchy).filter(Boolean) : [],
-          };
-        });
-      },
       // 自定义翻译
       translations: {
         button: {

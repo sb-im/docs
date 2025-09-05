@@ -52,22 +52,16 @@ export default function MobileHeader({ className }: MobileHeaderProps) {
         {/* 右侧：功能按钮 */}
         <div className="mobile-header__right">
           {/* 搜索按钮 */}
-          <button
+        <Link
+            to="/search"
             className="mobile-header__search-button"
             aria-label="搜索"
-            onClick={() => {
-              // 触发 Algolia 搜索
-              const searchButton = document.querySelector('.DocSearch-Button');
-              if (searchButton) {
-                (searchButton as HTMLElement).click();
-              }
-            }}
-          >
+        >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <circle cx="11" cy="11" r="8"/>
-              <path d="M21 21l-4.35-4.35"/>
+                <circle cx="11" cy="11" r="8"/>
+                <path d="M21 21l-4.35-4.35"/>
             </svg>
-          </button>
+        </Link>
 
           {/* 颜色模式切换按钮 */}
           <button

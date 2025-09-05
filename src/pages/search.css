@@ -6,9 +6,21 @@
 
 /* 搜索页面头部 */
 .search-page__header {
-  background: var(--ifm-color-primary-lightest);
+  background: linear-gradient(135deg,
+    var(--ifm-color-primary-lightest) 0%,
+    rgba(24, 144, 255, 0.05) 100%
+  );
   padding: 2rem 0;
   border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* 深色模式下的搜索页面头部 */
+[data-theme='dark'] .search-page__header {
+  background: linear-gradient(135deg,
+    rgba(64, 169, 255, 0.15) 0%,
+    rgba(64, 169, 255, 0.05) 100%
+  );
+  border-bottom: 1px solid var(--sbim-gray-700);
 }
 
 .search-page__title {
@@ -50,6 +62,27 @@
 
 .search-page__input::placeholder {
   color: var(--ifm-color-emphasis-600);
+}
+
+/* 深色模式下的搜索输入框 */
+[data-theme='dark'] .search-page__input {
+  background-color: var(--sbim-gray-800);
+  border-color: var(--sbim-gray-700);
+  color: var(--sbim-gray-200);
+}
+
+[data-theme='dark'] .search-page__input:focus {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px rgba(64, 169, 255, 0.2);
+}
+
+[data-theme='dark'] .search-page__input:disabled {
+  background-color: var(--sbim-gray-800);
+  color: var(--sbim-gray-500);
+}
+
+[data-theme='dark'] .search-page__input::placeholder {
+  color: var(--sbim-gray-500);
 }
 
 /* 搜索页面内容 */
@@ -109,6 +142,30 @@
 
 .search-stats__clear-cache:hover {
   background: var(--ifm-color-warning-light);
+}
+
+/* 深色模式下的搜索统计信息 */
+[data-theme='dark'] .search-stats {
+  background: var(--sbim-gray-800);
+  border: 1px solid var(--sbim-gray-700);
+}
+
+[data-theme='dark'] .search-stats__label {
+  color: var(--sbim-gray-400);
+}
+
+[data-theme='dark'] .search-stats__value {
+  color: var(--sbim-gray-200);
+}
+
+[data-theme='dark'] .search-stats__clear-cache {
+  background: rgba(250, 173, 20, 0.2);
+  border-color: var(--ifm-color-warning);
+  color: var(--ifm-color-warning-lightest);
+}
+
+[data-theme='dark'] .search-stats__clear-cache:hover {
+  background: rgba(250, 173, 20, 0.3);
 }
 
 /* 搜索结果头部 */
@@ -171,6 +228,18 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* 深色模式下的搜索结果 */
+[data-theme='dark'] .search-result {
+  background: var(--sbim-gray-800);
+  border-color: var(--sbim-gray-700);
+}
+
+[data-theme='dark'] .search-result:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  background: var(--sbim-gray-750);
+}
+
 .search-result__header {
   margin-bottom: 1rem;
 }
@@ -214,6 +283,29 @@
   font-weight: 500;
 }
 
+/* 深色模式下的搜索结果元信息 */
+[data-theme='dark'] .search-result__title a {
+  color: var(--ifm-color-primary-light);
+}
+
+[data-theme='dark'] .search-result__meta {
+  color: var(--sbim-gray-400);
+}
+
+[data-theme='dark'] .search-result__url {
+  background: var(--sbim-gray-700);
+  color: var(--sbim-gray-300);
+}
+
+[data-theme='dark'] .search-result__score {
+  background: rgba(64, 169, 255, 0.2);
+  color: var(--ifm-color-primary-light);
+}
+
+[data-theme='dark'] .search-result__content {
+  color: var(--sbim-gray-300);
+}
+
 .search-result__content {
   margin-bottom: 1rem;
   line-height: 1.6;
@@ -241,6 +333,17 @@
   background: var(--ifm-color-emphasis-100);
   border-radius: 4px;
   border-left: 3px solid var(--ifm-color-primary-light);
+}
+
+/* 深色模式下的搜索结果高亮 */
+[data-theme='dark'] .search-result__highlights h4 {
+  color: var(--sbim-gray-300);
+}
+
+[data-theme='dark'] .search-result__highlight {
+  background: var(--sbim-gray-750);
+  color: var(--sbim-gray-400);
+  border-left-color: var(--ifm-color-primary);
 }
 
 /* 空状态 */
@@ -293,6 +396,37 @@
   border: 1px solid var(--ifm-color-emphasis-200);
   border-radius: 8px;
   padding: 2rem;
+}
+
+/* 深色模式下的搜索帮助 */
+[data-theme='dark'] .search-help {
+  background: var(--sbim-gray-800);
+  border-color: var(--sbim-gray-700);
+}
+
+[data-theme='dark'] .search-help__section h3 {
+  color: var(--sbim-gray-200);
+}
+
+[data-theme='dark'] .search-help__section ul {
+  color: var(--sbim-gray-400);
+}
+
+/* 深色模式下的空状态 */
+[data-theme='dark'] .empty-state__title {
+  color: var(--sbim-gray-200);
+}
+
+[data-theme='dark'] .empty-state__description {
+  color: var(--sbim-gray-400);
+}
+
+[data-theme='dark'] .empty-state__suggestions h4 {
+  color: var(--sbim-gray-300);
+}
+
+[data-theme='dark'] .empty-state__suggestions ul {
+  color: var(--sbim-gray-400);
 }
 
 .search-help h2 {
