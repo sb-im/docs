@@ -36,7 +36,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          path: '../content/docs',
+          path: './content/docs',
           routeBasePath: 'docs',
           editUrl: 'https://github.com/JiajiaHuang/sbim_docs/tree/main/',
           showLastUpdateAuthor: true,
