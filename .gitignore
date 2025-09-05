@@ -21,3 +21,4 @@ yarn-error.log*
 
 # Content directory (managed separately)
 content/
+content
