@@ -51,27 +51,26 @@ const config: Config = {
   ],
 
   plugins: [
-    // 暂时注释掉redocusaurus插件，稍后配置
-    // [
-    //   'redocusaurus',
-    //   {
-    //     specs: [
-    //       {
-    //         id: 'api-v2',
-    //         spec: '../content/api/v2/openapi.yaml',
-    //         route: '/api/v2/',
-    //       },
-    //     ],
-    //     theme: {
-    //       primaryColor: '#1890ff',
-    //       redocOptions: {
-    //         hideDownloadButton: false,
-    //         disableSearch: false,
-    //         nativeScrollbars: true,
-    //       },
-    //     },
-    //   },
-    // ],
+    [
+      'redocusaurus',
+      {
+        specs: [
+          {
+            id: 'api-v2',
+            spec: './content/api/v2/openapi.yaml',
+            route: '/api/v2/',
+          },
+        ],
+        theme: {
+          primaryColor: '#1890ff',
+          redocOptions: {
+            hideDownloadButton: false,
+            disableSearch: false,
+            nativeScrollbars: true,
+          },
+        },
+      },
+    ],
   ],
 
   themeConfig: {
