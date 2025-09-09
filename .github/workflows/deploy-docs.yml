@@ -10,6 +10,8 @@ on:
     branches: [ main ]
     paths:
       - '**'
+  repository_dispatch:
+    types: [docs-updated]
 
 # 设置权限以允许部署到 GitHub Pages
 permissions:
