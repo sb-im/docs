@@ -1,0 +1,138 @@
+/**
+ * SBIM 草莓创新 - 简化版自定义样式
+ */
+
+:root {
+  /* 主色调 */
+  --ifm-color-primary: #1890ff;
+  --ifm-color-primary-dark: #1677cc;
+  --ifm-color-primary-darker: #1668b3;
+  --ifm-color-primary-darkest: #0f4c99;
+  --ifm-color-primary-light: #40a9ff;
+  --ifm-color-primary-lighter: #69c0ff;
+  --ifm-color-primary-lightest: #91d5ff;
+
+  /* 字体 */
+  --ifm-font-family-base: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+                          'Helvetica Neue', Helvetica, Arial, sans-serif;
+  
+  /* 代码字体 */
+  --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', 'Monaco',
+                               'Consolas', monospace;
+
+  /* 圆角 */
+  --ifm-border-radius: 8px;
+  --ifm-card-border-radius: 12px;
+
+  /* 代码高亮 */
+  --docusaurus-highlighted-code-line-bg: rgba(24, 144, 255, 0.1);
+}
+
+/* 暗色模式 */
+[data-theme='dark'] {
+  --ifm-color-primary: #40a9ff;
+  --ifm-color-primary-dark: #1890ff;
+  --ifm-color-primary-darker: #1677cc;
+  --ifm-color-primary-darkest: #1668b3;
+  --ifm-color-primary-light: #69c0ff;
+  --ifm-color-primary-lighter: #91d5ff;
+  --ifm-color-primary-lightest: #bae7ff;
+
+  --docusaurus-highlighted-code-line-bg: rgba(64, 169, 255, 0.2);
+}
+
+/* 全局样式 */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 导航栏 */
+.navbar {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.navbar__brand {
+  font-weight: 600;
+  color: var(--ifm-color-primary) !important;
+}
+
+/* 按钮 */
+.button {
+  border-radius: var(--ifm-border-radius);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.button--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+}
+
+.button--secondary:hover {
+  transform: translateY(-2px);
+}
+
+/* 卡片 */
+.card {
+  border-radius: var(--ifm-card-border-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* 代码块 */
+.prism-code {
+  border-radius: var(--ifm-border-radius);
+}
+
+/* 行内代码 */
+code {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* 标题 */
+.markdown h1 {
+  color: var(--ifm-color-primary);
+  border-bottom: 2px solid var(--ifm-color-primary);
+  padding-bottom: 0.5rem;
+}
+
+.markdown h2 {
+  color: var(--ifm-color-primary-dark);
+  margin-top: 2rem;
+}
+
+/* 表格 */
+.markdown table {
+  border-radius: var(--ifm-border-radius);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.markdown table th {
+  background: var(--ifm-color-primary);
+  color: white;
+  font-weight: 600;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .hero__title {
+    font-size: 2rem;
+  }
+  
+  .hero__subtitle {
+    font-size: 1.1rem;
+  }
+}
