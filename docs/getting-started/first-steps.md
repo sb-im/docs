@@ -135,4 +135,4 @@ A: 检查配置文件是否正确，API密钥是否有效
 
 - 了解更多 [API 接口](../api/overview)
 - 学习 [身份验证](../api/authentication)
-- 查看完整的 [SDK 文档](../sdk/overview)
+- 继续探索其他文档章节

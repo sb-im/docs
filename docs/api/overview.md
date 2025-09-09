@@ -172,5 +172,5 @@ curl -X GET https://api.sb.im/v1/docks \
 ## 下一步
 
 - 了解 [身份验证](./authentication) 详细信息
-- 查看具体的 [API 参考文档](./reference)
-- 下载并使用 [SDK](../sdk/overview)
+- 继续阅读其他文档章节
+- 开始使用 API 进行开发

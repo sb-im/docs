@@ -254,6 +254,6 @@ const docks = await client.docks.list();
 
 ## 下一步
 
-- 查看完整的 [API 参考文档](./reference)
-- 了解 [错误处理](./errors) 最佳实践
-- 下载 [SDK](../sdk/overview) 开始开发
+- 查看 [API 概览](./overview) 了解更多接口
+- 继续阅读其他文档章节
+- 开始使用 API 进行开发
