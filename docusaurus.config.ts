@@ -8,13 +8,13 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://docs.sb.im',
+  url: 'https://jiajiahuang.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
-  baseUrl: '/',
+  baseUrl: '/sbim_web/',
 
   // GitHub pages deployment config
-  organizationName: 'gitgitgogogo',
-  projectName: 'sbim-docs-website',
+  organizationName: 'JiajiaHuang',
+  projectName: 'sbim_web',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
