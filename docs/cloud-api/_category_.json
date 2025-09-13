@@ -1,0 +1,11 @@
+{
+  "label": "API 文档",
+  "position": 3,
+  "link": {
+    "type": "doc",
+    "id": "api/overview"
+  },
+  "collapsed": true,
+  "collapsible": true,
+  "className": "category-api"
+}

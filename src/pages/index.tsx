@@ -20,7 +20,7 @@ function HomepageHeader() {
           <Link
             className="button button--secondary button--lg"
             to="/docs/intro">
-            🚀 快速开始
+            快速开始
           </Link>
         </div>
       </div>
@@ -35,7 +35,7 @@ function HomepageFeatures() {
         <div className="row">
           <div className={clsx('col col--4')}>
             <div className="text--center">
-              <h3>🚁 无人机自动机场</h3>
+              <h3>无人机自动机场</h3>
               <p>
                 全自动无人机机场系统，支持自动起降、充电、数据传输等功能。
               </p>
@@ -43,7 +43,7 @@ function HomepageFeatures() {
           </div>
           <div className={clsx('col col--4')}>
             <div className="text--center">
-              <h3>📡 智能控制系统</h3>
+              <h3>智能控制系统</h3>
               <p>
                 先进的飞行控制和任务管理系统，实现全程无人化自动巡检。
               </p>
@@ -51,7 +51,7 @@ function HomepageFeatures() {
           </div>
           <div className={clsx('col col--4')}>
             <div className="text--center">
-              <h3>🔧 开发者友好</h3>
+              <h3>开发者友好</h3>
               <p>
                 完整的API文档和SDK，让开发者轻松集成和定制功能。
               </p>
