@@ -77,3 +77,7 @@ jspm_packages/
 
 # FuseBox cache
 .fusebox/
+
+# Legacy directories (not part of website project)
+infrastructure/
+postgres/
