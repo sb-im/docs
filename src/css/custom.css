@@ -232,3 +232,31 @@ code {
     padding: 1rem;
   }
 }
+
+/* 侧边栏搜索链接样式 */
+.sidebar-search-link {
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
+  color: white !important;
+  border-radius: 6px;
+  margin: 0.5rem 0;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.sidebar-search-link .menu__link {
+  color: white !important;
+}
+
+.sidebar-search-link:hover {
+  transform: translateX(2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar-search-link .menu__link:hover {
+  color: white !important;
+  background: transparent !important;
+}
+
+[data-theme='dark'] .sidebar-search-link {
+  background: linear-gradient(135deg, var(--ifm-color-primary-light) 0%, var(--ifm-color-primary) 100%);
+}

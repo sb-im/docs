@@ -21,6 +21,14 @@ const sidebars: SidebarsConfig = {
       className: 'sidebar-welcome',
     },
 
+    // 搜索页面
+    {
+      type: 'link',
+      label: '🔍 搜索文档',
+      href: '/sbim_web/search',
+      className: 'sidebar-search-link',
+    },
+
     // 快速开始 - 现有内容
     {
       type: 'category',
