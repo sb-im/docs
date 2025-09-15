@@ -37,8 +37,8 @@ description: SBIM 无人机自动机场系统用户指南
 如果您是新用户，建议按以下顺序阅读：
 
 1. [系统概览](./system-overview.md) - 了解系统基本概念
-2. [首次设置](./initial-setup.md) - 完成系统初始化配置
-3. [第一次飞行](./first-flight.md) - 执行您的第一个飞行任务
+2. [云端 API](../cloud-api/index.md) - 了解 API 接口和集成方式
+3. [开发者指南](../developers/index.md) - 开始开发和集成
 
 ## 使用提示
 

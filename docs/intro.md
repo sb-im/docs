@@ -82,19 +82,17 @@
 - [API概览](./cloud-api/overview.md) - 基于DJI上云API标准的接口说明
 - [HMS集成](./cloud-api/hms.md) - HMS的集成及相关问题说明
 - [实时数据](./cloud-api/feature-comparison.md) - 上云API功能差异比较说明
-- [任务管理](./cloud-api/mission-management) - 航线规划、任务下发和执行监控
-- [媒体文件](./cloud-api/media-management) - 图片、视频文件上传和管理
+- [错误代码](./cloud-api/error-codes) - API错误代码说明
+- [DRC对比](./cloud-api/drc-comparison) - DRC功能对比说明
 
 ### 系统集成
 
-- [第三方平台对接](./integration/third-party-platforms) - 基于上云DEMO平台进行修改及集成SuperDock产品
+- [开发者指南](./developers/index.md) - 开发者集成指南
 
 ### 技术支持
 
-- [常见问题](./support/faq) - 设备使用、配置、故障等常见问题
-- [技术规范](./support/technical-specifications) - 详细的技术参数和性能指标
-- [兼容性列表](./support/compatibility) - 支持的无人机型号和负载设备
-- [联系支持](./support/contact) - 技术支持联系方式和服务流程
+- [常见问题](./faq/index.md) - 设备使用、配置、故障等常见问题
+- [使用指南](./guides/index.md) - 详细的使用指南和最佳实践
 
 ## 支持的负载设备
 

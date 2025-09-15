@@ -101,7 +101,7 @@ description: SBIM 无人机自动机场系统常见问题解答
 6. 预览并确认任务
 7. 提交执行
 
-详细步骤请参考 [任务创建指南](../guides/task-creation.md)。
+详细步骤请参考 [使用指南](../guides/index.md)。
 
 ### Q: 一次任务最长能飞多久？
 
