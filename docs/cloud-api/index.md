@@ -21,8 +21,9 @@ DJI作为全球无人机行业的领导者，其上云API已成为行业事实�
 如需了解更多DJI上云API的技术细节，请参考：
 
 - [DJI上云API官方文档](https://developer.dji.com/doc/cloud-api-tutorial/cn/)
-- [API概览](./overview) - SuperDock基于DJI上云API的具体实现
-- [功能对比](./feature-comparison) - SuperDock与DJI机场功能对比
-- [HMS健康管理](./hms) - 设备健康监控和告警系统
-- [错误代码](./error-codes) - API错误代码说明
+- [API概览](./overview.md) - SuperDock基于DJI上云API的具体实现
+- [设备类型参考](./device-types.md) - 支持的无人机、负载和机场设备型号
+- [功能对比](./feature-comparison.md) - SuperDock与DJI机场功能对比
+- [HMS健康管理](./hms.md) - 设备健康监控和告警系统
+- [错误代码](./error-codes.md) - API错误代码说明
 - [常见问题](../faq/index.md) - 获取技术支持
