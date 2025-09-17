@@ -1,64 +1,11 @@
 ---
-id: index
+id: index.base
 title: 适配上云API代码
-sidebar_label: 适配上云api代码
-sidebar_position: 1
+sidebar_label: 开发者中心
+sidebar_position: 2
 description: SBIM 系统设备适配上云API的完整开发指南
 ---
-# 机场适配上云API代码
-
-## 免责声明与使用须知
-
-:::warning 重要声明
-本文档基于DJI Cloud API Demo项目提供SuperDock设备集成指导，仅供技术参考和学习使用。请在使用前仔细阅读以下声明。
-:::
-
-### 技术参考性质
-
-- 本文档提供的代码示例、配置方案和集成方法仅为**技术参考实现**
-- 所有示例代码均基于开源的DJI Cloud API Demo项目进行扩展和修改
-- **不构成生产级解决方案**，可能存在未充分测试的功能模块和潜在安全风险
-
-### 安全风险提示
-
-- Demo代码可能存在**安全隐患**（包括但不限于数据泄露、未授权访问、权限控制不当等）
-- **强烈建议**在生产环境部署前进行全面的安全评估和代码审计
-- **避免将基于Demo的服务直接暴露于公网环境**，建议在内网或受控环境中使用
-- 如需在生产环境使用，请务必进行安全加固和漏洞修复
-
-### 兼容性说明
-
-- SuperDock设备与DJI上云API的兼容性基于当前版本测试结果
-- 设备固件更新、API版本变更可能影响兼容性
-- 建议在正式部署前进行充分的兼容性测试
-
-### 免责条款
-
-因使用本文档提供的代码、配置或方案导致的以下情况，**草莓创新及相关人员不承担任何责任**：
-
-- 业务中断、数据丢失或损坏
-- 系统安全漏洞或数据泄露
-- 第三方索赔或法律纠纷
-- 设备损坏或功能异常
-- 其他直接或间接经济损失
-
-### 使用建议
-
-- **开发测试**：建议在隔离的开发环境中进行测试和验证
-- **安全审计**：生产部署前请进行专业的安全审计和渗透测试
-- **备份策略**：建立完善的数据备份和恢复机制
-- **监控告警**：部署完整的系统监控和安全告警机制
-- **持续更新**：关注相关组件的安全更新和补丁发布
-
-### 技术支持
-
-如需专业的技术支持和生产级解决方案，请联系：
-
-- **技术支持**：[developer@sb.im](mailto:developer@sb.im)
-- **商务咨询**：[business@sb.im](mailto:business@sb.im)
-- **官方网站**：[https://sb.im](https://sb.im)
-
----
+# 基础配置
 
 ## Docker 安装
 
@@ -523,6 +470,93 @@ device_desc = VALUES(device_desc),
 update_time = CURRENT_TIMESTAMP;
 ```
 
+### 部署和使用指南
+
+#### 1. 环境准备
+
+**系统要求**：
+- Java 11+ (推荐OpenJDK 11)
+- MySQL 8.0+
+- Redis 6.2+
+- EMQX 4.4+
+
+**依赖检查**：
+```bash
+# 检查Java版本
+java -version
+
+# 检查MySQL连接
+mysql -u root -p -e "SELECT VERSION();"
+
+# 检查Redis连接
+redis-cli ping
+
+# 检查EMQX状态
+curl http://localhost:18083/api/v4/nodes
+```
+
+#### 2. 代码部署
+
+**编译和打包**：
+```bash
+# 编译项目
+mvn clean compile
+
+# 运行测试
+mvn test
+
+# 打包应用
+mvn clean package -DskipTests
+```
+
+**配置文件更新**：
+```yaml
+# application.yml
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/cloud_sample?useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+
+# MQTT配置
+mqtt:
+  broker:
+    host: localhost
+    port: 1883
+    username: admin
+    password: public
+```
+
+#### 3. 数据库初始化
+
+**执行数据库更新**：
+```bash
+# 方法1: 使用SQL脚本直接更新
+mysql -u root -p cloud_sample < update_device_dictionary.sql
+
+# 方法2: 使用Python脚本（如果有）
+python3 update_database.py
+
+# 方法3: 手动执行SQL语句
+mysql -u root -p cloud_sample
+```
+
+**验证数据库更新**：
+```sql
+-- 检查SuperDock设备是否已添加
+SELECT device_name, device_type, sub_type, domain, device_desc
+FROM manage_device_dictionary
+WHERE device_type BETWEEN 88097 AND 88103;
+
+-- 检查M4系列设备
+SELECT device_name, device_type, sub_type, domain
+FROM manage_device_dictionary
+WHERE device_type IN (99, 100) AND domain = 0;
+```
 
 ## 系统错误修复与优化
 
@@ -781,6 +815,35 @@ logging:
 3. 确认前端路由和组件状态
 4. 检查API响应数据格式
 
+#### 3. 性能优化建议
+
+**数据库优化**：
+```sql
+-- 为设备查询添加索引
+CREATE INDEX idx_device_sn ON manage_device(device_sn);
+CREATE INDEX idx_device_type ON manage_device(device_type, sub_type, domain);
+CREATE INDEX idx_workspace_id ON manage_device(workspace_id);
+
+-- 定期清理过期数据
+DELETE FROM device_status_history
+WHERE create_time < DATE_SUB(NOW(), INTERVAL 30 DAY);
+```
+
+**Redis缓存策略**：
+```java
+// 设备状态缓存配置
+@Cacheable(value = "device_status", key = "#deviceSn", unless = "#result == null")
+public DeviceStatus getDeviceStatus(String deviceSn) {
+    // 实现设备状态查询逻辑
+}
+
+// 缓存过期时间配置
+spring:
+  cache:
+    redis:
+      time-to-live: 300000  # 5分钟过期
+      cache-null-values: false
+```
 
 ### 技术支持和资源
 
@@ -829,19 +892,19 @@ logging:
 ### 技术成果
 
 1. **完整的设备支持**：
-    - 支持SuperDock全系列机场设备（S22M300、S2201、S2301、S24M350等）
-    - 支持M4系列无人机和新一代载荷设备
-    - 实现了完整的设备识别、状态监控和控制功能
+   - 支持SuperDock全系列机场设备（S22M300、S2201、S2301、S24M350等）
+   - 支持M4系列无人机和新一代载荷设备
+   - 实现了完整的设备识别、状态监控和控制功能
 
 2. **系统稳定性提升**：
-    - 解决了设备上线、状态路由、版本兼容等关键问题
-    - 优化了数据库结构和缓存策略
-    - 建立了完善的错误处理和监控机制
+   - 解决了设备上线、状态路由、版本兼容等关键问题
+   - 优化了数据库结构和缓存策略
+   - 建立了完善的错误处理和监控机制
 
 3. **兼容性保证**：
-    - 完全兼容DJI上云API标准，零学习成本
-    - 保持向后兼容，不影响现有功能
-    - 为未来设备扩展提供了标准化框架
+   - 完全兼容DJI上云API标准，零学习成本
+   - 保持向后兼容，不影响现有功能
+   - 为未来设备扩展提供了标准化框架
 
 ### 业务价值
 
@@ -865,7 +928,7 @@ logging:
 - 数据库配置完整且经过验证
 - 网络连接稳定且安全配置正确
 - 监控和日志系统正常运行
-  :::
+:::
 
 :::info 技术支持
 如果在集成过程中遇到任何问题，请随时联系草莓创新技术支持团队。我们提供专业的技术支持服务，确保您的项目顺利实施。

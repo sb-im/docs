@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # 云端集成概述
 
 草莓创新SuperDock系列产品完全兼容DJI上云API标准，为客户提供无缝的云端集成体验。

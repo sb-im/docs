@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# SuperDock与DJI机场指令飞行功能对比
+# 指令飞行功能对比
 
 本文档详细对比SuperDock系列产品与DJI机场在指令飞行功能方面的实现情况，严格基于DJI官方上云API指令飞行接口标准。
 

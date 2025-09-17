@@ -1,4 +1,8 @@
-# SuperDock与DJI机场功能对比
+---
+sidebar_position: 3
+---
+
+# 机场功能对比
 
 本文档基于DJI上云API中的"机场接口实现"功能集合，对比SuperDock系列产品与DJI机场的功能实现情况。
 

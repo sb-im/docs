@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-# SuperDock与DJI机场远程调试功能对比
+# 远程调试功能对比
 
 本文档详细对比SuperDock系列产品与DJI机场在远程调试功能方面的实现情况，严格基于DJI官方上云API远程调试接口标准。
 

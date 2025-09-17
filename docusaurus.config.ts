@@ -32,7 +32,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           routeBasePath: 'docs',
-          editUrl: 'https://github.com/gitgitgogogo/sbim-docs-content/tree/main/',
+          editUrl: 'https://github.com/sb-im/sbim-docs-content/tree/main/',
           // 侧边栏优化配置
           sidebarCollapsible: true,
           sidebarCollapsed: true,
@@ -96,7 +96,7 @@ const config: Config = {
           label: '文档',
         },
         {
-          href: 'https://github.com/gitgitgogogo/sbim-docs-content',
+          href: 'https://github.com/sb-im',
           label: 'GitHub',
           position: 'right',
         },
@@ -141,7 +141,7 @@ const config: Config = {
           items: [
             {
               label: 'GitHub',
-              href: 'https://github.com/strawberry-innovation',
+              href: 'https://github.com/sb-im',
             },
           ],
         },
