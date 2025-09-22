@@ -1,8 +1,10 @@
-name: 部署文档到 GitHub Pages
+name: 测试构建文档
 
 on:
   push:
     branches: [ main ]
+    tags-ignore:
+      - '**'  # 忽略所有标签推送，避免与基于标签的部署冲突
     paths:
       - '**'
       - '.github/workflows/deploy-docs.yml'
@@ -56,15 +58,15 @@ jobs:
         with:
           path: ./build
 
-  # 部署作业
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  # 测试构建完成通知
+  test-complete:
     runs-on: ubuntu-latest
     needs: build
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && !startsWith(github.ref, 'refs/tags/')
     steps:
-      - name: 部署到 GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: 构建测试完成
+        run: |
+          echo "✅ 文档构建测试完成"
+          echo "📝 提交: ${{ github.sha }}"
+          echo "🔗 分支: ${{ github.ref_name }}"
+          echo "💡 提示: 创建版本标签 (如 v1.2.0) 以触发正式部署"

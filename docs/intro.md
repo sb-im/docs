@@ -95,6 +95,7 @@
 - [常见问题](./faq/index.md) - 设备使用、配置、故障等常见问题
 - [技术规范](./cloud-api/feature-comparison.md) - 设备技术规范和功能对比
 - [兼容性说明](./cloud-api/drc-comparison.md) - DJI API兼容性详细说明
+- [更新记录](./changelog.md) - 文档版本更新和功能变更记录
 
 ## 支持的负载设备
 
