@@ -1,4 +1,4 @@
-name: 测试构建文档
+name: 构建并部署文档
 
 on:
   push:
@@ -58,15 +58,22 @@ jobs:
         with:
           path: ./build
 
-  # 测试构建完成通知
-  test-complete:
+  # 部署作业
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
-    if: github.ref == 'refs/heads/main' && !startsWith(github.ref, 'refs/tags/')
+    if: github.ref == 'refs/heads/main'
     steps:
-      - name: 构建测试完成
+      - name: 部署到 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: 部署成功通知
         run: |
-          echo "✅ 文档构建测试完成"
+          echo "✅ 文档已成功部署到 GitHub Pages"
           echo "📝 提交: ${{ github.sha }}"
           echo "🔗 分支: ${{ github.ref_name }}"
-          echo "💡 提示: 创建版本标签 (如 v1.2.0) 以触发正式部署"
+          echo "🌐 访问地址: ${{ steps.deployment.outputs.page_url }}"
