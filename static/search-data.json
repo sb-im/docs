@@ -1,5 +1,43 @@
 [
   {
+    "id": "_sbim_web_docs_changelog",
+    "title": "更新记录",
+    "content": "v1.0.0-beta (初始测试版本) 发布日期 2025-09-23 版本说明 这是 SuperDock API 文档的初始测试版本，提供基础的开发者文档和 API 参考。 主要功能 文档架构 建立基础的技术文档结构 设备导向的文档设计理念 完整的 API 参考文档 核心特性 基于 DJI 上云 API 标准的兼容实现 支持 SuperDock 系列无人机自动机场 提供设备入门、云端集成、系统集成指南 API 支持 设备管理和状态监控 任务规划和执行 实时数据传输 媒体文件管理 支持设备 SuperDock 系列机场 SuperDock Pro V4 - 适配 M350/M300 系列 SuperDock Mini 2 - 适配 M3/M4 系列 SuperDock Pro - 专业级巡检作业 兼容无人机 Matrice 350 RTK Matrice 300 RTK Mavic 3 系列 Matrice 4 系列 已知限制 部分高级功能仍在开发中 文档内容可能存在不完整之处 API 接口可能在后续版本中调整 反馈与支持 欢迎开发者试用并提供反馈，帮助我们改进文档质量和 API 设计。 关于此文档 本文档记录 SuperDock API 文档的版本更新和重要变更。作为初始测试版本，我们将持续收集开发者反馈并改进文档内容。 版本命名规则 主版本号: 重大架构变更或不兼容更新 次版本号: 新功能添加或重要改进 修订版本号: 问题修复和小幅优化 beta/alpha: 测试版本标识 后续计划 完善 API 文档的详细说明 增加更多代码示例和最佳实践 扩展设备支持范围 优化开发者体验 获取帮助 如需了解更多信息或获取技术支持： 技术支持: developer@sb.im 官方网站: https://sb.im/ GitHub: @sb-im 贡献指南 我们欢迎开发者社区的贡献： 报告文档中的错误或不准确之处 建议新功能或改进现有功能 分享使用经验和最佳实践 提交代码示例和教程",
+    "url": "/sbim_web/docs/changelog",
+    "keywords": [
+      "发布日期",
+      "版本说明",
+      "superdock",
+      "api",
+      "主要功能",
+      "文档架构",
+      "建立基础的技术文档结构",
+      "设备导向的文档设计理念",
+      "完整的"
+    ],
+    "category": "docs",
+    "description": "SuperDock API 文档版本更新记录"
+  },
+  {
+    "id": "_sbim_web_docs_cloud_api_device_types",
+    "title": "设备类型和机型参考",
+    "content": "设备类型和机型参考 本文档提供 DJI 上云 API 支持的所有设备类型和机型的完整参考，包括无人机、负载、遥控器和机场设备。 设备类型说明 设备类型通过以下字段标识： domain: 设备域（0=无人机, 1=负载, 2=遥控器, 3=机场） type: 设备类型代码 sub_type: 设备子类型代码 node_type: 节点类型（uav/camera/rc/dock） 无人机 (UAV) - Domain 0 机型 Domain Type Sub Type 全称 说明 M400 0 103 0 Matrice 400 最新企业级无人机 M350 0 89 0 Matrice 350 RTK DJI Matrice 350 RTK M300 0 60 0 Matrice 300 RTK DJI Matrice 300 RTK M30 0 67 0 Matrice 30 DJI Matrice 30 M30T 0 67 1 Matrice 30T DJI Matrice 30T M3E 0 77 0 Mavic 3 Enterprise DJI Mavic 3 Enterprise M3T 0 77 1 Mavic 3 Thermal DJI Mavic 3 Thermal M3M 0 77 2 Mavic 3 Multispectral DJI Mavic 3 Multispectral M3TA 0 77 3 Mavic 3 Thermal Advanced DJI Mavic 3 Thermal Advanced M3D 0 91 0 Matrice 3D DJI Matrice 3D M3TD 0 91 1 Matrice 3TD DJI Matrice 3TD M4D 0 100 0 Matrice 4D DJI Matrice 4D M4TD 0 100 1 Matrice 4TD DJI Matrice 4TD M4E 0 99 0 Matrice 4E DJI Matrice 4E M4T 0 99 1 Matrice 4T DJI Matrice 4T 负载设备 (Camera) - Domain 1 专业负载 负载名称 Domain Type Sub Type 说明 支持云台位置 Z30 1 20 0 禅思 Z30 变焦相机 左舷侧(0)、右舷侧(1)、上侧(2) XT2 1 26 0 禅思 XT2 热成像相机 左舷侧(0)、右舷侧(1)、上侧(2) XTS 1 41 0 禅思 XTS 热成像相机 左舷侧(0)、右舷侧(1)、上侧(2) H20 1 42 0 禅思 H20 混合变焦相机 左舷侧(0)、右舷侧(1)、上侧(2) H20T 1 43 0 禅思 H20T 混合变焦热成像相机 左舷侧(0)、右舷侧(1)、上侧(2) H20N 1 61 0 禅思 H20N 夜视相机 左舷侧(0)、右舷侧(1)、上侧(2) H30 1 82 0 禅思 H30 新一代混合变焦相机 左舷侧(0)、右舷侧(1)、上侧(2) H30T 1 83 0 禅思 H30T 新一代混合变焦热成像相机 左舷侧(0)、右舷侧(1)、上侧(2) L1 1 50 0 禅思 L1 激光雷达 主云台 L2 1 84 0 禅思 L2 新一代激光雷达 主云台 P1 1 100000 0 禅思 P1 全画幅相机 主云台 集成相机 相机名称 Domain Type Sub Type 说明 云台位置 M30 Camera 1 52 0 Matrice 30 集成相机 主云台(0) M30T Camera 1 53 0 Matrice 30T 集成相机 主云台(0) M3E Camera 1 66 0 Mavic 3 Enterprise 相机 主云台(0) M3T Camera 1 67 0 Mavic 3 Thermal 相机 主云台(0) M3M Camera 1 68 0 Mavic 3 Multispectral 相机 主云台(0) M3TA Camera 1 129 0 Mavic 3 Thermal Advanced 相机 主云台(0) M3D Camera 1 80 0 Matrice 3D 相机 主云台(0) M3TD Camera 1 81 0 Matrice 3TD 相机 主云台(0) M4D Camera 1 98 0 Matrice 4D 相机 主云台(0) M4TD Camera 1 99 0 Matrice 4TD 相机 主云台(0) M4E Camera 1 88 0 Matrice 4E 相机 主云台(0) M4T Camera 1 89 0 Matrice 4T 相机 主云台(0) FPV 相机 相机名称 Domain ",
+    "url": "/sbim_web/docs/cloud-api/device-types",
+    "keywords": [
+      "设备类型和机型参考",
+      "本文档提供",
+      "dji",
+      "api",
+      "设备类型说明",
+      "设备类型代码",
+      "设备子类型代码",
+      "无人机",
+      "domain"
+    ],
+    "category": "cloud-api",
+    "description": ""
+  },
+  {
     "id": "_sbim_web_docs_cloud_api_drc_comparison",
     "title": "指令飞行功能对比",
     "content": "指令飞行功能对比 本文档详细对比SuperDock系列产品与DJI机场在指令飞行功能方面的实现情况，严格基于DJI官方上云API指令飞行接口标准。 概述 指令飞行功能允许操作员通过云端远程控制飞行器的飞行动作、负载操作和实时监控，实现精确的无人机操控。SuperDock基于DJI上云API标准实现指令飞行功能，确保与DJI生态系统的兼容性。 指令飞行控制权限对比 控制权抢夺 具体功能 DJI机场 SuperDock 备注 飞行控制权抢夺 ✅ ✅ 已实现 Method: flight_authority_grab 负载控制权抢夺 ✅ ✅ 已实现 Method: payload_authority_grab DRC模式控制 具体功能 DJI机场 SuperDock 备注 进入指令飞行控制模式 ✅ ✅ 已实现 Method: drc_mode_enter 退出指令飞行控制模式 ✅ ✅ 已实现 Method: drc_mode_exit 飞行控制指令对比 基础飞行控制 具体功能 DJI机场 SuperDock 备注 一键起飞 ✅ ✅ 已实现 Method: takeoff_to_point 飞向目标点 ✅ ✅ 已实现 Method: fly_to_point 结束飞向目标点任务 ✅ ✅ 已实现 Method: fly_to_point_stop 更新飞向目标点 ✅ ❌ 未实现 Method: fly_to_point_update POI环绕控制 具体功能 DJI机场 SuperDock 备注 进入POI环绕模式 ✅ ❌ 未实现 Method: poi_mode_enter 退出POI环绕模式 ✅ ❌ 未实现 Method: poi_mode_exit POI环绕速度设置 ✅ ❌ 未实现 Method: poi_circle_speed_set DRC实时控制 具体功能 DJI机场 SuperDock 备注 飞行器实时控制 ✅ ✅ 已实现 Method: drone_control 飞行器急停 ✅ ✅ 已实现 Method: drone_emergency_stop DRC心跳 ✅ ✅ 已实现 Method: heart_beat 负载控制指令对比 相机模式控制 具体功能 DJI机场 SuperDock 备注 切换相机模式 ✅ ✅ 已实现 Method: camera_mode_switch 开始拍照 ✅ ✅ 已实现 Method: camera_photo_take 停止拍照 ✅ ✅ 已实现 Method: camera_photo_stop 开始录像 ✅ ✅ 已实现 Method: camera_recording_start 停止录像 ✅ ✅ 已实现 Method: camera_recording_stop 云台控制 具体功能 DJI机场 SuperDock 备注 画面拖动控制 ✅ ✅ 已实现 Method: camera_screen_drag 双击成为AIM ✅ ✅ 已实现 Method: camera_aim 重置云台 ✅ ✅ 已实现 Method: gimbal_reset Look At功能 ✅ ✅ 已实现 Method: camera_look_at 相机参数控制 具体功能 DJI机场 SuperDock 备注 变焦控制 ✅ ✅ 已实现 Method: camera_focal_length_set 分屏控制 ✅ ❌ 未实现 Method: camera_screen_split 照片存储设置 ✅ ❌ 未实现 Method: photo_storage_set 视频存储设置 ✅ ❌ 未实现 Method: video_storage_set 相机曝光和对焦 具体功能 DJI机场 SuperDock 备注 曝光模式设置 ✅ ❌ 未实现 Method: camera_exposure_mode_set 曝光值调节 ✅ ❌ 未实现 Method: camera_exposure_set 对焦模式设置 ✅ ❌ 未实现 Method: camera_focus_mode_set 对焦值设置 ✅ ❌ 未实现 Method: camera_focus_value_set 点对焦 ✅ ✅ 已实现 Method: camera_point_focus_action 红外测温功能 具体功能 DJI机场 SuperDock 备注 红外测温模式设置 ✅ ✅ 已实现 Method: ir_metering_mode_set 红外测温点设置 ✅ ✅ 已实现 Method: ir_metering_point_set 红外测温区域设置 ✅ ✅ 已实现 Method: ir_metering_area_set 状态监控和事件上报对比 飞行状态事件",
@@ -79,7 +117,7 @@
   {
     "id": "_sbim_web_docs_cloud_api",
     "title": "云端集成概述",
-    "content": "云端集成概述 草莓创新SuperDock系列产品完全兼容DJI上云API标准，为客户提供无缝的云端集成体验。 为什么使用DJI上云API 降低客户学习成本，实现无缝迁移 DJI作为全球无人机行业的领导者，其上云API已成为行业事实标准，在全球无人机市场占有率超过70%。通过兼容DJI上云API，客户无需重新学习新的接口协议，现有基于DJI API开发的系统可以直接对接SuperDock设备，实现平滑迁移。这意味着客户的技术团队可以直接复用现有经验和代码，大幅减少开发时间和集成成本，同时降低技术风险和培训成本。 标准化接口，提升系统兼容性 采用DJI上云API标准确保了SuperDock产品与现有无人机生态系统的完美兼容。客户可以在同一管理平台中统一管理DJI设备和SuperDock设备，使用相同的运维流程和监控工具，实现混合部署和统一管理。这种标准化的接口设计不仅保证了系统的稳定性和可靠性，还为客户提供了更大的灵活性，可以根据不同场景需求选择最适合的设备组合，而无需担心系统集成的复杂性。 技术支持 如需了解更多DJI上云API的技术细节，请参考： DJI上云API官方文档 API概览 - SuperDock基于DJI上云API的具体实现 功能对比 - SuperDock与DJI机场功能对比 HMS健康管理 - 设备健康监控和告警系统 错误代码 - API错误代码说明 常见问题 - 获取技术支持",
+    "content": "云端集成概述 草莓创新SuperDock系列产品完全兼容DJI上云API标准，为客户提供无缝的云端集成体验。 为什么使用DJI上云API 降低客户学习成本，实现无缝迁移 DJI作为全球无人机行业的领导者，其上云API已成为行业事实标准，在全球无人机市场占有率超过70%。通过兼容DJI上云API，客户无需重新学习新的接口协议，现有基于DJI API开发的系统可以直接对接SuperDock设备，实现平滑迁移。这意味着客户的技术团队可以直接复用现有经验和代码，大幅减少开发时间和集成成本，同时降低技术风险和培训成本。 标准化接口，提升系统兼容性 采用DJI上云API标准确保了SuperDock产品与现有无人机生态系统的完美兼容。客户可以在同一管理平台中统一管理DJI设备和SuperDock设备，使用相同的运维流程和监控工具，实现混合部署和统一管理。这种标准化的接口设计不仅保证了系统的稳定性和可靠性，还为客户提供了更大的灵活性，可以根据不同场景需求选择最适合的设备组合，而无需担心系统集成的复杂性。 技术支持 如需了解更多DJI上云API的技术细节，请参考： DJI上云API官方文档 API概览 - SuperDock基于DJI上云API的具体实现 设备类型参考 - 支持的无人机、负载和机场设备型号 功能对比 - SuperDock与DJI机场功能对比 HMS健康管理 - 设备健康监控和告警系统 错误代码 - API错误代码说明 常见问题 - 获取技术支持",
     "url": "/sbim_web/docs/cloud-api",
     "keywords": [
       "云端集成概述",
@@ -87,11 +125,11 @@
       "技术支持",
       "dji上云api官方文档",
       "api概览",
+      "设备类型参考",
       "功能对比",
       "superdock与dji机场功能对比",
       "hms健康管理",
-      "设备健康监控和告警系统",
-      "错误代码"
+      "设备健康监控和告警系统"
     ],
     "category": "cloud-api",
     "description": ""
@@ -212,7 +250,7 @@
   {
     "id": "_sbim_web_docs_intro",
     "title": "草莓创新无人机自动机场系统开发者文档",
-    "content": "草莓创新无人机自动机场系统开发者文档 欢迎来到草莓创新（StrawBerry Innovation）无人机自动机场系统的开发者文档！ 我们专注于为各行业提供全程无人化的自动巡检解决方案，从接口对接到现场部署，从负载扩展到运维保障，为您提供完整的技术支持和解决方案。 系统概览 草莓创新致力于提供最先进的无人机自动机场解决方案，实现真正的全自动化运营。我们的系统具备以下核心优势： 核心特性 全自动化运行 - 100秒极速换电，支持24/7无人值守作业 无限跳飞技术 - 单架次飞行巡检半径可扩展至10公里 AI智能识别 - 集成目标检测、行为识别、场景分析等AI能力 云端+私有化 - 支持云端部署和私有化部署双模式 开放兼容 - 接口兼容DJI上云API，支持定制化开发 产品矩阵 SuperDock 系列自动机场 产品型号 适配机型 核心特性 应用场景 SuperDock Pro V4 DJI M350/M300 小型化设计(1m宽)、100秒换电、双RTK 大型基础设施巡检 SuperDock Mini 2 御3系列/御4系列 一体化设计、自研TEC空调、集成气象站 中小型区域巡检 SuperDock Pro DJI M350/M300 独立通信塔、RTK基站、可旋转监控 专业级巡检作业 SuperDock CS 控制系统 API兼容 - 完全兼容DJI上云API AI识别 - 人、车、违章、安全帽、漂浮物等目标检测 智能报告 - 自动生成巡检报告和数据分析 自动响应 - 根据识别结果自动控制无人机执行喊话等操作 完整解决方案流程 接口对接阶段 API集成 - 兼容DJI上云API，快速集成现有系统 兼容平台 - 兼容DJI Cloud API Demo平台 现场部署阶段 环境适配 - 确定现场环境 设备安装 - 专业的现场安装和调试服务 网络配置 - 4G/5G/WiFi多种网络接入方案 验收测试 - 全面的功能验收和性能测试 负载扩展阶段 多负载支持 - 光学成像、专业检测、应急响应等多种负载 即插即用 - 标准化接口设计，快速更换负载 定制开发 - 支持特殊负载的定制化集成方案 数据融合 - 多传感器数据融合和智能分析 运维保障阶段 远程监控 - 系统状态监控和预警 预防性维护 - 基于数据分析的预防性维护策略 故障诊断 - 智能故障诊断和快速响应机制 升级服务 - 持续的软件升级和功能优化 DJI API 兼容性 草莓创新SuperDock系列产品完全兼容DJI上云API标准，这意味着： 零学习成本 - 如果您已熟悉DJI上云API，可直接使用现有代码和经验 无缝迁移 - 现有基于DJI API的系统可直接对接SuperDock设备 标准化接口 - 遵循行业标准，降低集成复杂度和维护成本 官方参考 - 可参考 DJI上云API文档 了解接口详情 文档导航 设备入门 产品选型 - 选择适合的SuperDock机场设备 开箱安装 - 设备安装和基础配置指南 云端集成 (兼容DJI上云API) 兼容概述 - 兼容上云API机场说明 API概览 - 基于DJI上云API标准的接口说明 HMS集成 - HMS的集成及相关问题说明 实时数据 - 上云API功能差异比较说明 错误代码 - API错误代码说明 DRC对比 - DRC功能对比说明 系统集成 开发者指南 - 开发者集成指南 技术支持 常见问题 - 设备使用、配置、故障等常见问题 技术规范 - 设备技术规范和功能对比 兼容性说明 - DJI API兼容性详细说明 支持的负载设备 光学成像设备 H30/H30T - 混合变焦相机，高清可见光+热成像 H20/H20T - 23倍混合变焦，激光测距 P1 - 4500万像素全画幅相机 L2 - 高精度激光雷达 专业检测设备 多光谱相机 - 5通道多光谱，植被指数分析 高光谱相机 - 400-1000nm光谱范围 偏振光相机 - 水面反射抑制，透视增强 甲烷遥测仪 - ppm级检测精度 气体检测仪 - CO/H2S/CH4多气体检测 应急响应设备 喊话器 - 高分贝音量，清晰语音传输 应急智巡AR-10 - 测绘级激光雷达+热红外双相机 探照灯 - 高流明可调光束 投放装置 - 精准定位投放 📞 获取帮助 如果您在使用过程中遇到问题，可以通过以下方式获取帮助： 联系方式 技术支持：developer@sb.im 商务合作：business@sb.im 官方网站：https://sb.im/ GitHub组织：@sb-im 公司信息 深圳草莓创新技术有限公司 地址：深圳市龙岗区大运软件小镇70栋 让无人机巡检更智能，让世界更安全 开始探索草莓创新的无人机自动机场系统吧！",
+    "content": "草莓创新无人机自动机场系统开发者文档 欢迎来到草莓创新（StrawBerry Innovation）无人机自动机场系统的开发者文档！ 我们专注于为各行业提供全程无人化的自动巡检解决方案，从接口对接到现场部署，从负载扩展到运维保障，为您提供完整的技术支持和解决方案。 系统概览 草莓创新致力于提供最先进的无人机自动机场解决方案，实现真正的全自动化运营。我们的系统具备以下核心优势： 核心特性 全自动化运行 - 100秒极速换电，支持24/7无人值守作业 无限跳飞技术 - 单架次飞行巡检半径可扩展至10公里 AI智能识别 - 集成目标检测、行为识别、场景分析等AI能力 云端+私有化 - 支持云端部署和私有化部署双模式 开放兼容 - 接口兼容DJI上云API，支持定制化开发 产品矩阵 SuperDock 系列自动机场 产品型号 适配机型 核心特性 应用场景 SuperDock Pro V4 DJI M350/M300 小型化设计(1m宽)、100秒换电、双RTK 大型基础设施巡检 SuperDock Mini 2 御3系列/御4系列 一体化设计、自研TEC空调、集成气象站 中小型区域巡检 SuperDock Pro DJI M350/M300 独立通信塔、RTK基站、可旋转监控 专业级巡检作业 SuperDock CS 控制系统 API兼容 - 完全兼容DJI上云API AI识别 - 人、车、违章、安全帽、漂浮物等目标检测 智能报告 - 自动生成巡检报告和数据分析 自动响应 - 根据识别结果自动控制无人机执行喊话等操作 完整解决方案流程 接口对接阶段 API集成 - 兼容DJI上云API，快速集成现有系统 兼容平台 - 兼容DJI Cloud API Demo平台 现场部署阶段 环境适配 - 确定现场环境 设备安装 - 专业的现场安装和调试服务 网络配置 - 4G/5G/WiFi多种网络接入方案 验收测试 - 全面的功能验收和性能测试 负载扩展阶段 多负载支持 - 光学成像、专业检测、应急响应等多种负载 即插即用 - 标准化接口设计，快速更换负载 定制开发 - 支持特殊负载的定制化集成方案 数据融合 - 多传感器数据融合和智能分析 运维保障阶段 远程监控 - 系统状态监控和预警 预防性维护 - 基于数据分析的预防性维护策略 故障诊断 - 智能故障诊断和快速响应机制 升级服务 - 持续的软件升级和功能优化 DJI API 兼容性 草莓创新SuperDock系列产品完全兼容DJI上云API标准，这意味着： 零学习成本 - 如果您已熟悉DJI上云API，可直接使用现有代码和经验 无缝迁移 - 现有基于DJI API的系统可直接对接SuperDock设备 标准化接口 - 遵循行业标准，降低集成复杂度和维护成本 官方参考 - 可参考 DJI上云API文档 了解接口详情 文档导航 设备入门 产品选型 - 选择适合的SuperDock机场设备 开箱安装 - 设备安装和基础配置指南 云端集成 (兼容DJI上云API) 兼容概述 - 兼容上云API机场说明 API概览 - 基于DJI上云API标准的接口说明 HMS集成 - HMS的集成及相关问题说明 实时数据 - 上云API功能差异比较说明 错误代码 - API错误代码说明 DRC对比 - DRC功能对比说明 系统集成 开发者指南 - 开发者集成指南 技术支持 常见问题 - 设备使用、配置、故障等常见问题 技术规范 - 设备技术规范和功能对比 兼容性说明 - DJI API兼容性详细说明 更新记录 - 文档版本更新和功能变更记录 支持的负载设备 光学成像设备 H30/H30T - 混合变焦相机，高清可见光+热成像 H20/H20T - 23倍混合变焦，激光测距 P1 - 4500万像素全画幅相机 L2 - 高精度激光雷达 专业检测设备 多光谱相机 - 5通道多光谱，植被指数分析 高光谱相机 - 400-1000nm光谱范围 偏振光相机 - 水面反射抑制，透视增强 甲烷遥测仪 - ppm级检测精度 气体检测仪 - CO/H2S/CH4多气体检测 应急响应设备 喊话器 - 高分贝音量，清晰语音传输 应急智巡AR-10 - 测绘级激光雷达+热红外双相机 探照灯 - 高流明可调光束 投放装置 - 精准定位投放 📞 获取帮助 如果您在使用过程中遇到问题，可以通过以下方式获取帮助： 联系方式 技术支持：developer@sb.im 商务合作：business@sb.im 官方网站：https://sb.im/ GitHub组织：@sb-im 公司信息 深圳草莓创新技术有限公司 地址：深圳市龙岗区大运软件小镇70栋 让无人机巡检更智能，让世界更安全 开始探索草莓创新的无人机自动机场系统吧！",
     "url": "/sbim_web/docs/intro",
     "keywords": [
       "草莓创新无人机自动机场系统开发者文档",

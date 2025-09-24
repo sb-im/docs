@@ -13,13 +13,22 @@ import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 const sidebars: SidebarsConfig = {
   // 主文档侧边栏 - 简化版，只包含现有内容
   tutorialSidebar: [
-    // 欢迎页面
+
+      // 欢迎页面
     {
       type: 'doc',
       id: 'intro',
       label: '欢迎使用',
       className: 'sidebar-welcome',
     },
+
+      // 更新记录
+      {
+          type: 'doc',
+          id: 'changelog',
+          label: '📋 更新记录',
+          className: 'sidebar-changelog',
+      },
 
       // 开发者资源
       {

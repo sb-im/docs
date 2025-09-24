@@ -36,9 +36,9 @@ const config: Config = {
           // 侧边栏优化配置
           sidebarCollapsible: true,
           sidebarCollapsed: true,
-          // 显示最后更新时间和作者
-          showLastUpdateTime: true,
-          showLastUpdateAuthor: true,
+          // 显示最后更新时间和作者 - 初始版本暂时禁用
+          showLastUpdateTime: false,
+          showLastUpdateAuthor: false,
           // 面包屑导航
           breadcrumbs: true,
           // 文档版本控制
@@ -119,34 +119,66 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: '文档',
+          title: '文档导航',
           items: [
             {
               label: '快速开始',
               to: '/docs/intro',
             },
+            {
+              label: 'API 文档',
+              to: '/docs/cloud-api/overview',
+            },
+            {
+              label: '常见问题',
+              to: '/docs/faq',
+            },
+            {
+              label: '更新记录',
+              to: '/docs/changelog',
+            },
           ],
         },
         {
-          title: '产品',
+          title: '产品与服务',
           items: [
             {
               label: '官方网站',
               href: 'https://sb.im',
             },
+            {
+              label: 'SuperDock 系列',
+              href: 'https://sb.im',
+            },
+            {
+              label: '技术支持',
+              href: 'mailto:developer@sb.im',
+            },
+            {
+              label: '商务合作',
+              href: 'mailto:business@sb.im',
+            },
           ],
         },
         {
-          title: '支持',
+          title: '开发者社区',
           items: [
             {
-              label: 'GitHub',
+              label: 'GitHub 组织',
+              href: 'https://github.com/sb-im',
+            },
+            {
+              label: '问题反馈',
+              href: 'https://github.com/sb-im/sbim_web/issues',
+            },
+            {
+              label: '贡献指南',
               href: 'https://github.com/sb-im',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} 草莓创新 (StrawBerry Innovation). Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} 深圳草莓创新技术有限公司. 保留所有权利.`,
     },
     prism: {
       theme: prismThemes.github,
