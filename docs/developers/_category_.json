@@ -1,0 +1,11 @@
+{
+  "label": "开发者资源",
+  "position": 6,
+  "link": {
+    "type": "doc",
+    "id": "developers/index"
+  },
+  "collapsed": true,
+  "collapsible": true,
+  "className": "category-developers"
+}

@@ -1,0 +1,11 @@
+{
+  "label": "常见问题",
+  "position": 5,
+  "link": {
+    "type": "doc",
+    "id": "faq/index"
+  },
+  "collapsed": true,
+  "collapsible": true,
+  "className": "category-faq"
+}
