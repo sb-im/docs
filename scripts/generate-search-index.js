@@ -38,11 +38,11 @@ class SearchIndexGenerator {
       let url = baseUrl;
       if (fileName === 'index.md' || fileName === 'index.mdx') {
         // index 文件使用目录路径
-        url = `/sbim_web${baseUrl}`;
+        url = `${baseUrl}`;
       } else {
         // 其他文件使用文件名（去掉扩展名）
         const fileNameWithoutExt = fileName.replace(/\.(md|mdx)$/, '');
-        url = `/sbim_web${baseUrl}/${fileNameWithoutExt}`;
+        url = `${baseUrl}/${fileNameWithoutExt}`;
       }
 
       // 清理内容
