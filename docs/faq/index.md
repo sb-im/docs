@@ -587,7 +587,7 @@ WHERE device_type = 88099 AND sub_type = 0 AND domain = 3;
 
 **产品文档**：
 - [产品概述](../intro.md) - 系统概览和核心特性
-- [开箱安装](../getting-started/index.md) - 设备安装和配置指南
+- [开箱安装](../getting-started.md) - 设备安装和配置指南
 
 **技术文档**：
 - [云端集成](../cloud-api/index.md) - DJI上云API兼容说明

@@ -17,7 +17,7 @@ const config: Config = {
   projectName: 'docs',
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  onBrokenMarkdownLinks: 'throw',
 
   // Internationalization
   i18n: {
