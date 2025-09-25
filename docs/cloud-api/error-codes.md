@@ -332,7 +332,6 @@ sidebar_position: 6
 
 **技术支持联系方式**
 
-- 技术支持邮箱：developer@sb.im
 - 官方网站：https://sb.im/
 - GitHub组织：@sb-im
 

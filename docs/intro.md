@@ -1,6 +1,6 @@
 # 草莓创新无人机自动机场系统开发者文档
 
-欢迎来到**草莓创新（StrawBerry Innovation）**无人机自动机场系统的开发者文档！
+欢迎来到**草莓创新（StrawBerry Innovation）** 无人机自动机场系统的开发者文档！
 
 我们专注于为各行业提供**全程无人化的自动巡检解决方案**，从接口对接到现场部署，从负载扩展到运维保障，为您提供完整的技术支持和解决方案。
 
@@ -127,8 +127,6 @@
 
 ### 联系方式
 
-- **技术支持**：[developer@sb.im](mailto:developer@sb.im)
-- **商务合作**：[business@sb.im](mailto:business@sb.im)
 - **官方网站**：[https://sb.im/](https://sb.im/)
 - **GitHub组织**：[@sb-im](https://github.com/sb-im)
 

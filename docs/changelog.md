@@ -86,7 +86,6 @@ last_update:
 
 如需了解更多信息或获取技术支持：
 
-- **技术支持**: [developer@sb.im](mailto:developer@sb.im)
 - **官方网站**: [https://sb.im/](https://sb.im/)
 - **GitHub**: [@sb-im](https://github.com/sb-im)
 

@@ -32,7 +32,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           routeBasePath: 'docs',
-          editUrl: 'https://github.com/sb-im/sbim-docs-content/tree/main/',
+          editUrl: 'https://github.com/sb-im/docs/tree/main/',
           // 侧边栏优化配置
           sidebarCollapsible: true,
           sidebarCollapsed: true,
@@ -169,7 +169,7 @@ const config: Config = {
             },
             {
               label: '问题反馈',
-              href: 'https://github.com/sb-im/sbim_web/issues',
+              href: 'https://github.com/sb-im',
             },
             {
               label: '贡献指南',

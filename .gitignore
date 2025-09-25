@@ -84,3 +84,5 @@ postgres/
 
 # Test and development files (not for public repo)
 tests/
+
+data/

@@ -99,7 +99,7 @@ const sidebars: SidebarsConfig = {
       {
           type: 'link',
           label: '🔍 搜索文档',
-          href: '/sbim_web/search',
+          href: '/search',
           className: 'sidebar-search-link',
       },
     // 外部链接

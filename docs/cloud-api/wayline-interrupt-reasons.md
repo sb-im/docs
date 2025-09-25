@@ -322,5 +322,4 @@ sidebar_position: 7
 **参考文档**
 
 - [DJI Cloud API - 航线任务进度上报](https://developer.dji.com/doc/cloud-api-tutorial/cn/api-reference/dock-to-cloud/mqtt/dock/dock1/wayline.html#%E4%B8%8A%E6%8A%A5%E8%88%AA%E7%BA%BF%E4%BB%BB%E5%8A%A1%E8%BF%9B%E5%BA%A6)
-- 技术支持：developer@sb.im
 - 官方网站：https://sb.im/
