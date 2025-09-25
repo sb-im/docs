@@ -39,20 +39,21 @@ npm run build
 ```text
 sbim_web/
 ├── docs/                    # 文档内容
-│   ├── intro.md            # 系统概览
-│   ├── getting-started/    # 设备入门
-│   │   └── index.md        # 开箱与安装
+│   ├── intro.md            # 系统概览和快速导航
+│   ├── getting-started.md  # 设备入门：开箱与安装
 │   ├── cloud-api/          # 云端集成 (兼容DJI上云API)
 │   │   ├── index.md        # API概览
 │   │   ├── overview.md     # 功能概述
+│   │   ├── device-types.md        # 设备类型参考
 │   │   ├── feature-comparison.md  # 功能对比
 │   │   ├── drc-comparison.md      # DRC功能对比
-│   │   ├── device-types.md        # 设备类型参考
 │   │   ├── hms.md                 # HMS健康管理
 │   │   ├── error-codes.md         # 错误代码
 │   │   └── wayline-interrupt-reasons.md  # 航线中断原因
 │   ├── developers/         # 系统集成
-│   │   └── index.md        # 适配上云API代码
+│   │   ├── index.md        # 运行DJI上云API Demo
+│   │   ├── superdock.md    # SuperDock设备支持扩展
+│   │   └── compatibility-comparison.md  # 兼容性对比分析
 │   ├── faq/               # 技术支持
 │   │   └── index.md        # 常见问题
 │   └── changelog.md        # 更新记录
