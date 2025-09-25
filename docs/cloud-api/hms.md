@@ -98,7 +98,6 @@ HMS告警数据采用标准JSON格式，包含告警码、级别、描述等信�
 
 如需了解更多HMS功能的技术细节或遇到问题，请联系：
 
-- **技术支持**: developer@sb.im
 - **产品文档**: [DJI HMS官方文档](https://developer.dji.com/doc/cloud-api-tutorial/cn/feature-set/dock-feature-set/hms.html)
 - **API概览**: [云端API概览](./overview.md)
 - **错误代码**: [错误代码说明](./error-codes.md)

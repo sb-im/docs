@@ -54,8 +54,6 @@ description: SBIM 系统设备适配上云API的完整开发指南
 
 如需专业的技术支持和生产级解决方案，请联系：
 
-- **技术支持**：[developer@sb.im](mailto:developer@sb.im)
-- **商务咨询**：[business@sb.im](mailto:business@sb.im)
 - **官方网站**：[https://sb.im](https://sb.im)
 
 ---
@@ -798,8 +796,6 @@ logging:
 #### 2. 技术支持
 
 **联系方式**：
-- **技术支持邮箱**: [developer@sb.im](mailto:developer@sb.im)
-- **商务合作邮箱**: [business@sb.im](mailto:business@sb.im)
 - **GitHub组织**: [@sb-im](https://github.com/sb-im)
 
 **支持服务**：

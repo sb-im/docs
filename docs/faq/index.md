@@ -540,8 +540,6 @@ WHERE device_type = 88099 AND sub_type = 0 AND domain = 3;
 **A25：** 草莓创新提供多种技术支持方式：
 
 **联系方式**：
-- **技术支持邮箱**：[developer@sb.im](mailto:developer@sb.im)
-- **商务合作邮箱**：[business@sb.im](mailto:business@sb.im)
 - **官方网站**：[https://sb.im/](https://sb.im/)
 - **GitHub组织**：[@sb-im](https://github.com/sb-im)
 
