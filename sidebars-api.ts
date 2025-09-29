@@ -18,14 +18,10 @@ const sidebars: SidebarsConfig = {
     },
 
 
-    //
+    // 云端API接口文档
     {
       type: 'category',
       label: '接口概述',
-      link: {
-        type: 'doc',
-        id: 'cloud-api/index',
-      },
       collapsed: false,
       className: 'sidebar-cloud-api',
       items: [
