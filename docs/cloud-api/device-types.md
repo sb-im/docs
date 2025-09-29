@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 # 设备类型和机型列表
 
@@ -146,9 +146,3 @@ sidebar_position: 2
 - **新增机型**：SuperDock 支持最新的 M4 系列和 M400 无人机
 - **三方负载**：有需要可定制开发第三方负载接口
 
-
-## 参考资源
-
-- [DJI 上云 API 官方文档](https://developer.dji.com/doc/cloud-api-tutorial/cn/)
-- [产品支持列表](https://developer.dji.com/doc/cloud-api-tutorial/cn/overview/product-support.html)
-- [云端集成概述](./index.md)

@@ -26,6 +26,14 @@ DJI的功能集合[机场接口实现](https://developer.dji.com/doc/cloud-api-t
 
 ## 一、机场核心功能对比
 
+### 0.1 SuperDock功能增加部分
+
+| 具体功能        | DJI机场 | SuperDock | 备注          |
+|-------------|---------|----------|-------------|
+| 增强图传模块在线认证  | ❌  | ✅ | 新加接口        |
+| 切换无人机RTK信息  | ❌ | ✅ | 新加接口 |
+| 机场第三方载荷定制流程 | ❌ | 🚀 | 云端API（MQTT） |
+
 ### 1.1 机场与云端连接
 
 | 具体功能 | DJI机场 | SuperDock | 备注 |
@@ -139,10 +147,10 @@ DJI的功能集合[机场接口实现](https://developer.dji.com/doc/cloud-api-t
 
 ### 2.6 通信功能控制命令
 
-| 具体功能 | DJI机场 | SuperDock | 备注 |
-|---------|---------|-----------|------|
-| 增强图传开关 | ✅ | ✅ | Method: sdr_workmode_switch |
-| eSIM激活 | ✅ | ❌ | Method: esim_activate |
+| 具体功能       | DJI机场 | SuperDock | 备注 |
+|------------|---------|---------|------|
+| 增强图传开关     | ✅ | ✅ | Method: sdr_workmode_switch |
+| eSIM激活     | ✅ | ❌ | Method: esim_activate |
 | eSIM和SIM切换 | ✅ | ❌ | Method: sim_slot_switch |
 | eSIM运营商切换 | ✅ | ❌ | Method: esim_operator_switch |
 

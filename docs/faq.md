@@ -1,62 +1,17 @@
 ---
-id: index
-title: 常见问题解答
-sidebar_label: FAQ 概览
-sidebar_position: 1
-description: SBIM 无人机自动机场系统常见问题解答
+title: 常见问题
+description: SuperDock API 常见问题
+last_update:
+  date: 2025-09-23
+  author: SuperDock 团队
 ---
 
 # 常见问题解答
 
 欢迎来到 SuperDock机场常见问题解答页面！这里汇总了用户最常遇到的问题和解决方案。
 
-## 系统集成与API
+## 运行维护与故障排查
 
-### Q：如何集成SuperDock到现有的DJI Cloud API Demo系统？
-
-**A：** 集成SuperDock需要进行以下配置：
-
-**1. 设备枚举扩展**：
-在 `DeviceEnum.java` 中添加SuperDock设备定义：
-```java
-// SuperDock系列机场设备
-S22M300(88097, 0, 3, "SuperDock S22M300"),
-S2201(88098, 0, 3, "SuperDock S2201"),
-S2301(88099, 0, 3, "SuperDock S2301"),
-// ... 其他型号
-```
-
-**2. 数据库配置**：
-在设备字典表中添加SuperDock设备记录：
-```sql
-INSERT INTO manage_device_dictionary
-(device_name, device_type, sub_type, domain, device_desc) VALUES
-('SuperDock S2301', 88099, 0, 3, 'M3系列专用机场');
-```
-
-**3. 状态路由配置**：
-在 `StateRouter.java` 中添加SuperDock设备类型支持。
-
-详细集成指南请参考：[适配上云API代码](../developers/index.md)
-
-### Q：SuperDock设备上线失败，提示"Unsupported device type"？
-
-**A：** 这是设备类型未正确配置导致的，请检查：
-
-**1. 确认设备枚举**：
-检查 `GatewayTypeEnum.java` 是否包含对应的SuperDock设备类型。
-
-**2. 验证数据库配置**：
-```sql
-SELECT * FROM manage_device_dictionary
-WHERE device_type = 88099 AND sub_type = 0 AND domain = 3;
-```
-
-**3. 检查MQTT消息格式**：
-确认设备上报的 domain、type、sub_type 参数正确。
-
-**4. 查看系统日志**：
-检查后端日志中的具体错误信息。
 
 ### Q：执行任务返回错误码600001怎么办？
 
@@ -73,9 +28,8 @@ WHERE device_type = 88099 AND sub_type = 0 AND domain = 3;
 - 电池是否安装到位
 
 **3. 查看HMS告警**：
-参考 [HMS健康管理](../cloud-api/hms.md) 文档了解具体的HMS告警信息。
+参考 [HMS健康管理](./cloud-api/hms.md) 文档了解具体的HMS告警信息。
 
-## 运行维护与故障排查
 
 ### Q：无人机在机舱内提示HMS告警是否正常？
 
