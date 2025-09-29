@@ -36,7 +36,7 @@ const sidebars: SidebarsConfig = {
     // 开发者资源
     {
       type: 'category',
-      label: '快速对接上云API的DEMO',
+      label: '快速对接',
       link: {
         type: 'doc',
         id: 'developers/index',

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import MiniSearch from 'minisearch';
 import { useHistory } from '@docusaurus/router';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import './styles.css';
 
 interface SearchResult {
@@ -24,6 +25,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholder = '搜索文档...' }
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const history = useHistory();
+  const searchDataUrl = useBaseUrl('/search-data.json');
 
   // 初始化搜索索引
   useEffect(() => {
@@ -55,16 +57,18 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholder = '搜索文档...' }
     };
 
     initializeSearch();
-  }, []);
+  }, [searchDataUrl]);
 
   // 加载搜索数据
   const loadSearchData = async () => {
     try {
-      const response = await fetch('/sbim_web/search-data.json');
+      console.log('Loading search data from:', searchDataUrl);
+      const response = await fetch(searchDataUrl);
       if (!response.ok) {
         throw new Error('Failed to load search data');
       }
       const data = await response.json();
+      console.log('Search data loaded:', data.length, 'items');
       return data;
     } catch (error) {
       console.error('Error loading search data:', error);

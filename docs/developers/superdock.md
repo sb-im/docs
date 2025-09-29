@@ -1,12 +1,12 @@
 ---
 id: superdock
-title: SuperDock设备支持扩展
-sidebar_label: SuperDock设备支持扩展
+title: SuperDock设备扩展
+sidebar_label: SuperDock设备扩展
 sidebar_position: 2
 description: SuperDock系列设备在DJI Cloud API Demo中的集成和扩展指南
 ---
 
-# SuperDock设备支持扩展
+# SuperDock设备扩展
 
 ## 概述
 

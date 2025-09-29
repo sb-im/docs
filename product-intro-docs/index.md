@@ -71,4 +71,3 @@
 ### 在线资源
 - **官方网站** - [https://sb.im/](https://sb.im/)
 - **GitHub 组织** - [@sb-im](https://github.com/sb-im)
-- **DJI 上云 API 官方文档** - [developer.dji.com](https://developer.dji.com/doc/cloud-api-tutorial/cn/)
