@@ -12,6 +12,10 @@ description: SuperDock系列产品与上云API在各项功能方面的详细对�
 
 本文档详细对比 SuperDock 系列产品与上云API在各项功能方面的实现情况，基于 DJI 上云 API 标准，帮助开发者和用户了解产品的兼容性和功能差异。
 
+### 参考:
+DJI的功能集合[机场接口实现](https://developer.dji.com/doc/cloud-api-tutorial/cn/tutorial-map.html#功能集合)
+
+
 ## 图例说明
 
 - ✅ **已实现** - 功能已完全实现并测试验证
@@ -270,10 +274,3 @@ description: SuperDock系列产品与上云API在各项功能方面的详细对�
 |---------|---------|-----------|------|
 | DRC指令下发 | ✅ | ✅ | Topic: thing/product/\{sn\}/drc/down |
 | DRC指令响应 | ✅ | ✅ | Topic: thing/product/\{sn\}/drc/up |
-
----
-
-**文档维护说明**：
-1. 本文档基于当前产品版本编写，功能实现情况可能随版本更新而变化
-2. 建议定期检查最新的产品文档和发布说明
-3. 如发现文档内容与实际功能不符，请及时反馈给技术支持团队

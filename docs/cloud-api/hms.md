@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# HMS健康管理系统
+# HMS告警信息列表
 
 HMS (Health Management System) 是SuperDock系列产品的健康管理系统，基于DJI上云API标准实现设备健康状态监控和告警功能。
 

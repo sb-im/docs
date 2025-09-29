@@ -22,20 +22,6 @@ const sidebars: SidebarsConfig = {
       className: 'sidebar-getting-started',
     },
 
-    // 分隔线
-    {
-      type: 'html',
-      value: '<hr class="sidebar-divider">',
-      defaultStyle: true,
-    },
-
-    // 外部链接
-    {
-      type: 'link',
-      label: '技术支持',
-      href: 'mailto:developer@sb.im',
-      className: 'sidebar-external-link',
-    },
   ],
 };
 

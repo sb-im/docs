@@ -162,67 +162,6 @@ const config: Config = {
     },
     footer: {
       style: 'dark',
-      links: [
-        {
-          title: '文档导航',
-          items: [
-            {
-              label: '产品介绍',
-              to: '/product-intro/',
-            },
-            {
-              label: '安装部署',
-              to: '/installation/',
-            },
-            {
-              label: 'API 对接',
-              to: '/api-integration/',
-            },
-            {
-              label: '常见问题',
-              to: '/api-integration/faq/',
-            },
-          ],
-        },
-        {
-          title: '产品与服务',
-          items: [
-            {
-              label: '官方网站',
-              href: 'https://sb.im',
-            },
-            {
-              label: 'SuperDock 系列',
-              href: 'https://sb.im',
-            },
-            {
-              label: '技术支持',
-              href: 'mailto:developer@sb.im',
-            },
-            {
-              label: '商务合作',
-              href: 'mailto:business@sb.im',
-            },
-          ],
-        },
-        {
-          title: '开发者社区',
-          items: [
-            {
-              label: 'GitHub 组织',
-              href: 'https://github.com/sb-im',
-            },
-            {
-              label: '问题反馈',
-              href: 'https://github.com/sb-im',
-            },
-            {
-              label: '贡献指南',
-              href: 'https://github.com/sb-im',
-            },
-          ],
-        },
-      ],
       copyright: `Copyright © ${new Date().getFullYear()} 深圳草莓创新技术有限公司. 保留所有权利.`,
     },
     prism: {
