@@ -145,12 +145,11 @@
 
 ## 注意事项
 
-- 上云 API 暂不支持 M200 V2 系列、M200 系列、M2E、P4R、M2EA 等老机型
-- 三方负载设备暂时不支持
+- 三方负载设备暂时不支持,如有需要可定制开发
 - 机型详细信息可在 DJI 官网搜索对应机型名称查看
 
 ## 参考资源
 
 - [DJI 上云 API 官方文档](https://developer.dji.com/doc/cloud-api-tutorial/cn/)
 - [产品支持列表](https://developer.dji.com/doc/cloud-api-tutorial/cn/overview/product-support.html)
-- [设备管理 API](./overview.md)
+- [云端集成概述](./index.md)

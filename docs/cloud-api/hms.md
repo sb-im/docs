@@ -89,23 +89,10 @@ HMS告警数据采用标准JSON格式，包含告警码、级别、描述等信�
 
 
 
-### Q4：机场提示HMS应该怎么呢?
-
-属于机场的异常情况的HMS都需要反馈到机场运维人员进行确认和维护.
-
-
 ## 技术支持
 
 如需了解更多HMS功能的技术细节或遇到问题，请联系：
 
 - **产品文档**: [DJI HMS官方文档](https://developer.dji.com/doc/cloud-api-tutorial/cn/feature-set/dock-feature-set/hms.html)
-- **API概览**: [云端API概览](./overview.md)
+- **API概览**: [云端集成概述](./index.md)
 - **错误代码**: [错误代码说明](./error-codes.md)
-
----
-
-**重要提醒**
-1. HMS告警信息直接关系到飞行安全，请务必及时处理
-2. 建议建立完善的告警处理流程和应急预案
-3. 定期检查HMS系统的运行状态和配置
-4. 重要告警建议设置多重通知机制

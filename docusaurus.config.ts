@@ -30,8 +30,8 @@ const config: Config = {
       'classic',
       {
         docs: {
-          sidebarPath: './sidebars.ts',
-          routeBasePath: 'docs',
+          sidebarPath: './sidebars-api.ts',
+          routeBasePath: 'api-integration',
           editUrl: 'https://github.com/sb-im/docs/tree/main/',
           // 侧边栏优化配置
           sidebarCollapsible: true,
@@ -73,6 +73,41 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    // 产品介绍文档实例
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'product-intro',
+        path: 'product-intro-docs',
+        routeBasePath: 'product-intro',
+        sidebarPath: './sidebars-product.ts',
+        editUrl: 'https://github.com/sb-im/docs/tree/main/',
+        sidebarCollapsible: true,
+        sidebarCollapsed: true,
+        showLastUpdateTime: false,
+        showLastUpdateAuthor: false,
+        breadcrumbs: true,
+      },
+    ],
+    // 安装部署文档实例
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'installation',
+        path: 'installation-docs',
+        routeBasePath: 'installation',
+        sidebarPath: './sidebars-installation.ts',
+        editUrl: 'https://github.com/sb-im/docs/tree/main/',
+        sidebarCollapsible: true,
+        sidebarCollapsed: true,
+        showLastUpdateTime: false,
+        showLastUpdateAuthor: false,
+        breadcrumbs: true,
+      },
+    ],
+  ],
+
   themeConfig: {
     // 全局 UI 配置
     colorMode: {
@@ -93,7 +128,17 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: '文档',
+          label: 'API对接',
+        },
+        {
+          to: '/product-intro/',
+          position: 'left',
+          label: '产品介绍',
+        },
+        {
+          to: '/installation/',
+          position: 'left',
+          label: '安装部署',
         },
         {
           href: 'https://github.com/sb-im',
@@ -122,20 +167,20 @@ const config: Config = {
           title: '文档导航',
           items: [
             {
-              label: '快速开始',
-              to: '/docs/intro',
+              label: '产品介绍',
+              to: '/product-intro/',
             },
             {
-              label: 'API 文档',
-              to: '/docs/cloud-api/overview',
+              label: '安装部署',
+              to: '/installation/',
+            },
+            {
+              label: 'API 对接',
+              to: '/api-integration/',
             },
             {
               label: '常见问题',
-              to: '/docs/faq',
-            },
-            {
-              label: '更新记录',
-              to: '/docs/changelog',
+              to: '/api-integration/faq/',
             },
           ],
         },

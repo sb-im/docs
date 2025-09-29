@@ -1,7 +1,7 @@
 ---
 id: index
-title: 运行DJI上云API Demo
-sidebar_label: 运行DJI上云API Demo
+title: 运行上云API Demo
+sidebar_label: 运行上云API Demo
 sidebar_position: 1
 description: SBIM 系统设备适配上云API的完整开发指南
 ---
@@ -28,7 +28,7 @@ description: SBIM 系统设备适配上云API的完整开发指南
 
 ### 兼容性说明
 
-- SuperDock设备与DJI上云API的兼容性基于当前版本测试结果
+- SuperDock设备与DJI上云API的Dome的兼容性基于当前版本测试结果
 - 设备固件更新、API版本变更可能影响兼容性
 - 建议在正式部署前进行充分的兼容性测试
 
@@ -74,8 +74,11 @@ description: SBIM 系统设备适配上云API的完整开发指南
 
 将 cloud_api_sample_docker_1.0.0.zip 文件解压后目录结构如下：
 
-![image-20220321112952651](https://stag-terra-1-g.djicdn.com/7774da665e07453698314cc27c523096/admin/doc/195959b3-f8e1-4f3d-9d9b-d90ece297e15.png)
-
+```text
+root@server:~/djicloud/cloud_api_sample# ls
+cloud_api_sample_docker_v1.10.0.tar  docker-compose.yml  update_backend.sh
+data                                 source              update_front.sh
+```
 - data
   存放demo服务运行的用户数据
 
@@ -104,7 +107,7 @@ description: SBIM 系统设备适配上云API的完整开发指南
 
 ## 启动相关的基础模块
 - 修改`docker-compose.yml`文件,改为以下文件:
-```yaml
+    ```yaml
     version: "3"
     services:
       emqx:
@@ -160,7 +163,7 @@ description: SBIM 系统设备适配上云API的完整开发指南
           - /etc/localtime:/etc/localtime
         command: server /data --console-address ":9001"
         restart: always
-
+    
       srs:
         image: ossrs/srs
         container_name: sd.srsdemo
@@ -181,7 +184,7 @@ description: SBIM 系统设备适配上云API的完整开发指南
         ipam:
           config:
             - subnet: 192.168.6.0/24
-  ```
+    ```
 
 - 执行`sudo docker compose up -d`命令行
   ```shell
@@ -192,7 +195,7 @@ description: SBIM 系统设备适配上云API的完整开发指南
   sudo docker ps
   ```
   可以获取到以下的数据
-  ```text
+    ```text
     CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                                                                                                                                                                                                                                                                     NAMES
     58004f4e9373   redis:6.2      "docker-entrypoint.s…"   6 minutes ago   Up 5 minutes   0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp                                                                                                                                                                                                                               cloud_api_sample-redis-1
     75bfac84fd44   emqx:4.4       "/usr/bin/docker-ent…"   6 minutes ago   Up 5 minutes   4369-4370/tcp, 5369/tcp, 6369-6370/tcp, 0.0.0.0:1883->1883/tcp, [::]:1883->1883/tcp, 0.0.0.0:8083-8084->8083-8084/tcp, [::]:8083-8084->8083-8084/tcp, 8081/tcp, 0.0.0.0:8883->8883/tcp, [::]:8883->8883/tcp, 0.0.0.0:18083->18083/tcp, [::]:18083->18083/tcp, 11883/tcp   cloud_api_sample-emqx-1
@@ -202,10 +205,10 @@ description: SBIM 系统设备适配上云API的完整开发指南
 ## 导入sql数据库
 
 - 找到`cloud_sample.sql`数据库文件
-  ```text
-  root@NanoPC-T6:~/dji_cloud_docker/cloud_api_sample/source/backend_service/sql# ls
-  cloud_sample.sql
-  ```
+    ```text
+    root@server:~/dji_cloud_docker/cloud_api_sample/source/backend_service/sql# ls
+    cloud_sample.sql
+    ```
 - 执行导入数据进入容器的mysql客户端
     ```shell
     sudo docker exec -i cloud_api_sample-mysql-1 mysql -uroot -proot < cloud_sample.sql
@@ -215,16 +218,16 @@ description: SBIM 系统设备适配上云API的完整开发指南
   sudo docker exec -it cloud_api_sample-mysql-1   mysql -uroot -proot -e "SHOW DATABASES LIKE 'cloud_sample';"
   ```
   可以获取到下面信息
-  ```text
-  mysql: [Warning] Using a password on the command line interface can be insecure.
-  +-------------------------+
-  | Database (cloud_sample) |
-  +-------------------------+
-  | cloud_sample            |
-  +-------------------------+
-  ```
+    ```text
+    mysql: [Warning] Using a password on the command line interface can be insecure.
+    +-------------------------+
+    | Database (cloud_sample) |
+    +-------------------------+
+    | cloud_sample            |
+    +-------------------------+
+    ```
 
-# 源码修改
+# 源码获取
 
 整个上云 API Demo 例程采用前后端分离的设计，前端采用的是 TS+Vue3 框架，后端采用的是 JAVA 语言（必须**11**及以上的版本，否则后端代码无法编译），Spring Boot 框架。使用该例程，用户需要预先学习熟悉以下知识：
 ## 上云API Demo介绍
@@ -261,25 +264,6 @@ description: SBIM 系统设备适配上云API的完整开发指南
 
 1. DEMO 前端源码：[下载地址](https://github.com/dji-sdk/Cloud-API-Demo-Web)
 2. DEMO 后端源码：[下载地址](https://github.com/dji-sdk/DJI-Cloud-API-Demo)
-
-## 获取源码
-
-- 获取DJI-Cloud-API-Demo源码
-  ```shell
-  git clone https://github.com/dji-sdk/DJI-Cloud-API-Demo.git
-  ```
-  或者
-  ```shell
-  git clone git@github.com:dji-sdk/DJI-Cloud-API-Demo.git
-  ```
-- 获取Cloud-API-Demo-Web源码
-  ```shell
-  git clone https://github.com/dji-sdk/Cloud-API-Demo-Web.git
-  ```
-  或者
-  ```shell
-  git clone git@github.com:dji-sdk/Cloud-API-Demo-Web.git
-  ```
 
 ## 相关文档
 
