@@ -1,292 +1,278 @@
 ---
 id: index
-title: 运行DJI上云API Demo
-sidebar_label: 运行DJI上云API Demo
+title: 跑通上云API Demo
+sidebar_label: 跑通上云API Demo
 sidebar_position: 1
 description: SBIM 系统设备适配上云API的完整开发指南
 ---
-# 运行DJI上云API Demo
+# 跑通上云API Demo
+
+> 这是一份**从 0 到 1**的动手指南：带你在本机/云主机上拉起依赖服务，导入示例数据，跑通上云API Demo，并为下一步的添加 **SuperDock** 设备的适配做好准备。
+
+:::tip 你将获得
+
+* 一套可直接运行的 Docker 化基础环境（EMQX、MySQL、Redis、MinIO、SRS）。
+* 已导入的示例数据库，便于本地联调与回归。
+* 明确的版本要求与常见坑位提示（端口、网络、权限）。
+* SuperDock 对接的最佳实践入口（下文有直达链接）。
+
+:::
+
+## 为什么选择 DJI 上云 API
+
+* **降低迁移成本**：接口统一、生态成熟；在兼容该接口后，客户可复用现有系统与经验，无需重新学习，大幅减少开发与培训成本。
+* **提升系统兼容性**：通过标准化接口，SuperDock 可与 DJI 设备统一管理，支持混合部署，简化集成流程，保障稳定性与灵活性。
+
+---
 
 ## 免责声明与使用须知
 
-:::warning 重要声明
-本文档基于DJI Cloud API Demo项目提供SuperDock设备集成指导，仅供技术参考和学习使用。请在使用前仔细阅读以下声明。
-:::
+> 本文基于 **上云API Demo** 项目编写，仅供技术参考与学习。示例并不等于生产方案，请务必在上线前完成**安全评估与审计**。
 
-### 技术参考性质
+* **技术参考**：文中示例代码与配置均为参考实现，来自并扩展自开源 Demo，不构成生产级方案。
+* **安全提示**：Demo 可能存在安全隐患（如数据暴露、鉴权不足等）。不要直接暴露在公网；如需对外，请进行加固（网络隔离、最小权限、WAF、审计日志等）。
+* **兼容性**：SuperDock 与 上云 API **Demo** 的兼容性基于当前版本验证；设备固件与 API 版本变更可能影响结果，正式部署前请做充分回归。
+* **免责**：因参考本文造成的业务中断、数据损失、安全事件、第三方索赔、设备损坏等，**草莓创新及相关人员不承担责任**。
 
-- 本文档提供的代码示例、配置方案和集成方法仅为**技术参考实现**
-- 所有示例代码均基于开源的DJI Cloud API Demo项目进行扩展和修改
-- **不构成生产级解决方案**，可能存在未充分测试的功能模块和潜在安全风险
-
-### 安全风险提示
-
-- Demo代码可能存在**安全隐患**（包括但不限于数据泄露、未授权访问、权限控制不当等）
-- **强烈建议**在生产环境部署前进行全面的安全评估和代码审计
-- **避免将基于Demo的服务直接暴露于公网环境**，建议在内网或受控环境中使用
-- 如需在生产环境使用，请务必进行安全加固和漏洞修复
-
-### 兼容性说明
-
-- SuperDock设备与DJI上云API的兼容性基于当前版本测试结果
-- 设备固件更新、API版本变更可能影响兼容性
-- 建议在正式部署前进行充分的兼容性测试
-
-### 免责条款
-
-因使用本文档提供的代码、配置或方案导致的以下情况，**草莓创新及相关人员不承担任何责任**：
-
-- 业务中断、数据丢失或损坏
-- 系统安全漏洞或数据泄露
-- 第三方索赔或法律纠纷
-- 设备损坏或功能异常
-- 其他直接或间接经济损失
-
-### 使用建议
-
-- **开发测试**：建议在隔离的开发环境中进行测试和验证
-- **安全审计**：生产部署前请进行专业的安全审计和渗透测试
-- **备份策略**：建立完善的数据备份和恢复机制
-- **监控告警**：部署完整的系统监控和安全告警机制
-- **持续更新**：关注相关组件的安全更新和补丁发布
-
-### 技术支持
-
-如需专业的技术支持和生产级解决方案，请联系：
-
-- **官方网站**：[https://sb.im](https://sb.im)
+> 生产建议：隔离环境开发→专业安全审计→备份与恢复方案→监控与告警→持续更新补丁。
 
 ---
 
-## Docker 安装
+## 准备工作（Prerequisites）
 
-- 安装教程：[https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
+* 一台 Linux 云服务器（建议 Ubuntu 20.04+，16.04 亦可）或本地 Linux/Mac 环境。
+* **Docker** 与 **Docker Compose**
 
-## Docker Compose 安装
+    * 安装教程：
 
-- 安装教程：[https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
+        * Docker: [https://docs.docker.com/engine/install/ubuntu/](https://docs.docker.com/engine/install/ubuntu/)
+        * Compose: [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
+* （源码编译场景）**Java 11+**、**Node.js 17.8**、**Nginx 1.20.2** 等。
 
-## 源码包下载
+:::caution 端口与网络
 
-- 点击下载 [源码包](https://terra-sz-hc1pro-cloudapi.oss-cn-shenzhen.aliyuncs.com/c0af9fe0d7eb4f35a8fe5b695e4d0b96/docker/cloud_api_sample_docker.zip)
+* 需占用端口：`1883/8883/18083`（EMQX）、`3306`（MySQL）、`6379`（Redis）、`9000/9001`（MinIO）、`1935/1985/8080/8000`（SRS）。
+* Compose 默认创建 `192.168.6.0/24` 的 bridge 网络，请确保与现网无冲突。
+  :::
 
-## 解压文件
+---
 
-将 cloud_api_sample_docker_1.0.0.zip 文件解压后目录结构如下：
+## 获取示例包
 
-![image-20220321112952651](https://stag-terra-1-g.djicdn.com/7774da665e07453698314cc27c523096/admin/doc/195959b3-f8e1-4f3d-9d9b-d90ece297e15.png)
+* 直接下载打包资源（含镜像与示例文件）：
 
-- data
-  存放demo服务运行的用户数据
+  **[下载源码包](https://terra-sz-hc1pro-cloudapi.oss-cn-shenzhen.aliyuncs.com/c0af9fe0d7eb4f35a8fe5b695e4d0b96/docker/cloud_api_sample_docker.zip)**
 
-- docker-compose.yml
-  docker-compose的运行配置文件
+解压 `cloud_api_sample_docker.zip` 后，可见类似目录结构：
 
-- docs
-  存放各类文档，包括API文档
+```text
+root@server:~/djicloud/cloud_api_sample# ls
+cloud_api_sample_docker_v1.10.0.tar  docker-compose.yml  update_backend.sh
+data                                 source              update_front.sh
+```
 
-- source
-  存放源代码，各类镜像的源文件
+> 说明：目录名可能随版本略有差异；核心文件包括 `docker-compose.yml`、`data/`（数据持久化）、`source/`（源码与 SQL 位置）及预打包镜像 tar。
 
-- cloud_api_sample_docker_v1.0.0.tar
-  所有环境的 docker 镜像
+---
 
-- README.md
+## 启动依赖服务（Docker Compose）
 
-- update_backend.sh
+1）将 `docker-compose.yml` 替换为下述内容：
 
-  构建后端镜像文件
-
-- update_front.sh
-
-  构建前端镜像文件
-
-
-## 启动相关的基础模块
-- 修改`docker-compose.yml`文件,改为以下文件:
 ```yaml
-    version: "3"
-    services:
-      emqx:
-        image: emqx:4.4
-        ports:
-          - "18083:18083"
-          - "1883:1883"
-          - "8083:8083"
-          - "8883:8883"
-          - "8084:8084"
-        environment:
-          - EMQX_ALLOW_ANONYMOUS=true
-        hostname: emqx-broker
-        networks:
-          - cloud_service_bridge
-      mysql:
-        image: mysql:latest
-        networks:
-          - cloud_service_bridge
-        ports:
-          - "3306:3306"
-        volumes:
-                # - /etc/group:/etc/group:ro
-                # - /etc/passwd:/etc/passwd:ro
-          - /etc/localtime:/etc/localtime
-          - ./data/mysql:/var/lib/mysql
-        environment:
-          - MYSQL_ROOT_PASSWORD=root
-        hostname: cloud_api_sample_mysql
-      redis:
-        image: redis:6.2
-        restart: "always"
-        hostname: cloud_api_sample_redis
-        ports:
-          - "6379:6379"
-        networks:
-          - cloud_service_bridge
-        command:
-          redis-server
-      minio:
-        image: minio/minio:latest
-        container_name: minio
-        environment:
-          - MINIO_ROOT_USER=minioadmin
-          - MINIO_ROOT_PASSWORD=minioadmin
-          - TZ=Asia/Shanghai
-        ports:
-          - "9000:9000"
-          - "9001:9001"
-        volumes:
-          - ./data/minio:/data
-          - ./data/minio/logs:/var/log/minio
-          - /etc/localtime:/etc/localtime
-        command: server /data --console-address ":9001"
-        restart: always
-
-      srs:
-        image: ossrs/srs
-        container_name: sd.srsdemo
-        hostname: srsdemo
-        ports:
-          - "1935:1935"
-          - "1985:1985"
-          - "8080:8080"
-          - "8000:8000"
-          - "8000:8000/udp"
-        environment:
-          - CANDIDATE=192.168.99.159
-        command: objs/srs -c conf/rtmp2rtc.conf
-        restart: always
+version: "3"
+services:
+  emqx:
+    image: emqx:4.4
+    ports:
+      - "18083:18083"
+      - "1883:1883"
+      - "8083:8083"
+      - "8883:8883"
+      - "8084:8084"
+    environment:
+      - EMQX_ALLOW_ANONYMOUS=true # 仅限本地/演示环境！
+    hostname: emqx-broker
     networks:
-      cloud_service_bridge:
-        driver: bridge
-        ipam:
-          config:
-            - subnet: 192.168.6.0/24
-  ```
+      - cloud_service_bridge
 
-- 执行`sudo docker compose up -d`命令行
-  ```shell
-  sudo docker compose up -d
-  ```
-- 可以获取到`sudo docker ps`当前运行的镜像
-  ```shell
-  sudo docker ps
-  ```
-  可以获取到以下的数据
-  ```text
-    CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS                                                                                                                                                                                                                                                                     NAMES
-    58004f4e9373   redis:6.2      "docker-entrypoint.s…"   6 minutes ago   Up 5 minutes   0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp                                                                                                                                                                                                                               cloud_api_sample-redis-1
-    75bfac84fd44   emqx:4.4       "/usr/bin/docker-ent…"   6 minutes ago   Up 5 minutes   4369-4370/tcp, 5369/tcp, 6369-6370/tcp, 0.0.0.0:1883->1883/tcp, [::]:1883->1883/tcp, 0.0.0.0:8083-8084->8083-8084/tcp, [::]:8083-8084->8083-8084/tcp, 8081/tcp, 0.0.0.0:8883->8883/tcp, [::]:8883->8883/tcp, 0.0.0.0:18083->18083/tcp, [::]:18083->18083/tcp, 11883/tcp   cloud_api_sample-emqx-1
-    0f7d52ed7e75   mysql:latest   "docker-entrypoint.s…"   6 minutes ago   Up 5 minutes   0.0.0.0:3306->3306/tcp, [::]:3306->3306/tcp, 33060/tcp                                                                                                                                                                                                                    cloud_api_sample-mysql-1
-    ```
+  mysql:
+    image: mysql:latest
+    networks:
+      - cloud_service_bridge
+    ports:
+      - "3306:3306"
+    volumes:
+      - /etc/localtime:/etc/localtime
+      - ./data/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    hostname: cloud_api_sample_mysql
 
-## 导入sql数据库
+  redis:
+    image: redis:6.2
+    restart: always
+    hostname: cloud_api_sample_redis
+    ports:
+      - "6379:6379"
+    networks:
+      - cloud_service_bridge
+    command: ["redis-server"]
 
-- 找到`cloud_sample.sql`数据库文件
-  ```text
-  root@NanoPC-T6:~/dji_cloud_docker/cloud_api_sample/source/backend_service/sql# ls
-  cloud_sample.sql
-  ```
-- 执行导入数据进入容器的mysql客户端
-    ```shell
-    sudo docker exec -i cloud_api_sample-mysql-1 mysql -uroot -proot < cloud_sample.sql
-    ```
-- 验证是否创建`cloud_sample`这个数据库
-  ```shell
-  sudo docker exec -it cloud_api_sample-mysql-1   mysql -uroot -proot -e "SHOW DATABASES LIKE 'cloud_sample';"
-  ```
-  可以获取到下面信息
-  ```text
-  mysql: [Warning] Using a password on the command line interface can be insecure.
-  +-------------------------+
-  | Database (cloud_sample) |
-  +-------------------------+
-  | cloud_sample            |
-  +-------------------------+
-  ```
+  minio:
+    image: minio/minio:latest
+    container_name: minio
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+      - TZ=Asia/Shanghai
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ./data/minio:/data
+      - ./data/minio/logs:/var/log/minio
+      - /etc/localtime:/etc/localtime
+    command: ["server", "/data", "--console-address", ":9001"]
+    restart: always
 
-# 源码修改
+  srs:
+    image: ossrs/srs
+    container_name: sd.srsdemo
+    hostname: srsdemo
+    ports:
+      - "1935:1935"
+      - "1985:1985"
+      - "8080:8080"
+      - "8000:8000"
+      - "8000:8000/udp"
+    environment:
+      - CANDIDATE=【替换为服务器对外可达IP】
+    command: ["objs/srs", "-c", "conf/rtmp2rtc.conf"]
+    restart: always
 
-整个上云 API Demo 例程采用前后端分离的设计，前端采用的是 TS+Vue3 框架，后端采用的是 JAVA 语言（必须**11**及以上的版本，否则后端代码无法编译），Spring Boot 框架。使用该例程，用户需要预先学习熟悉以下知识：
-## 上云API Demo介绍
-**前端**
+networks:
+  cloud_service_bridge:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.6.0/24
+```
 
-1. TypeScript、HTML、CSS 编程语言。
-2. Vue3.x 框架、Node.js npm 包管理。
-3. Ant Design Vue V2 组件库。
-4. HTTP/Websocket 通信。
-5. Linux 环境通过 Nginx 部署前端应用服务。
-6. 高德地图开放 API 使用。
+2）启动：
 
-**后端**
+```bash
+sudo docker compose up -d
+```
 
-1. Java
-2. Spring Boot
-3. MQTT
-4. MySQL
-5. WebSocket
-6. Redis
+3）验证服务是否就绪：
 
-**环境与版本**
+```bash
+sudo docker ps --format "table {{.Names}}\t{{.Image}}\t{{.Status}}\t{{.Ports}}"
+```
 
-1. Linux 云服务器，Ubuntu16.04 系统
-2. Java 版本：openJDK 必须11及以上
-3. MySQL 版本：8.0.26
-4. EMQX 版本：4.4.0
-5. Redis 版本：6.2
-6. Nginx 版本：1.20.2
-7. Vue 版本：3.0.5
-8. Node.js 版本：17.8
+应能看到 `emqx` / `mysql` / `redis` / `minio` / `sd.srsdemo` 均为 `Up` 状态。
 
-**Demo 源码下载**
+:::tip 常见检查点
 
-1. DEMO 前端源码：[下载地址](https://github.com/dji-sdk/Cloud-API-Demo-Web)
-2. DEMO 后端源码：[下载地址](https://github.com/dji-sdk/DJI-Cloud-API-Demo)
-
-## 获取源码
-
-- 获取DJI-Cloud-API-Demo源码
-  ```shell
-  git clone https://github.com/dji-sdk/DJI-Cloud-API-Demo.git
-  ```
-  或者
-  ```shell
-  git clone git@github.com:dji-sdk/DJI-Cloud-API-Demo.git
-  ```
-- 获取Cloud-API-Demo-Web源码
-  ```shell
-  git clone https://github.com/dji-sdk/Cloud-API-Demo-Web.git
-  ```
-  或者
-  ```shell
-  git clone git@github.com:dji-sdk/Cloud-API-Demo-Web.git
-  ```
-
-## 相关文档
-
-如需了解 SuperDock 设备的详细集成方案，请参考：
-
-- [SuperDock设备支持扩展](./superdock.md) - SuperDock系列设备在DJI Cloud API Demo中的集成和扩展指南
+* `CANDIDATE` 必须是 SRS 可被外网/设备访问到的 IP（或内网联调环境的真实可达 IP）。
+* `EMQX_ALLOW_ANONYMOUS=true` 仅供开发阶段使用；生产务必关闭匿名并接入鉴权。
+* 若端口被占用，先排查宿主机已有服务或调整映射端口。
+  :::
 
 ---
 
+## 导入示例数据库（cloud_sample.sql）
 
+1）定位 SQL 文件：
+
+```text
+source/backend_service/sql/cloud_sample.sql
+```
+
+2）将数据导入到容器内的 MySQL：
+
+```bash
+sudo docker exec -i cloud_api_sample-mysql-1 \
+  mysql -uroot -proot < source/backend_service/sql/cloud_sample.sql
+```
+
+> 如果当前目录不在项目根目录，请将 `cloud_sample.sql` 的路径替换为你的实际路径。
+
+3）验证数据库是否创建成功：
+
+```bash
+sudo docker exec -it cloud_api_sample-mysql-1 \
+  mysql -uroot -proot -e "SHOW DATABASES LIKE 'cloud_sample';"
+```
+
+正常输出示例：
+
+```text
++-------------------------+
+| Database (cloud_sample) |
++-------------------------+
+| cloud_sample            |
++-------------------------+
+```
+
+---
+
+## 源码获取与二次开发
+
+Demo 采用前后端分离：前端 **TS + Vue3**，后端 **Java 11+ / Spring Boot**。建议先按上文跑通依赖，再拉取源码进行二次开发。
+
+**前端需要**：TypeScript / HTML / CSS、Vue 3.x、Node.js（npm/yarn）、Ant Design Vue v2、HTTP/WebSocket、Nginx（用于部署）。
+
+**后端需要**：Java 11+、Spring Boot、MQTT、MySQL、WebSocket、Redis。
+
+**参考版本**：
+
+* Linux：Ubuntu 20.04+
+* Java：OpenJDK 11+
+* MySQL：8.0.26
+* EMQX：4.4.0
+* Redis：6.2
+* Nginx：1.20.2
+* Vue：3.0.5
+* Node.js：17.8
+
+**技术支持与资源**：
+
+* **草莓创新官网**：[https://sb.im/](https://sb.im/)
+* **上云 API 文档**：[https://developer.dji.com/doc/cloud-api-tutorial/cn/](https://developer.dji.com/doc/cloud-api-tutorial/cn/)
+* **开源后端**：[https://github.com/dji-sdk/DJI-Cloud-API-Demo](https://github.com/dji-sdk/DJI-Cloud-API-Demo)
+* **开源前端**：[https://github.com/dji-sdk/Cloud-API-Demo-Web](https://github.com/dji-sdk/Cloud-API-Demo-Web)
+
+> 若需要构建自定义镜像，可参考仓库内脚本 `update_backend.sh` / `update_front.sh`。
+
+---
+
+## 日志查看
+
+**常用日志位置与示例命令**：
+
+```bash
+# 应用日志
+tail -f logs/cloud-api-demo.log
+
+# MQTT 连接日志
+grep "MQTT" logs/cloud-api-demo.log
+
+# 设备注册日志
+grep "thing.register" logs/cloud-api-demo.log
+
+# 错误日志
+grep "ERROR" logs/cloud-api-demo.log
+```
+
+---
+
+## 下一步：对接 SuperDock 设备
+
+* 如果你只想先跑通 Demo，到这里基本完成 ✅。
+* 如果你要让 Demo 正确识别、管理 **SuperDock 系列机场**，请继续阅读下一篇：
+
+👉 **[快速对接 SuperDock 设备](./superdock)**
+
+---

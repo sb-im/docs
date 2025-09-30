@@ -19,7 +19,7 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/intro">
+            to="/api-integration/">
             快速开始
           </Link>
         </div>
@@ -35,7 +35,8 @@ function HomepageFeatures() {
         <div className="row">
           <div className={clsx('col col--4')}>
             <div className="text--center">
-              <h3>无人机自动机场</h3>
+              <div className={styles.featureIcon}>🚁</div>
+              <h3>SuperDock 自动机场</h3>
               <p>
                 全自动无人机机场系统，支持自动起降、充电、数据传输等功能。
               </p>
@@ -43,17 +44,19 @@ function HomepageFeatures() {
           </div>
           <div className={clsx('col col--4')}>
             <div className="text--center">
-              <h3>智能控制系统</h3>
+              <div className={styles.featureIcon}>⚡</div>
+              <h3>零学习成本集成</h3>
               <p>
-                先进的飞行控制和任务管理系统，实现全程无人化自动巡检。
+                完全兼容DJI上云API，现有系统可直接对接，无需重新学习，大幅减少开发和培训成本。
               </p>
             </div>
           </div>
           <div className={clsx('col col--4')}>
             <div className="text--center">
+              <div className={styles.featureIcon}>🔧</div>
               <h3>开发者友好</h3>
               <p>
-                完整的API文档和SDK，让开发者轻松集成和定制功能。
+                完整的API文档、设备支持扩展指南和常见问题解答，让开发者轻松集成和定制功能。
               </p>
             </div>
           </div>
@@ -63,12 +66,14 @@ function HomepageFeatures() {
   );
 }
 
+
+
 export default function Home(): ReactNode {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`${siteConfig.title} - 无人机自动机场系统`}
-      description="草莓创新无人机自动机场系统开发者文档">
+      title={`${siteConfig.title} - SuperDock无人机自动机场开发者文档`}
+      description="草莓创新SuperDock系列无人机自动机场开发者文档，完全兼容DJI上云API，支持零学习成本集成">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

@@ -45,3 +45,107 @@
   color: var(--ifm-color-content-secondary);
   line-height: 1.6;
 }
+
+.featureIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+/* Quick Start Section */
+.quickStart {
+  background-color: var(--ifm-color-emphasis-100);
+  padding: 4rem 0;
+}
+
+.quickStartSubtitle {
+  font-size: 1.2rem;
+  color: var(--ifm-color-content-secondary);
+  margin-bottom: 3rem;
+}
+
+.quickStartCard {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  padding: 2rem;
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quickStartCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.quickStartCard h3 {
+  margin-bottom: 1rem;
+  color: var(--ifm-color-primary);
+}
+
+.quickStartCard p {
+  margin-bottom: 1.5rem;
+  color: var(--ifm-color-content-secondary);
+  line-height: 1.6;
+}
+
+/* Highlights Section */
+.highlights {
+  padding: 4rem 0;
+}
+
+.highlights h2 {
+  margin-bottom: 2rem;
+  color: var(--ifm-color-primary);
+}
+
+.highlightsList {
+  list-style: none;
+  padding: 0;
+}
+
+.highlightsList li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  line-height: 1.6;
+}
+
+.highlightsList li:last-child {
+  border-bottom: none;
+}
+
+.deviceGrid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.deviceCategory {
+  background: var(--ifm-color-emphasis-100);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--ifm-color-primary);
+}
+
+.deviceCategory h4 {
+  margin-bottom: 0.5rem;
+  color: var(--ifm-color-primary);
+}
+
+.deviceCategory p {
+  margin: 0;
+  color: var(--ifm-color-content-secondary);
+  line-height: 1.5;
+}
+
+/* Dark theme adjustments */
+[data-theme='dark'] .quickStartCard {
+  background: var(--ifm-background-surface-color);
+  border-color: var(--ifm-color-emphasis-400);
+}
+
+[data-theme='dark'] .quickStartCard:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .deviceCategory {
+  background: var(--ifm-color-emphasis-200);
+}
