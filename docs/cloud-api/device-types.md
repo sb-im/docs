@@ -1,6 +1,9 @@
-# 设备类型和机型参考
+---
+sidebar_position: 1
+---
+# 设备类型和机型列表
 
-本文档提供 DJI 上云 API 支持的所有设备类型和机型的完整参考，包括无人机、负载、遥控器和机场设备。
+本文档提供 DJI 及SuperDock支持的所有设备类型和机型的完整参考，包括无人机、负载、遥控器和机场设备。
 
 ## 设备类型说明
 
@@ -141,16 +144,5 @@
 - **SuperDock 系列机场**：完全兼容 DJI 上云 API 标准
 - **设备类型代码**：与 DJI 官方定义保持一致
 - **新增机型**：SuperDock 支持最新的 M4 系列和 M400 无人机
-- **三方负载**：目前暂不支持第三方负载设备
+- **三方负载**：有需要可定制开发第三方负载接口
 
-## 注意事项
-
-- 上云 API 暂不支持 M200 V2 系列、M200 系列、M2E、P4R、M2EA 等老机型
-- 三方负载设备暂时不支持
-- 机型详细信息可在 DJI 官网搜索对应机型名称查看
-
-## 参考资源
-
-- [DJI 上云 API 官方文档](https://developer.dji.com/doc/cloud-api-tutorial/cn/)
-- [产品支持列表](https://developer.dji.com/doc/cloud-api-tutorial/cn/overview/product-support.html)
-- [设备管理 API](./overview.md)
