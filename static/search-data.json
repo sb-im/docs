@@ -79,22 +79,20 @@
   {
     "id": "_api_integration_developers_compatibility_comparison",
     "title": "支持上云API功能对比",
-    "content": "支持上云API功能对比 概述 本文档详细对比 SuperDock 系列产品与上云API在各项功能方面的实现情况，基于 DJI 上云 API 标准，帮助开发者和用户了解产品的兼容性和功能差异。 参考: DJI的功能集合机场接口实现 图例说明 ✅ 已实现 - 功能已完全实现并测试验证 ⚠️ 部分实现 - 功能部分实现或有限制条件 🔄 开发中 - 功能正在开发中，预计近期发布 ❌ 未实现 - 功能暂未实现 🚀 增强实现 - 在 DJI 标准基础上提供增强功能 一、机场核心功能对比 1.1 机场与云端连接 具体功能 DJI机场 SuperDock 备注 获取设备绑定信息 ✅ ✅ 云端API（MQTT） 查询设备绑定对应的组织信息 ✅ ✅ 云端API（MQTT） 使用设备绑定码绑定对应组织 ✅ 🔄 云端API（MQTT） 1.2 设备管理 具体功能 DJI机场 SuperDock 备注 设备属性推送 ✅ ✅ 云端API（MQTT） 设备拓扑更新 ✅ ✅ 云端API（MQTT） 设备属性设置 ✅ ✅ 云端API（MQTT） 1.3 直播功能 具体功能 DJI机场 SuperDock 备注 直播能力更新 ✅ ✅ 云端API（MQTT） 开始直播 ✅ ⚠️ 直播推流模式只支持 rtmp 和 whip 停止直播 ✅ ✅ 云端API（MQTT） 设置直播清晰度 ✅ ⚠️ 机场的直播视频流无法设置直播清晰度 设置直播镜头 ✅ ✅ 云端API（MQTT） 1.4 媒体管理 具体功能 DJI机场 SuperDock 备注 获取上传临时凭证 ✅ ✅ 云端API（MQTT） 媒体文件上传结果上报 ✅ ✅ 云端API（MQTT） 1.5 航线管理 具体功能 DJI机场 SuperDock 备注 创建航线任务(废弃) ✅ ❌ 云端API（MQTT），已废弃 上报飞行任务进度和状态 ✅ ✅ 云端API（MQTT） 下发任务 ✅ ✅ 云端API（MQTT） 执行任务 ✅ ✅ 云端API（MQTT） 取消任务 ✅ ✅ 云端API（MQTT） 任务资源获取 ✅ ✅ 云端API（MQTT） 1.6 HMS功能 具体功能 DJI机场 SuperDock 备注 健康告警 ✅ ✅ 无人机的HMS一致，机场的HMS有差异 1.7 固件升级 具体功能 DJI机场 SuperDock 备注 固件升级进度 ✅ ❌ 云端API（MQTT） 固件升级 ✅ ❌ 云端API（MQTT） 1.8 远程日志 具体功能 DJI机场 SuperDock 备注 获取设备可上传的文件列表 ✅ ❌ 云端API（MQTT） 发起日志文件上传 ✅ ❌ 云端API（MQTT） 上传状态更新 ✅ ✅ 云端API（MQTT） 文件上传进度通知 ✅ ✅ 云端API（MQTT） 二、远程调试功能对比 2.1 飞行器控制命令 具体功能 DJI机场 SuperDock 备注 飞行器开机 ✅ ✅ Method: drone_open 飞行器关机 ✅ ✅ Method: drone_close 2.2 机场硬件控制命令 具体功能 DJI机场 SuperDock 备注 机场重启 ✅ ✅ Method: device_reboot 舱盖开启 ✅ ✅ Method: cover_open 舱盖关闭 ✅ ✅ Method: cover_close 推杆展开 ✅ ✅ Method: putter_open 推杆收回 ✅ ✅ Method: putter_close 强制关舱盖 ✅ ❌ Method: cover_force_close 充电开启 ✅ ✅ Method: charge_open 充电关闭 ✅ ✅ Method: charge_close 2.3 机场功能控制命令 具体功能 DJI机场 SuperDock 备注 补光灯开启 ✅ ❌ Method: supplement_light_open 补光灯关闭 ✅ ❌ Method: supplement_light_close 调试模式开启 ✅ ✅ Method: debug_mode_open 调试模式关闭 ✅ ✅ Method: debug_mode_close 2.4 电池管理命令 具体功能 DJI机场 SuperDock 备注 电池保养状态切换 ✅ ❌ Method: battery_maintenance_switch 电池运行模式切换 ✅ ❌ Method: battery_store_mode_switch 2.5 机场环境控制命令 具体功能 DJI机场 SuperDock 备注 空调工作模式切换 ✅ ❌ Method: air_conditioner_mode_switch 声光报警开关 ✅ ❌ Method: alarm_state_switch 2.6 通",
+    "content": "支持上云API功能对比 概述 本文档对比 SuperDock 系列产品与 DJI 机场在上云API功能方面的差异，基于 DJI 上云 API 标准，帮助开发者了解产品的功能差异点。 本文档以DJI Dock2机场为基础进行差异比较。 参考 DJI的功能集合: 机场接口实现 DJI Dock2机场功能点参考: 直播功能 航线功能 远程调试 指令飞行 PSDK功能 图例说明 ✅ 已实现 - 功能已完全实现并测试验证 ⚠️ 部分实现 - 功能部分实现或有限制条件 🔄 开发中 - 功能正在开发中，预计近期发布 ❌ 未实现 - 功能暂未实现 🚀 增强实现 - 在 DJI 标准基础上提供增强功能 功能差异对比 SuperDock 独有功能 具体功能 DJI机场 SuperDock 备注 增强图传模块在线认证 ❌ ✅ 新加接口 切换无人机RTK信息 ❌ ✅ 新加接口 机场第三方载荷定制流程 ❌ 🚀 云端API（MQTT） 第三方喊话器 ❌ 🚀 云端API（MQTT） 第三方探照灯 ❌ 🚀 云端API（MQTT） SuperDock 部分实现的功能 具体功能 DJI机场 SuperDock 备注 使用设备绑定码绑定对应组织 ✅ 🔄 云端API（MQTT） 开始直播 ✅ ⚠️ 直播推流模式只支持 rtmp 和 whip 设置直播清晰度 ✅ ⚠️ 机场的直播视频流无法设置直播清晰度 SuperDock 未实现的功能 机场核心功能 具体功能 DJI机场 SuperDock 备注 固件升级进度 ✅ ❌ 云端API（MQTT） 固件升级 ✅ ❌ 云端API（MQTT） 获取设备可上传的文件列表 ✅ ❌ 云端API（MQTT） 发起日志文件上传 ✅ ❌ 云端API（MQTT） 远程调试功能 具体功能 DJI机场 SuperDock 备注 强制关舱盖 ✅ ❌ Method: cover_force_close 补光灯开启 ✅ ❌ Method: supplement_light_open 补光灯关闭 ✅ ❌ Method: supplement_light_close 电池保养状态切换 ✅ ❌ Method: battery_maintenance_switch 电池运行模式切换 ✅ ❌ Method: battery_store_mode_switch 空调工作模式切换 ✅ ❌ Method: air_conditioner_mode_switch 声光报警开关 ✅ ❌ Method: alarm_state_switch eSIM激活 ✅ ❌ Method: esim_activate eSIM和SIM切换 ✅ ❌ Method: sim_slot_switch eSIM运营商切换 ✅ ❌ Method: esim_operator_switch 飞行器数据格式化 ✅ ❌ 起飞前会自动格式化无人机 机场数据格式化 ✅ ❌ 自动定时清理数据 指令飞行功能 具体功能 DJI机场 SuperDock 备注 更新飞向目标点 ✅ ❌ Method: fly_to_point_update 进入POI环绕模式 ✅ ❌ Method: poi_mode_enter 退出POI环绕模式 ✅ ❌ Method: poi_mode_exit POI环绕速度设置 ✅ ❌ Method: poi_circle_speed_set 分屏控制 ✅ ❌ Method: camera_screen_split 照片存储设置 ✅ ❌ Method: photo_storage_set 视频存储设置 ✅ ❌ Method: video_storage_set 曝光模式设置 ✅ ❌ Method: camera_exposure_mode_set 曝光值调节 ✅ ❌ Method: camera_exposure_set 对焦模式设置 ✅ ❌ Method: camera_focus_mode_set 对焦值设置 ✅ ❌ Method: camera_focus_value_set Joystick控制无效原因通知 ✅ ❌ Method: joystick_invalid_notify POI环绕状态信息通知 ✅ ❌ Method: poi_status_notify 拍照进度上报 ✅ ❌ Method: camera_photo_take_progress 避障信息上报 ✅ ❌ Method: hsi_info_push 图传链路延时信息上报 ✅ ❌ Method: delay_info_push",
     "url": "/api-integration/developers/compatibility-comparison",
     "keywords": [
       "支持上云api功能对比",
-      "本文档详细对比",
+      "本文档对比",
       "superdock",
+      "系列产品与",
       "dji",
       "api",
-      "dji的功能集合机场接口实现",
-      "图例说明",
-      "已实现",
-      "功能已完全实现并测试验证",
-      "部分实现"
+      "本文档以dji",
+      "机场接口实现"
     ],
     "category": "API对接",
-    "description": "SuperDock系列产品与上云API在各项功能方面的详细对比分析"
+    "description": "SuperDock系列产品与DJI机场在上云API功能方面的差异对比"
   },
   {
     "id": "_api_integration_developers",
@@ -118,7 +116,7 @@
   {
     "id": "_api_integration_developers_superdock",
     "title": "快速对接 SuperDock 设备",
-    "content": "快速对接 SuperDock 设备 概述 SuperDock 系列自动机场完全兼容 DJI 上云 API 标准。为了让 上云API Demo 正确识别与管理不同型号的 SuperDock，需要在设备枚举、网关类型、设备类型、版本映射、状态/OSD 路由、数据库字典等处做扩展。本篇给出最少修改点与可复制代码片段。 设备识别（domain/type/sub_type） SuperDock 采用 DJI 标准的三元组识别： `java public class DeviceIdentification { private int domain; // 设备域：0=无人机，1=载荷，2=遥控器，3=机场 private int type; // 设备类型：88097-88103 为 SuperDock 系列 private int sub_type; // 子类型：用于同系列的变体 // 示例：S2301 => domain=3, type=88099, sub_type=0 } ` 完整的设备列表，请参考设备类型和机型列表 你需要改的 9 处代码 1）设备枚举扩展（DeviceEnum.java） 新增 M4 系列无人机： `java // M4 系列无人机 - 适配 SuperDock S24M4 M4D(DeviceDomainEnum.DRONE, DeviceTypeEnum.M4D, DeviceSubTypeEnum.ZERO), M4TD(DeviceDomainEnum.DRONE, DeviceTypeEnum.M4TD, DeviceSubTypeEnum.ZERO), M4E(DeviceDomainEnum.DRONE, DeviceTypeEnum.M4E, DeviceSubTypeEnum.ZERO), M4T(DeviceDomainEnum.DRONE, DeviceTypeEnum.M4T, DeviceSubTypeEnum.ZERO), ` 新增 H30 系列相机/载荷： `java // H30 系列相机与 L2 激光雷达 H30(DeviceDomainEnum.PAYLOAD, DeviceTypeEnum.H30, DeviceSubTypeEnum.ZERO), H30T(DeviceDomainEnum.PAYLOAD, DeviceTypeEnum.H30T, DeviceSubTypeEnum.ZERO), L2(DeviceDomainEnum.PAYLOAD, DeviceTypeEnum.L2, DeviceSubTypeEnum.ZERO), ` 修正类型映射（解决历史混用问题）： `java // 修正 M30 系列类型映射，从混用的 M30_OR_M3T_CAMERA 拆分为独立类型 M30(DeviceDomainEnum.DRONE, DeviceTypeEnum.M30, DeviceSubTypeEnum.ZERO), M30T(DeviceDomainEnum.DRONE, DeviceTypeEnum.M30T, DeviceSubTypeEnum.ONE), M3T_CAMERA(DeviceDomainEnum.PAYLOAD, DeviceTypeEnum.M3T_CAMERA, DeviceSubTypeEnum.ZERO), ` 为什么要修正类型映射？ 历史上 M30_OR_M3T_CAMERA 被多种设备共用，导致设备识别不准确。现在拆分为独立的 M30、M30T、M3T_CAMERA 类型，使每种设备都有明确的类型标识，避免冲突并提高系统的可维护性。 2）SuperDock 网关类型（GatewayTypeEnum.java） `java // SuperDock 系列机场设备 S22M300(DeviceEnum.S22M300, \"SuperDock S22M300\"), S2201(DeviceEnum.S2201, \"SuperDock S2201\"), S2301(DeviceEnum.S2301, \"SuperDock S2301\"), S24M350(DeviceEnum.S24M350, \"SuperDock S24M350\"), S24M350S(DeviceEnum.S24M350S, \"SuperDock S24M350S\"), S24M3(DeviceEnum.S24M3, \"SuperDock S24M3\"), S24M4(DeviceEnum.S24M4, \"SuperDock S24M4\"), ` 3）设备类型字典（DeviceTypeEnum.java） `java // M4 系列无人机（注意：M4E=99",
+    "content": "快速对接 SuperDock 设备 概述 SuperDock 系列自动机场完全兼容 DJI 上云 API 标准。为了让 上云API Demo 正确识别与管理不同型号的 SuperDock，需要在设备枚举、网关类型、设备类型、版本映射、状态/OSD 路由、数据库字典等处做扩展。本篇给出最少修改点与可复制代码片段。 可以参考DJI上云API的Demo适配SuperDock的Github仓库的提交內容，以下是简要说明所需添加內容。 设备识别（domain/type/sub_type） SuperDock 采用 DJI 标准的三元组识别： `java public class DeviceIdentification { private int domain; // 设备域：0=无人机，1=载荷，2=遥控器，3=机场 private int type; // 设备类型：88097-88103 为 SuperDock 系列 private int sub_type; // 子类型：用于同系列的变体 // 示例：S2301 => domain=3, type=88099, sub_type=0 } ` 完整的设备列表，请参考设备类型和机型列表 你需要改的 9 处代码 1）设备枚举扩展（DeviceEnum.java） 新增 M4 系列无人机： `java // M4 系列无人机 - 适配 SuperDock S24M4 M4D(DeviceDomainEnum.DRONE, DeviceTypeEnum.M4D, DeviceSubTypeEnum.ZERO), M4TD(DeviceDomainEnum.DRONE, DeviceTypeEnum.M4TD, DeviceSubTypeEnum.ZERO), M4E(DeviceDomainEnum.DRONE, DeviceTypeEnum.M4E, DeviceSubTypeEnum.ZERO), M4T(DeviceDomainEnum.DRONE, DeviceTypeEnum.M4T, DeviceSubTypeEnum.ZERO), ` 新增 H30 系列相机/载荷： `java // H30 系列相机与 L2 激光雷达 H30(DeviceDomainEnum.PAYLOAD, DeviceTypeEnum.H30, DeviceSubTypeEnum.ZERO), H30T(DeviceDomainEnum.PAYLOAD, DeviceTypeEnum.H30T, DeviceSubTypeEnum.ZERO), L2(DeviceDomainEnum.PAYLOAD, DeviceTypeEnum.L2, DeviceSubTypeEnum.ZERO), ` 修正类型映射（解决历史混用问题）： `java // 修正 M30 系列类型映射，从混用的 M30_OR_M3T_CAMERA 拆分为独立类型 M30(DeviceDomainEnum.DRONE, DeviceTypeEnum.M30, DeviceSubTypeEnum.ZERO), M30T(DeviceDomainEnum.DRONE, DeviceTypeEnum.M30T, DeviceSubTypeEnum.ONE), M3T_CAMERA(DeviceDomainEnum.PAYLOAD, DeviceTypeEnum.M3T_CAMERA, DeviceSubTypeEnum.ZERO), ` 为什么要修正类型映射？ 历史上 M30_OR_M3T_CAMERA 被多种设备共用，导致设备识别不准确。现在拆分为独立的 M30、M30T、M3T_CAMERA 类型，使每种设备都有明确的类型标识，避免冲突并提高系统的可维护性。 2）SuperDock 网关类型（GatewayTypeEnum.java） `java // SuperDock 系列机场设备 S22M300(DeviceEnum.S22M300, \"SuperDock S22M300\"), S2201(DeviceEnum.S2201, \"SuperDock S2201\"), S2301(DeviceEnum.S2301, \"SuperDock S2301\"), S24M350(DeviceEnum.S24M350, \"SuperDock S24M350\"), S24M350S(DeviceEnum.S24M350S, \"SuperDock S24M350S\"), S24M3(DeviceEnum.S24M3, \"SuperDock S24M3\"), S24M4(DeviceEnum.S24M4, \"SuperDock S24M4\"), `",
     "url": "/api-integration/developers/superdock",
     "keywords": [
       "快速对接",
@@ -136,19 +134,19 @@
   {
     "id": "_api_integration_faq",
     "title": "常见问题",
-    "content": "常见问题解答 欢迎来到 SuperDock机场常见问题解答页面！这里汇总了用户最常遇到的问题和解决方案。 系统集成与API Q：如何集成SuperDock到现有的DJI Cloud API Demo系统？ A： 集成SuperDock需要进行以下配置： 设备枚举扩展： 在 DeviceEnum.java 中添加SuperDock设备定义： `java // SuperDock系列机场设备 S22M300(88097, 0, 3, \"SuperDock S22M300\"), S2201(88098, 0, 3, \"SuperDock S2201\"), S2301(88099, 0, 3, \"SuperDock S2301\"), // ... 其他型号 ` 数据库配置： 在设备字典表中添加SuperDock设备记录： `sql INSERT INTO manage_device_dictionary (device_name, device_type, sub_type, domain, device_desc) VALUES ('SuperDock S2301', 88099, 0, 3, 'M3系列专用机场'); ` 状态路由配置： 在 StateRouter.java 中添加SuperDock设备类型支持。 详细集成指南请参考：适配上云API代码 Q：SuperDock设备上线失败，提示\"Unsupported device type\"？ A： 这是设备类型未正确配置导致的，请检查： 确认设备枚举： 检查 GatewayTypeEnum.java 是否包含对应的SuperDock设备类型。 验证数据库配置： `sql SELECT * FROM manage_device_dictionary WHERE device_type = 88099 AND sub_type = 0 AND domain = 3; ` 检查MQTT消息格式： 确认设备上报的 domain、type、sub_type 参数正确。 查看系统日志： 检查后端日志中的具体错误信息。 Q：执行任务返回错误码600001怎么办？ A： 错误码600001表示\"无人机起飞前自检失败\"，请按以下步骤排查： 检查HMS信息： 系统上记录无人机的HMS信息 执行任务时监听无人机HMS信息 常见排查范围： 无人机是否展开机臂并固定到位 遥控器档位是否在N档 检查设备绑定状态和对频情况 电池是否安装到位 查看HMS告警： 参考 HMS健康管理 文档了解具体的HMS告警信息。 运行维护与故障排查 Q：无人机在机舱内提示HMS告警是否正常？ A： 无人机在机舱内出现以下HMS告警是正常的，可以忽略： 0x1F100031: 无法起飞 0x16100066: RTK信号差 0x1610008F: 机载天线搜星异常 0x1F0B0001: 飞行器无法使用LTE链路 0x1F0B003A: 飞行器DJI Cellular模块无法访问网络 0x1A420BC1-BC6: 各方向环境光过暗，视觉避障失效 这些属于无人机在密闭环境的正常提示。建议执行任务前确认无人机是否可以正常起飞。 Q：飞行中需要特别注意哪些HMS告警？ A： 以下HMS告警需要特别关注： 环境相关： 风速过大，谨慎飞行 0x16100020: 飞控温度过高 电池相关： 低电量警报 严重低电量警报 设备相关： 0x16100066: RTK信号差 0x1608005B: 航线问题 0x1D040001: 云台异常振动 0x1610009A: 云台振动过大 0x1610004C: 遥控器摇杆需要校准 通信相关： 0x1F0B0001: 飞行器无法使用LTE链路 0x1F0B003A: 飞行器DJI Cellular模块无法访问网络 遇到这些告警时，建议立即检查相关系统状态并采取相应措施。 Q：RTK标定失败怎么办？ A： RTK标定失败的排查步骤： 检查GPS信号： 确认GPS信号良好，卫星数量充足 避免在高楼、树木遮挡的环境下标定 检查天线连接： 确认RTK天线连接牢固 检查天线是否损坏或被遮挡 检测天线连接线路是否断开 检查网络连接： 确认现场网络是否稳定 重新标定： 等待更好的信号条件 重新执行RTK标定流程 如问题持续存在，请联系技术支持。 Q：机械动作异常怎么处理？ A： 机械动作异常的处理方法： 安全检查： 立即停止所有操作 检查是否有异物阻挡机械部件 不要触碰机场相关部件 基础排查： 检查电源供应是否正常 确认主板信号是否正常 查看动作返回错误码 专业维护： 联系技术支持 安排专业技术人员检修 注意：机械异常可能影响飞行安全，请勿强制操作。 网络与通信 Q：MQTT连接失败怎么办？ A： MQTT连接问题",
+    "content": "常见问题解答 欢迎来到 SuperDock机场常见问题解答页面！这里汇总了用户最常遇到的问题和解决方案。 运行维护与故障排查 Q：执行任务返回错误码600001怎么办？ A： 错误码600001表示\"无人机起飞前自检失败\"，请按以下步骤排查： 检查HMS信息： 系统上记录无人机的HMS信息 执行任务时监听无人机HMS信息 常见排查范围： 无人机是否展开机臂并固定到位 遥控器档位是否在N档 检查设备绑定状态和对频情况 电池是否安装到位 查看HMS告警： 参考 HMS健康管理 文档了解具体的HMS告警信息。 Q：无人机在机舱内提示HMS告警是否正常？ A： 无人机在机舱内出现以下HMS告警是正常的，可以忽略： 0x1F100031: 无法起飞 0x16100066: RTK信号差 0x1610008F: 机载天线搜星异常 0x1F0B0001: 飞行器无法使用LTE链路 0x1F0B003A: 飞行器DJI Cellular模块无法访问网络 0x1A420BC1-BC6: 各方向环境光过暗，视觉避障失效 这些属于无人机在密闭环境的正常提示。建议执行任务前确认无人机是否可以正常起飞。 Q：飞行中需要特别注意哪些HMS告警？ A： 以下HMS告警需要特别关注： 环境相关： 风速过大，谨慎飞行 0x16100020: 飞控温度过高 电池相关： 低电量警报 严重低电量警报 设备相关： 0x16100066: RTK信号差 0x1608005B: 航线问题 0x1D040001: 云台异常振动 0x1610009A: 云台振动过大 0x1610004C: 遥控器摇杆需要校准 通信相关： 0x1F0B0001: 飞行器无法使用LTE链路 0x1F0B003A: 飞行器DJI Cellular模块无法访问网络 遇到这些告警时，建议立即检查相关系统状态并采取相应措施。 Q：RTK标定失败怎么办？ A： RTK标定失败的排查步骤： 检查GPS信号： 确认GPS信号良好，卫星数量充足 避免在高楼、树木遮挡的环境下标定 检查天线连接： 确认RTK天线连接牢固 检查天线是否损坏或被遮挡 检测天线连接线路是否断开 检查网络连接： 确认现场网络是否稳定 重新标定： 等待更好的信号条件 重新执行RTK标定流程 如问题持续存在，请联系技术支持。 Q：机械动作异常怎么处理？ A： 机械动作异常的处理方法： 安全检查： 立即停止所有操作 检查是否有异物阻挡机械部件 不要触碰机场相关部件 基础排查： 检查电源供应是否正常 确认主板信号是否正常 查看动作返回错误码 专业维护： 联系技术支持 安排专业技术人员检修 注意：机械异常可能影响飞行安全，请勿强制操作。 网络与通信 Q：MQTT连接失败怎么办？ A： MQTT连接问题的排查步骤： 检查网络连接： 确认设备网络连接正常 测试网络延迟和稳定性 检查服务器端防火墙设置 验证MQTT配置： 确认MQTT服务器地址正确 检查端口号（通常为1883或8883） 验证用户名和密码 Q：如何配置MQTT服务器切换？ A： MQTT服务器切换步骤： 访问MQTT配置页面： 连接机场WIFI 浏览器访问：192.168.110.201:3000 点击\"重置/写入MQTT\"按钮 重置当前配置： 点击\"重置MQTT\" 等待一分钟后刷新页面 输入新服务器信息： 输入MQTT服务器地址 输入组织ID和组织密钥 点击\"Submit\"提交 验证连接： 等待一分钟 观察MQTT服务器是否收到消息 确认设备状态正常 Q：网络信号不稳定怎么办？ A： 网络信号优化建议： 确认是否联通网络 通过PING进行测试网络丢包率 通过iperf进行测试当前网络最高网络速率 数据管理与存储 Q：媒体文件上传失败怎么办？ A： 媒体文件上传问题的解决方法： 检查存储空间： 确认本地存储空间充足 检查云端存储服务是否有问题 检查云端服务器是否有防火墙 验证网络条件： 确认网络带宽充足 检查网络稳定性 避免网络高峰期上传",
     "url": "/api-integration/faq",
     "keywords": [
       "常见问题解答",
       "欢迎来到",
-      "系统集成与api",
-      "cloud",
-      "api",
-      "superdock系列机场设备",
-      "其他型号",
-      "insert",
-      "into",
-      "values"
+      "运行维护与故障排查",
+      "系统上记录无人机的hms信息",
+      "执行任务时监听无人机hms信息",
+      "无人机是否展开机臂并固定到位",
+      "遥控器档位是否在n档",
+      "检查设备绑定状态和对频情况",
+      "电池是否安装到位",
+      "hms健康管理"
     ],
     "category": "API对接",
     "description": "SuperDock API 常见问题"
