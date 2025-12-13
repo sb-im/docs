@@ -86,14 +86,14 @@ class SearchIndexGenerator {
       // 清理内容
       const cleanContent = this.cleanMarkdownContent(markdownContent);
 
-      // 提取关键词
-      const keywords = this.extractKeywords(frontMatter, cleanContent);
+      // 提取关键词（使用原始 markdown 内容来提取错误码，使用清理后的内容提取其他关键词）
+      const keywords = this.extractKeywords(frontMatter, cleanContent, markdownContent);
 
       // 生成搜索条目
       const searchItem = {
         id: this.generateId(url),
         title: frontMatter.title || this.extractTitleFromContent(markdownContent) || fileName,
-        content: cleanContent.substring(0, 2000), // 增加内容长度限制
+        content: cleanContent.substring(0, 5000), // 增加内容长度限制到 5000 字符
         url: url,
         keywords: keywords,
         category: category,
@@ -124,6 +124,8 @@ class SearchIndexGenerator {
       .replace(/^\s*[-*+]\s+/gm, '') // 列表
       .replace(/^\s*\d+\.\s+/gm, '') // 有序列表
       .replace(/^\s*>\s+/gm, '') // 引用
+      // 移除特殊符号（如表格层级标记 »）
+      .replace(/[»«]/g, '') // 移除层级标记符号
       .replace(/\n{2,}/g, '\n') // 多个换行
       .replace(/\s+/g, ' ') // 多个空格
       .trim();
@@ -135,30 +137,66 @@ class SearchIndexGenerator {
     return titleMatch ? titleMatch[1].trim() : null;
   }
 
+  // 提取错误码（专门处理表格中的错误码）
+  extractErrorCodes(content) {
+    const errorCodes = [];
+
+    // 匹配 Markdown 表格中的错误码模式：| 数字 |
+    const tableRowRegex = /^\|\s*(\d{6})\s*\|/gm;
+    let match;
+
+    while ((match = tableRowRegex.exec(content)) !== null) {
+      errorCodes.push(match[1]);
+    }
+
+    return errorCodes;
+  }
+
   // 提取关键词
-  extractKeywords(frontMatter, content) {
+  extractKeywords(frontMatter, content, rawMarkdown = '') {
     const keywords = [];
-    
+
     // 从 frontMatter 获取关键词
     if (frontMatter.keywords) {
       keywords.push(...frontMatter.keywords);
     }
-    
+
     if (frontMatter.tags) {
       keywords.push(...frontMatter.tags);
     }
 
-    // 从内容中提取关键词（简单实现）
+    // 专门提取错误码（6位数字）- 从原始 markdown 内容中提取
+    if (rawMarkdown) {
+      const errorCodes = this.extractErrorCodes(rawMarkdown);
+      keywords.push(...errorCodes);
+    }
+
+    // 从内容中提取关键词（改进版：支持数字、错误码、型号、API属性名等）
     const contentKeywords = content
       .toLowerCase()
       .split(/\s+/)
-      .filter(word => word.length > 2 && word.length < 20)
-      .filter(word => /^[\u4e00-\u9fa5a-zA-Z]+$/.test(word)) // 只保留中文和英文
-      .slice(0, 10); // 限制数量
+      .filter(word => {
+        // 长度限制（增加到 50 以支持长 API 属性名如 battery_percent_reserve_home）
+        if (word.length < 2 || word.length > 50) return false;
+
+        // 保留以下类型的词：
+        // 1. 纯中文词
+        // 2. 纯英文词
+        // 3. 纯数字（如错误码 620006）
+        // 4. 字母+数字+下划线组合（如 API 属性名 battery_percent_reserve_home）
+        return /^[\u4e00-\u9fa5]+$/.test(word) ||           // 纯中文
+               /^[a-zA-Z]+$/.test(word) ||                  // 纯英文
+               /^[0-9]+$/.test(word) ||                     // 纯数字
+               /^[a-zA-Z0-9_]+$/.test(word);                // 字母数字下划线组合（API属性名）
+      });
 
     keywords.push(...contentKeywords);
-    
-    return [...new Set(keywords)]; // 去重
+
+    // 去重后再限制数量，避免丢失重要关键词
+    const uniqueKeywords = [...new Set(keywords)];
+
+    // 对于大文档，保留更多关键词（最多 1000 个，支持错误码文档的 869 个错误码）
+    return uniqueKeywords.slice(0, 1000);
   }
 
 

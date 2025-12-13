@@ -1,0 +1,56 @@
+//协议版本
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "xxxx_xxxx_xxxx_xxxx",	//用户自定义飞行区的唯一标识
+      "type": "Feature",   
+      "geofence_type": "dfence",    //"dfence":围栏  "nfz":禁飞区
+      "geometry": {
+		"type": "Polygon",			// Polygon 类型的坐标需要保证第一个点和最后一个点相同
+        "coordinates":  [
+          [
+            [
+              25.41512807678825,  //WGS84 经度
+              4.642350757553345   //WGS84 纬度
+            ],
+            [
+              25.41512807678825,
+              4.486362750550683
+            ],
+            [
+              26.134956012525294,
+              4.486362750550683
+            ],
+            [
+              26.134956012525294,
+              4.642350757553345
+            ],
+            [
+              25.41512807678825,  //与第一个点相同
+              4.642350757553345
+            ]
+          ]
+        ]
+      },
+	  "properties": {
+		"radius": 0,  	  //参数合理性校验范围: 【10，无限】单位m，多边形默认为0
+		"enable": true   //区域使能，默认为true，当前版本不支持
+	   }
+    },
+	{
+	  "id": "xxxx_xxxx_xxxx_xxxx", //建议设计成UUID，作为该区域的唯一标识
+	  "type": "Feature",     
+      "geofence_type": "nfz",    //"dfence":围栏  "nfz":禁飞区	 
+      "geometry": {
+		  "type": "Point", 
+		  "coordinates": [25.41512807678825, 4.642350757553345]
+		},
+	  "properties": {
+          "subType": "Circle",
+		  "radius": 1000,  //参数合理性校验范围: 【10，无限】单位m
+	      "enable": true  //区域使能，默认为true，当前版本不支持
+		}
+	}
+  ]
+}

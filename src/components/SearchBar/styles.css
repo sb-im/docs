@@ -14,11 +14,11 @@
 .search-input {
   width: 100%;
   padding: 6px 32px 6px 10px;
-  border: 1px solid var(--ifm-color-emphasis-300);
+  border: 1px solid var(--sbim-border);
   border-radius: 4px;
   background-color: var(--ifm-background-color);
   color: var(--ifm-font-color-base);
-  font-size: 13px;
+  font-size: 12px;
   transition: all 0.2s ease;
   height: 32px;
   box-sizing: border-box;
@@ -31,7 +31,7 @@
 }
 
 .search-input::placeholder {
-  color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-font-color-secondary);
 }
 
 .search-icon {
@@ -42,14 +42,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-font-color-secondary);
   pointer-events: none;
   width: 16px;
   height: 16px;
 }
 
 .search-loading {
-  font-size: 12px;
+  font-size: 11px;
   animation: spin 1s linear infinite;
 }
 
@@ -66,7 +66,7 @@
   z-index: 1000;
   margin-top: 4px;
   background-color: var(--ifm-background-surface-color);
-  border: 1px solid var(--ifm-color-emphasis-300);
+  border: 1px solid var(--sbim-border);
   border-radius: 6px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   max-height: 400px;
@@ -82,7 +82,7 @@
 .search-result-item {
   padding: 12px 16px;
   cursor: pointer;
-  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  border-bottom: 1px solid var(--sbim-border);
   transition: background-color 0.2s ease;
   background-color: transparent;
 }
@@ -92,27 +92,27 @@
 }
 
 .search-result-item:hover {
-  background-color: var(--ifm-color-emphasis-100);
+  background-color: var(--sbim-hover-bg);
 }
 
 .search-result-title {
   font-weight: 600;
   color: var(--ifm-color-primary);
   margin-bottom: 4px;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .search-result-content {
-  color: var(--ifm-color-emphasis-800);
-  font-size: 12px;
+  color: var(--ifm-font-color-secondary);
+  font-size: 11px;
   line-height: 1.4;
 }
 
 .search-no-results {
   padding: 16px;
   text-align: center;
-  color: var(--ifm-color-emphasis-700);
-  font-size: 14px;
+  color: var(--ifm-font-color-secondary);
+  font-size: 13px;
   background-color: transparent;
 }
 
@@ -133,7 +133,7 @@
 
 /* 暗色主题适配 */
 [data-theme='dark'] .search-input {
-  border-color: var(--ifm-color-emphasis-400);
+  border-color: var(--sbim-border);
   background-color: var(--ifm-background-surface-color);
 }
 
@@ -144,39 +144,39 @@
 
 [data-theme='dark'] .search-results {
   background-color: var(--ifm-background-surface-color);
-  border-color: var(--ifm-color-emphasis-400);
+  border-color: var(--sbim-border);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 }
 
 [data-theme='dark'] .search-result-item:hover {
-  background-color: var(--ifm-color-emphasis-200);
+  background-color: var(--sbim-hover-bg);
 }
 
 [data-theme='dark'] .search-result-item {
-  border-bottom-color: var(--ifm-color-emphasis-300);
+  border-bottom-color: var(--sbim-border);
 }
 
 [data-theme='dark'] .search-result-content {
-  color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-font-color-secondary);
 }
 
 [data-theme='dark'] .search-no-results {
-  color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-font-color-secondary);
 }
 
 /* 浅色主题特定样式 */
 [data-theme='light'] .search-results {
-  background-color: #ffffff;
-  border-color: var(--ifm-color-emphasis-300);
+  background-color: var(--ifm-background-surface-color);
+  border-color: var(--sbim-border);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 [data-theme='light'] .search-result-item {
-  background-color: #ffffff;
+  background-color: transparent;
 }
 
 [data-theme='light'] .search-result-item:hover {
-  background-color: #f8f9fa;
+  background-color: var(--sbim-hover-bg);
 }
 
 [data-theme='light'] .search-result-title {
@@ -184,11 +184,11 @@
 }
 
 [data-theme='light'] .search-result-content {
-  color: #495057;
+  color: var(--ifm-font-color-secondary);
 }
 
 [data-theme='light'] .search-no-results {
-  color: #6c757d;
+  color: var(--ifm-font-color-secondary);
 }
 
 /* 键盘导航支持 */
@@ -232,14 +232,10 @@
 
 /* 高亮搜索词 */
 .search-highlight {
-  background-color: var(--ifm-color-warning-lightest);
-  color: var(--ifm-color-warning-darkest);
-  padding: 1px 2px;
-  border-radius: 2px;
-  font-weight: 600;
-}
-
-[data-theme='dark'] .search-highlight {
-  background-color: var(--ifm-color-warning-dark);
-  color: var(--ifm-color-warning-lightest);
+  background-color: var(--sbim-hover-bg-strong);
+  color: var(--ifm-heading-color);
+  padding: 1px 4px;
+  border-radius: 6px;
+  border: 1px solid var(--sbim-accent-border);
+  font-weight: 650;
 }

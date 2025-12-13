@@ -1,262 +1,641 @@
 /**
- * SBIM 草莓创新 - 简化版自定义样式
+ * SBIM - Stripe Docs 风格（Docusaurus）
+ * 关键词：中性色背景 / 细边框 / 低阴影 / 紫色主色 / 更克制的 hover
  */
 
+/* 搜索结果跳转：关键词高亮 + 滚动定位 */
+@import './search-highlight.css';
+
+/* ===== Design tokens（Stripe-ish） ===== */
 :root {
-  /* 主色调 */
-  --ifm-color-primary: #1890ff;
-  --ifm-color-primary-dark: #1677cc;
-  --ifm-color-primary-darker: #1668b3;
-  --ifm-color-primary-darkest: #0f4c99;
-  --ifm-color-primary-light: #40a9ff;
-  --ifm-color-primary-lighter: #69c0ff;
-  --ifm-color-primary-lightest: #91d5ff;
+    /* 品牌主色（Stripe-ish purple/indigo） */
+    --ifm-color-primary: #635bff;
+    --ifm-color-primary-dark: #4f46ff;
+    --ifm-color-primary-darker: #3f37ff;
+    --ifm-color-primary-darkest: #2b23ff;
+    --ifm-color-primary-light: #7a73ff;
+    --ifm-color-primary-lighter: #918cff;
+    --ifm-color-primary-lightest: #e7e6ff;
 
-  /* 字体 */
-  --ifm-font-family-base: 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
-                          'Helvetica Neue', Helvetica, Arial, sans-serif;
-  
-  /* 代码字体 */
-  --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', 'Monaco',
-                               'Consolas', monospace;
+    /* 文本与背景（更像 Stripe docs 的“冷静灰蓝”） */
+    --ifm-background-color: #f6f9fc;              /* 页面底色 */
+    --ifm-background-surface-color: #ffffff;      /* 卡片/表面 */
+    --ifm-font-color-base: #425466;               /* 正文 */
+    --ifm-font-color-secondary: #52657a;          /* 次要文本 */
+    --ifm-color-content-secondary: #52657a;       /* 一些组件使用这个变量 */
+    --ifm-heading-color: #0a2540;                 /* 标题 */
+    --ifm-link-color: var(--ifm-color-primary-dark);
+    --ifm-link-hover-color: var(--ifm-color-primary-darker);
 
-  /* 圆角 */
-  --ifm-border-radius: 8px;
-  --ifm-card-border-radius: 12px;
+    /* 字体（Stripe Sans 无法直接用，走接近的系统/Inter 栈） */
+    --ifm-font-family-base: ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", sans-serif;
 
-  /* 代码高亮 */
-  --docusaurus-highlighted-code-line-bg: rgba(24, 144, 255, 0.1);
+    --ifm-font-family-monospace: ui-monospace, "SFMono-Regular", Menlo, Monaco,
+    Consolas, "Liberation Mono", "JetBrains Mono", "Fira Code", monospace;
+
+    /* 字号（Stripe docs 更紧凑） */
+    --ifm-font-size-base: 0.92rem;
+    --ifm-h1-font-size: 2.15rem;
+    --ifm-h2-font-size: 1.62rem;
+    --ifm-h3-font-size: 1.25rem;
+    --ifm-h4-font-size: 1.06rem;
+    --ifm-h5-font-size: 0.93rem;
+
+    /* 圆角：Stripe 更偏“圆润但不夸张” */
+    --ifm-border-radius: 10px;
+    --ifm-card-border-radius: 14px;
+
+    /* 动效：克制、干净 */
+    --sbim-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --sbim-dur-fast: 140ms;
+    --sbim-dur: 220ms;
+
+    /* Stripe 风的阴影：更“薄” */
+    --sbim-shadow-1: 0 1px 2px rgba(50, 50, 93, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.06);
+    --sbim-shadow-2: 0 10px 20px rgba(50, 50, 93, 0.10),
+    0 6px 12px rgba(0, 0, 0, 0.08);
+
+    /* 边框色（统一） */
+    --sbim-border: #e6ebf1; /* Stripe docs 常见的淡边框 */
+
+    /* Docusaurus 中性灰阶：对齐 Stripe-ish 的蓝灰，避免字体/边框对比过低 */
+    --ifm-color-emphasis-300: var(--sbim-border);
+    --ifm-color-emphasis-600: #5f7087;
+    --ifm-color-emphasis-700: #52657a;
+    --ifm-color-emphasis-800: #425466;
+    --ifm-color-emphasis-900: #0a2540;
+
+    /* Focus ring（更像 Stripe） */
+    --sbim-ring: 0 0 0 4px rgba(99, 91, 255, 0.20);
+    --sbim-accent-border: rgba(99, 91, 255, 0.22);
+    --sbim-accent-border-strong: rgba(99, 91, 255, 0.30);
+
+    /* Inline code（浅底 + 细边框） */
+    --sbim-inline-code-bg: rgba(99, 91, 255, 0.08);
+    --sbim-inline-code-border: rgba(99, 91, 255, 0.20);
+    --sbim-inline-code-color: #1f2557;
+
+    /* Code block：Stripe docs 很常用“深海军蓝” */
+    --sbim-code-bg: #0a1f3f;
+    --sbim-code-border: rgba(214, 222, 234, 0.18);
+    --sbim-code-toolbar-bg: rgba(255, 255, 255, 0.06);
+    --sbim-code-toolbar-border: rgba(255, 255, 255, 0.12);
+    --sbim-code-toolbar-fg: rgba(244, 247, 255, 0.78);
+    --sbim-code-scrollbar-track: rgba(255, 255, 255, 0.06);
+    --sbim-code-scrollbar-thumb: rgba(255, 255, 255, 0.18);
+    --sbim-code-scrollbar-thumb-hover: rgba(255, 255, 255, 0.26);
+    --sbim-hover-bg: rgba(99, 91, 255, 0.06);
+    --sbim-hover-bg-strong: rgba(99, 91, 255, 0.10);
+
+    /* Docusaurus code highlight */
+    --docusaurus-highlighted-code-line-bg: rgba(99, 91, 255, 0.20);
 }
 
-/* 暗色模式 */
+/* 暗色模式：保持 Stripe 那种深蓝体系 */
 [data-theme='dark'] {
-  --ifm-color-primary: #40a9ff;
-  --ifm-color-primary-dark: #1890ff;
-  --ifm-color-primary-darker: #1677cc;
-  --ifm-color-primary-darkest: #1668b3;
-  --ifm-color-primary-light: #69c0ff;
-  --ifm-color-primary-lighter: #91d5ff;
-  --ifm-color-primary-lightest: #bae7ff;
+    --ifm-background-color: #0b1220;
+    --ifm-background-surface-color: #0f172a;
+    --ifm-font-color-base: #dfe7f5;
+    --ifm-font-color-secondary: #b8c3d9;
+    --ifm-color-content-secondary: #b8c3d9;
+    --ifm-heading-color: #f4f7ff;
 
-  --docusaurus-highlighted-code-line-bg: rgba(64, 169, 255, 0.2);
+    --ifm-color-primary: #8a86ff;
+    --ifm-color-primary-dark: #7a73ff;
+    --ifm-color-primary-darker: #6d65ff;
+    --ifm-color-primary-darkest: #5b52ff;
+    --ifm-color-primary-light: #a19eff;
+    --ifm-color-primary-lighter: #b4b2ff;
+    --ifm-color-primary-lightest: #e7e6ff;
+
+    --sbim-border: #243552;
+
+    --ifm-color-emphasis-300: var(--sbim-border);
+    --ifm-color-emphasis-600: #9aa8c1;
+    --ifm-color-emphasis-700: #b8c3d9;
+    --ifm-color-emphasis-800: #dfe7f5;
+    --ifm-color-emphasis-900: #f4f7ff;
+    --sbim-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.30);
+    --sbim-shadow-2: 0 14px 28px rgba(0, 0, 0, 0.42);
+
+    --sbim-ring: 0 0 0 4px rgba(138, 134, 255, 0.26);
+    --sbim-accent-border: rgba(138, 134, 255, 0.32);
+    --sbim-accent-border-strong: rgba(138, 134, 255, 0.40);
+
+    --sbim-inline-code-bg: rgba(138, 134, 255, 0.16);
+    --sbim-inline-code-border: rgba(138, 134, 255, 0.32);
+    --sbim-inline-code-color: #f5f5ff;
+
+    --sbim-code-bg: #0a152d;
+    --sbim-code-border: rgba(214, 222, 234, 0.12);
+    --sbim-code-toolbar-bg: rgba(244, 247, 255, 0.06);
+    --sbim-code-toolbar-border: rgba(244, 247, 255, 0.12);
+    --sbim-code-toolbar-fg: rgba(244, 247, 255, 0.80);
+    --sbim-code-scrollbar-track: rgba(244, 247, 255, 0.06);
+    --sbim-code-scrollbar-thumb: rgba(244, 247, 255, 0.20);
+    --sbim-code-scrollbar-thumb-hover: rgba(244, 247, 255, 0.28);
+    --sbim-hover-bg: rgba(138, 134, 255, 0.10);
+    --sbim-hover-bg-strong: rgba(138, 134, 255, 0.14);
+
+    --docusaurus-highlighted-code-line-bg: rgba(138, 134, 255, 0.22);
 }
 
-/* 全局样式 */
+/* ===== Global polish ===== */
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
 }
 
 body {
-  font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    background: var(--ifm-background-color);
+    color: var(--ifm-font-color-base);
+    font-size: var(--ifm-font-size-base);
+    line-height: 1.7;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* 导航栏 */
+::selection {
+    background: rgba(99, 91, 255, 0.22);
+}
+
+.markdown p,
+.markdown li {
+    font-size: var(--ifm-font-size-base);
+    line-height: 1.7;
+    color: var(--ifm-font-color-base);
+}
+
+/* 标题锚点不被 navbar 挡住 */
+.markdown :is(h1, h2, h3, h4, h5, h6) {
+    scroll-margin-top: calc(var(--ifm-navbar-height) + 1rem);
+}
+
+/* Stripe docs 的“更舒适阅读宽度” */
+.theme-doc-main .col.col--8 {
+    flex: 0 0 100%;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+/* 如果你仍要隐藏右侧 TOC，保留这段 */
+.theme-doc-main .col.col--3 {
+    display: none;
+}
+
+/* ===== Navbar（更像 Stripe：无厚重阴影，细分割线） ===== */
 .navbar {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    background: rgba(246, 249, 252, 0.86);
+    border-bottom: 1px solid var(--sbim-border);
+    box-shadow: none;
+    backdrop-filter: saturate(140%) blur(10px);
+}
+
+[data-theme='dark'] .navbar {
+    background: rgba(11, 18, 32, 0.78);
 }
 
 .navbar__brand {
-  font-weight: 600;
-  color: var(--ifm-color-primary) !important;
+    font-weight: 650;
+    color: var(--ifm-heading-color);
+    letter-spacing: -0.01em;
 }
 
-/* 按钮 */
+.navbar__brand:hover {
+    opacity: 0.9;
+}
+
+/* ===== Links（Stripe 常见：默认不强制下划线，hover 出现） ===== */
+.markdown a {
+    text-decoration: none;
+}
+
+.markdown a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+}
+
+/* ===== Buttons（更克制：不“跳”，只阴影/颜色变化） ===== */
 .button {
-  border-radius: var(--ifm-border-radius);
-  font-weight: 600;
-  transition: all 0.3s ease;
+    border-radius: 999px;
+    font-weight: 650;
+    transition:
+            box-shadow var(--sbim-dur) var(--sbim-ease),
+            background-color var(--sbim-dur-fast) var(--sbim-ease),
+            border-color var(--sbim-dur-fast) var(--sbim-ease),
+            color var(--sbim-dur-fast) var(--sbim-ease);
 }
 
-.button--primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(24, 144, 255, 0.3);
+.button:focus-visible {
+    outline: none;
+    box-shadow: var(--sbim-ring);
 }
 
-.button--secondary:hover {
-  transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+    .button--primary:hover {
+        box-shadow: var(--sbim-shadow-1);
+        filter: brightness(0.98);
+    }
+
+    .button--secondary:hover {
+        box-shadow: var(--sbim-shadow-1);
+    }
 }
 
-/* 卡片 */
+/* ===== Cards（Stripe：细边框 + 低阴影） ===== */
 .card {
-  border-radius: var(--ifm-card-border-radius);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+    border-radius: var(--ifm-card-border-radius);
+    border: 1px solid var(--sbim-border);
+    box-shadow: none;
+    background: var(--ifm-background-surface-color);
+    transition:
+            box-shadow var(--sbim-dur) var(--sbim-ease),
+            border-color var(--sbim-dur-fast) var(--sbim-ease);
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+@media (hover: hover) and (pointer: fine) {
+    .card:hover {
+        border-color: var(--sbim-accent-border-strong);
+        box-shadow: var(--sbim-shadow-1);
+    }
 }
 
-/* 代码块 */
-.prism-code {
-  border-radius: var(--ifm-border-radius);
+/* ===== Code blocks（Stripe-ish 深色底 + 工具按钮） ===== */
+.theme-code-block {
+    /* Docusaurus 的按钮定位依赖这个变量（需要单个长度） */
+    --ifm-pre-padding: 0.95rem;
+    --ifm-code-border-radius: 14px;
+
+    /* 仅在 code block 内调 scrollbar */
+    --ifm-scrollbar-track-background-color: var(--sbim-code-scrollbar-track);
+    --ifm-scrollbar-thumb-background-color: var(--sbim-code-scrollbar-thumb);
+    --ifm-scrollbar-thumb-hover-background-color: var(--sbim-code-scrollbar-thumb-hover);
+
+    background: var(--sbim-code-bg) !important;
+    border: 1px solid var(--sbim-code-border);
+    border-radius: var(--ifm-code-border-radius);
+    box-shadow: var(--sbim-shadow-1), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    overflow: hidden;
 }
 
-/* 行内代码 */
-code {
-  color: var(--ifm-color-primary);
-  font-weight: 600;
+[data-theme='dark'] .theme-code-block {
+    box-shadow: var(--sbim-shadow-1), inset 0 1px 0 rgba(244, 247, 255, 0.05);
 }
 
-/* 标题 */
+.theme-code-block:focus-within {
+    box-shadow: var(--sbim-shadow-1), var(--sbim-ring), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+[data-theme='dark'] .theme-code-block:focus-within {
+    box-shadow: var(--sbim-shadow-1), var(--sbim-ring), inset 0 1px 0 rgba(244, 247, 255, 0.05);
+}
+
+/* 让 pre 的背景透明，使用容器背景 */
+.theme-code-block .prism-code {
+    background: transparent !important;
+    border: 0;
+    box-shadow: none;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    letter-spacing: -0.01em;
+    tab-size: 2;
+
+    /* 行号 sticky 背景保持一致 */
+    --ifm-pre-background: var(--sbim-code-bg);
+}
+
+/* 顶部标题条（当 Markdown code block 带 title 时出现） */
+.theme-code-block [class^='codeBlockTitle_'] {
+    background: var(--sbim-code-toolbar-bg);
+    border-bottom: 1px solid var(--sbim-code-toolbar-border);
+    color: var(--sbim-code-toolbar-fg);
+    font-size: 0.82rem;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+}
+
+/* 右上角 Copy / Wrap 按钮 */
+.theme-code-block [class^='buttonGroup_'] button {
+    background: var(--sbim-code-toolbar-bg);
+    color: var(--sbim-code-toolbar-fg);
+    border: 1px solid var(--sbim-code-toolbar-border);
+    border-radius: 10px;
+    padding: 0.42rem;
+    backdrop-filter: saturate(140%) blur(10px);
+}
+
+.theme-code-block [class^='buttonGroup_'] button:hover,
+.theme-code-block [class^='buttonGroup_'] button:focus-visible {
+    background: rgba(255, 255, 255, 0.10);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* 触摸设备上默认更明显一点 */
+@media (hover: none) and (pointer: coarse) {
+    .theme-code-block [class^='buttonGroup_'] button {
+        opacity: 0.75;
+    }
+}
+
+/* Inline code：只影响 markdown 的非 pre code */
+.markdown :not(pre) > code {
+    color: var(--sbim-inline-code-color);
+    background: var(--sbim-inline-code-bg);
+    border: 1px solid var(--sbim-inline-code-border);
+    border-radius: 8px;
+    padding: 0.12rem 0.35rem;
+    font-size: 0.88rem;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+}
+
+/* ===== Headings（Stripe：标题更“深”、分割线更淡） ===== */
 .markdown h1 {
-  color: var(--ifm-color-primary);
-  border-bottom: 2px solid var(--ifm-color-primary);
-  padding-bottom: 0.5rem;
+    color: var(--ifm-heading-color);
+    font-size: var(--ifm-h1-font-size);
+    border-bottom: 1px solid var(--sbim-border);
+    padding-bottom: 0.75rem;
+    letter-spacing: -0.02em;
 }
 
 .markdown h2 {
-  color: var(--ifm-color-primary-dark);
-  margin-top: 2rem;
+    color: var(--ifm-heading-color);
+    font-size: var(--ifm-h2-font-size);
+    margin-top: 2.25rem;
+    letter-spacing: -0.012em;
 }
 
-/* 表格 */
+.markdown h3 {
+    color: var(--ifm-heading-color);
+    font-size: var(--ifm-h3-font-size);
+    margin-top: 1.85rem;
+    letter-spacing: -0.008em;
+}
+
+.markdown h4 {
+    color: var(--ifm-heading-color);
+    font-size: var(--ifm-h4-font-size);
+    margin-top: 1.4rem;
+    letter-spacing: -0.006em;
+}
+
+/* ===== Tables（Stripe：无渐变表头，浅灰表头 + 细边框） ===== */
 .markdown table {
-  border-radius: var(--ifm-border-radius);
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    display: table;
+    margin-bottom: var(--ifm-spacing-vertical);
+    border-radius: 12px;
+    border: 1px solid var(--sbim-border);
+    border-spacing: 0;
+    border-collapse: separate;
+    background: var(--ifm-background-surface-color);
+    box-shadow: none;
+    overflow: hidden;
 }
 
+.markdown table thead th {
+    background: rgba(246, 249, 252, 0.9);
+    color: var(--ifm-heading-color);
+    font-weight: 650;
+    border-bottom: 1px solid var(--sbim-border);
+}
+
+[data-theme='dark'] .markdown table thead th {
+    background: rgba(15, 23, 42, 0.9);
+}
+
+.markdown table td,
 .markdown table th {
-  background: var(--ifm-color-primary);
-  color: white;
-  font-weight: 600;
+    padding: 0.55rem 0.75rem;
+    border-right: 1px solid var(--sbim-border);
+    vertical-align: top;
+    font-size: 0.86rem;
+    line-height: 1.5;
 }
 
-/* 侧边栏自定义样式 */
+.markdown table td:last-child,
+.markdown table th:last-child {
+    border-right: none;
+}
+
+.markdown table tbody td {
+    border-bottom: 1px solid var(--sbim-border);
+}
+
+.markdown table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.markdown table tbody tr:nth-child(even) {
+    background: rgba(246, 249, 252, 0.55);
+}
+
+[data-theme='dark'] .markdown table tbody tr:nth-child(even) {
+    background: rgba(15, 23, 42, 0.45);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .markdown table tbody tr:hover {
+        background: var(--sbim-hover-bg);
+    }
+}
+
+/* 横向滚动表格容器（保留你的结构） */
+.doc-table-scroll {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+}
+
+.doc-table-scroll table {
+    min-width: 960px;
+    width: 100%;
+}
+
+/* 表格内行内 code：保持可读性 */
+.markdown table :not(pre) > code {
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    line-height: 1.35;
+    font-size: 0.84rem;
+}
+
+/* ===== Sidebar（Stripe：更“平”、选中项有轻提示） ===== */
+.theme-doc-sidebar-container {
+    border-right: 1px solid var(--sbim-border);
+    background: var(--ifm-background-color);
+}
+
+.menu__link {
+    border-radius: 10px;
+    font-size: 0.92rem;
+    transition:
+            background-color var(--sbim-dur-fast) var(--sbim-ease),
+            color var(--sbim-dur-fast) var(--sbim-ease);
+}
+
+.menu__link:hover {
+    background: var(--sbim-hover-bg);
+}
+
+.menu__link--active {
+    background: var(--sbim-hover-bg-strong);
+    color: var(--ifm-link-color) !important;
+    font-weight: 650;
+    position: relative;
+}
+
+.menu__link--active::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    bottom: 8px;
+    width: 3px;
+    border-radius: 3px;
+    background: var(--ifm-color-primary);
+    opacity: 0.9;
+}
+
+/* 你原来的侧边栏分组类：改成 Stripe-ish 的“淡底+细边框” */
 .sidebar-welcome {
-  background: linear-gradient(135deg, var(--ifm-color-primary-lightest), var(--ifm-color-primary-light));
-  border-radius: var(--ifm-border-radius);
-  margin: 0.5rem 0;
+    background: var(--sbim-hover-bg-strong);
+    border: 1px solid var(--sbim-accent-border);
+    border-radius: var(--ifm-border-radius);
+    margin: 0.5rem 0;
 }
 
 .sidebar-welcome .menu__link {
-  font-weight: 700;
-  color: var(--ifm-color-primary-darkest) !important;
+    font-weight: 700;
+    color: var(--ifm-heading-color) !important;
 }
 
-.sidebar-getting-started .menu__list-item-collapsible {
-  background: rgba(24, 144, 255, 0.05);
-  border-radius: var(--ifm-border-radius);
-  margin: 0.25rem 0;
-}
-
+.sidebar-getting-started .menu__list-item-collapsible,
 .sidebar-api .menu__list-item-collapsible {
-  background: rgba(82, 196, 26, 0.05);
-  border-radius: var(--ifm-border-radius);
-  margin: 0.25rem 0;
+    background: var(--ifm-background-surface-color);
+    border: 1px solid var(--sbim-border);
+    border-radius: var(--ifm-border-radius);
+    margin: 0.25rem 0;
 }
 
 .sidebar-divider {
-  margin: 1rem 0;
-  border: none;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--ifm-color-emphasis-300), transparent);
+    margin: 1rem 0;
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--sbim-border), transparent);
 }
 
 .sidebar-external-link .menu__link {
-  color: var(--ifm-color-emphasis-700) !important;
-  font-size: 0.9rem;
+    color: var(--ifm-font-color-base) !important;
+    font-size: 0.88rem;
 }
 
 .sidebar-external-link .menu__link:hover {
-  background: var(--ifm-color-emphasis-100);
-  color: var(--ifm-color-primary) !important;
+    background: var(--sbim-hover-bg);
+    color: var(--ifm-link-color) !important;
 }
 
-/* GitHub 链接图标 */
+/* 侧边栏搜索链接：从“强渐变”改成 Stripe 式“淡紫块” */
+.sidebar-search-link {
+    background: var(--sbim-hover-bg-strong);
+    border: 1px solid var(--sbim-accent-border);
+    border-radius: 12px;
+    margin: 0.5rem 0;
+    font-weight: 650;
+    transition: box-shadow var(--sbim-dur) var(--sbim-ease);
+}
+
+.sidebar-search-link .menu__link {
+    color: var(--ifm-heading-color) !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .sidebar-search-link:hover {
+        box-shadow: var(--sbim-shadow-1);
+    }
+}
+
+.sidebar-search-link .menu__link:hover {
+    background: transparent !important;
+}
+
+/* ===== GitHub icon（保留你的实现） ===== */
 .header-github-link:hover {
-  opacity: 0.6;
+    opacity: 0.75;
 }
 
 .header-github-link:before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  display: flex;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
-    no-repeat;
+    content: '';
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E") no-repeat;
+    background-size: 100% 100%;
 }
 
 [data-theme='dark'] .header-github-link:before {
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
-    no-repeat;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E") no-repeat;
+    background-size: 100% 100%;
 }
 
-/* 文档卡片列表 */
+/* ===== 文档卡片列表（Stripe-ish） ===== */
 .card-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.25rem;
+    margin: 2rem 0;
 }
 
 .doc-card {
-  border: 1px solid var(--ifm-color-emphasis-200);
-  border-radius: var(--ifm-card-border-radius);
-  padding: 1.5rem;
-  transition: all 0.3s ease;
-  background: var(--ifm-background-color);
+    border: 1px solid var(--sbim-border);
+    border-radius: var(--ifm-card-border-radius);
+    padding: 1.25rem;
+    background: var(--ifm-background-surface-color);
+    transition:
+            box-shadow var(--sbim-dur) var(--sbim-ease),
+            border-color var(--sbim-dur-fast) var(--sbim-ease);
 }
 
-.doc-card:hover {
-  border-color: var(--ifm-color-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(24, 144, 255, 0.15);
+@media (hover: hover) and (pointer: fine) {
+    .doc-card:hover {
+        border-color: var(--sbim-accent-border-strong);
+        box-shadow: var(--sbim-shadow-2);
+    }
 }
 
 .doc-card h3 {
-  color: var(--ifm-color-primary);
-  margin-bottom: 0.5rem;
+    color: var(--ifm-heading-color);
+    margin-bottom: 0.5rem;
 }
 
 /* 响应式 */
 @media (max-width: 768px) {
-  .hero__title {
-    font-size: 2rem;
-  }
+    .hero__title {
+        font-size: 1.9rem;
+    }
 
-  .hero__subtitle {
-    font-size: 1.1rem;
-  }
+    .hero__subtitle {
+        font-size: 1.05rem;
+    }
 
-  .card-list {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
+    .card-list {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
 
-  .doc-card {
-    padding: 1rem;
-  }
-}
-
-/* 侧边栏搜索链接样式 */
-.sidebar-search-link {
-  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, var(--ifm-color-primary-dark) 100%);
-  color: white !important;
-  border-radius: 6px;
-  margin: 0.5rem 0;
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-
-.sidebar-search-link .menu__link {
-  color: white !important;
-}
-
-.sidebar-search-link:hover {
-  transform: translateX(2px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.sidebar-search-link .menu__link:hover {
-  color: white !important;
-  background: transparent !important;
-}
-
-[data-theme='dark'] .sidebar-search-link {
-  background: linear-gradient(135deg, var(--ifm-color-primary-light) 0%, var(--ifm-color-primary) 100%);
+    .doc-card {
+        padding: 1rem;
+    }
 }

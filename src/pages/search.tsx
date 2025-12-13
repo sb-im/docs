@@ -15,7 +15,7 @@ interface SearchResult {
   description?: string;
 }
 
-export default function SearchPage(): JSX.Element {
+export default function SearchPage(): React.ReactElement {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -158,7 +158,16 @@ export default function SearchPage(): JSX.Element {
 
   // 处理结果点击
   const handleResultClick = (url: string) => {
-    history.push(url);
+    const trimmedQuery = query.trim();
+    if (!trimmedQuery) {
+      history.push(url);
+      return;
+    }
+
+    const [pathWithQuery, hash] = url.split('#', 2);
+    const separator = pathWithQuery.includes('?') ? '&' : '?';
+    const urlWithHighlight = `${pathWithQuery}${separator}highlight=${encodeURIComponent(trimmedQuery)}${hash ? `#${hash}` : ''}`;
+    history.push(urlWithHighlight);
   };
 
   // 高亮搜索关键词

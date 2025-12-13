@@ -1,0 +1,26 @@
+/* 搜索结果跳转后：文档内容关键词高亮（支持亮/暗主题） */
+.search-text-highlight {
+  background: var(--sbim-hover-bg-strong);
+  color: var(--ifm-heading-color);
+  padding: 0.05rem 0.35rem;
+  border-radius: 8px;
+  border: 1px solid var(--sbim-accent-border);
+  font-weight: 650;
+  font-size: 0.9em;
+  letter-spacing: -0.01em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.search-text-highlight-pulse {
+  animation: sbim-highlight-pulse 1.8s ease-in-out;
+}
+
+@keyframes sbim-highlight-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  50% {
+    box-shadow: var(--sbim-ring);
+  }
+}

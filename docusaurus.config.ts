@@ -3,7 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: '草莓创新开发者文档',
+  title: 'SuperDock开发者文档',
   tagline: '无人机自动机场系统',
   favicon: 'img/favicon.ico',
 
@@ -24,6 +24,12 @@ const config: Config = {
     defaultLocale: 'zh-Hans',
     locales: ['zh-Hans'],
   },
+
+  // 启用 Mermaid 图表支持
+  markdown: {
+    mermaid: true,
+  },
+  themes: ['@docusaurus/theme-mermaid'],
 
   presets: [
     [
@@ -117,7 +123,7 @@ const config: Config = {
     },
 
     navbar: {
-      title: '草莓创新',
+      title: '文档中心',
       logo: {
         alt: 'StrawBerry Innovation Logo',
         src: 'img/logo.svg',
@@ -128,17 +134,7 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
           position: 'left',
-          label: 'API对接',
-        },
-        {
-          to: '/product-intro/',
-          position: 'left',
-          label: '产品介绍',
-        },
-        {
-          to: '/installation/',
-          position: 'left',
-          label: '安装部署',
+          label: 'API接口',
         },
         {
           href: 'https://github.com/sb-im',
@@ -160,13 +156,14 @@ const config: Config = {
         autoCollapseCategories: true, // 自动折叠分类
       },
     },
-    footer: {
-      style: 'dark',
-      copyright: `Copyright © ${new Date().getFullYear()} 深圳草莓创新技术有限公司. 保留所有权利.`,
-    },
+    // footer: {
+    //   style: 'dark',
+    //   copyright: `${new Date().getFullYear()} SuperDock 无人机机场文档中心`,
+    // },
     prism: {
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      // 代码块保持 Stripe docs 式“深色底”，避免浅色主题下对比不足
+      theme: prismThemes.nightOwl,
+      darkTheme: prismThemes.nightOwl,
     },
   } satisfies Preset.ThemeConfig,
 };

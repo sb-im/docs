@@ -145,8 +145,15 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholder = '搜索文档...' }
 
   // 处理结果点击
   const handleResultClick = (url: string) => {
-    // URL 已经在生成时包含了正确的 baseUrl
-    history.push(url);
+    const trimmedQuery = query.trim();
+    if (!trimmedQuery) {
+      history.push(url);
+    } else {
+      const [pathWithQuery, hash] = url.split('#', 2);
+      const separator = pathWithQuery.includes('?') ? '&' : '?';
+      const urlWithHighlight = `${pathWithQuery}${separator}highlight=${encodeURIComponent(trimmedQuery)}${hash ? `#${hash}` : ''}`;
+      history.push(urlWithHighlight);
+    }
     setQuery('');
     setResults([]);
     setIsOpen(false);
