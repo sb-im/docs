@@ -38,7 +38,6 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars-api.ts',
           routeBasePath: 'api-integration',
-          editUrl: 'https://github.com/sb-im/docs/tree/main/',
           // 侧边栏优化配置
           sidebarCollapsible: true,
           sidebarCollapsed: true,
@@ -88,7 +87,6 @@ const config: Config = {
         path: 'product-intro-docs',
         routeBasePath: 'product-intro',
         sidebarPath: './sidebars-product.ts',
-        editUrl: 'https://github.com/sb-im/docs/tree/main/',
         sidebarCollapsible: true,
         sidebarCollapsed: true,
         showLastUpdateTime: false,
@@ -104,7 +102,6 @@ const config: Config = {
         path: 'installation-docs',
         routeBasePath: 'installation',
         sidebarPath: './sidebars-installation.ts',
-        editUrl: 'https://github.com/sb-im/docs/tree/main/',
         sidebarCollapsible: true,
         sidebarCollapsed: true,
         showLastUpdateTime: false,
@@ -137,14 +134,10 @@ const config: Config = {
           label: 'API接口',
         },
         {
-          href: 'https://github.com/sb-im',
-          label: 'GitHub',
+          to: '/search',
+          label: '搜索',
           position: 'right',
-        },
-        {
-          href: 'https://sb.im',
-          label: '官网',
-          position: 'right',
+          className: 'navbar-mobile-only-link',
         },
       ],
     },

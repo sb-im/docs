@@ -2,8 +2,38 @@
 title: 更新记录
 description: SuperDock API 文档版本更新记录
 last_update:
-  date: 2025-12-13
+  date: 2026-04-24
   author: SuperDock 团队
+---
+
+## 2026-04-24
+
+### 新增
+
+- 新增任务流程相关、机场控制、充电/换电、任务前检测、设备执行、AI 检测、PSDK 通信等错误码。
+- 增加L3设备类型
+
+### 优化
+
+- 优化移动端菜单栏展示，提升手机端导航可用性。
+
+### 修复
+
+- 修正部分相机设备类型：
+  - `P1` type 修正为 `50`
+
+### 新增支持设备
+
+#### SuperDock 系列机场
+
+- **SuperDock S25M4** - M4-25
+- **SuperDock S25M400** - M400 充电
+- **SuperDock S25M400S** - M400S 换电
+
+#### 兼容无人机
+
+- DJI Matrice 400 系列
+
 ---
 
 ## v1.2.0
@@ -60,4 +90,3 @@ last_update:
 - DJI Mavic 3 多光谱版
 - Matrice 350 RTK
 - Matrice 300 RTK
-
