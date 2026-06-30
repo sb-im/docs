@@ -15,7 +15,7 @@ export default function NavbarContentWrapper(props) {
         }}
         className="navbar-search-wrapper"
       >
-        <SearchBar placeholder="搜索文档..." />
+        <SearchBar />
       </div>
       <style>{`
         .navbar-search-wrapper {

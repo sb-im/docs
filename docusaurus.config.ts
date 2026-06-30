@@ -22,7 +22,17 @@ const config: Config = {
   // Internationalization
   i18n: {
     defaultLocale: 'zh-Hans',
-    locales: ['zh-Hans'],
+    locales: ['zh-Hans', 'en'],
+    localeConfigs: {
+      'zh-Hans': {
+        label: '简体中文',
+        htmlLang: 'zh-Hans',
+      },
+      en: {
+        label: 'English',
+        htmlLang: 'en',
+      },
+    },
   },
 
   // 启用 Mermaid 图表支持
@@ -138,6 +148,10 @@ const config: Config = {
           label: '搜索',
           position: 'right',
           className: 'navbar-mobile-only-link',
+        },
+        {
+          type: 'localeDropdown',
+          position: 'right',
         },
       ],
     },

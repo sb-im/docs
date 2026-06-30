@@ -1,0 +1,42 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.快速对接": {
+    "message": "Quick Integration",
+    "description": "The label for category 快速对接 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.接口概述": {
+    "message": "API Overview",
+    "description": "The label for category 接口概述 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.API介绍": {
+    "message": "API Reference",
+    "description": "The label for category API介绍 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.机场功能集": {
+    "message": "Dock Feature Set",
+    "description": "The label for category 机场功能集 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.飞行器": {
+    "message": "Aircraft",
+    "description": "The label for category 飞行器 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.SuperDock机场": {
+    "message": "SuperDock Hangar",
+    "description": "The label for category SuperDock机场 in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.link.搜索文档": {
+    "message": "Search Docs",
+    "description": "The label for link 搜索文档 in sidebar tutorialSidebar, linking to /search"
+  },
+  "sidebar.tutorialSidebar.doc.更新记录": {
+    "message": "Changelog",
+    "description": "The label for the doc item 更新记录 in sidebar tutorialSidebar, linking to the doc index"
+  },
+  "sidebar.tutorialSidebar.doc.常见问题": {
+    "message": "FAQ",
+    "description": "The label for the doc item 常见问题 in sidebar tutorialSidebar, linking to the doc faq"
+  }
+}

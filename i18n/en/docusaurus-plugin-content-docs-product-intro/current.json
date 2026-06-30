@@ -1,0 +1,10 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.productSidebar.doc.SuperDock 产品介绍": {
+    "message": "SuperDock Product Overview",
+    "description": "The label for the doc item SuperDock 产品介绍 in sidebar productSidebar, linking to the doc index"
+  }
+}

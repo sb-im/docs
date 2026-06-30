@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import MiniSearch from 'minisearch';
 import { useHistory } from '@docusaurus/router';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import Translate, { translate } from '@docusaurus/Translate';
 import './styles.css';
 
 interface SearchResult {
@@ -16,7 +18,13 @@ interface SearchBarProps {
   placeholder?: string;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ placeholder = '搜索文档...' }) => {
+const SearchBar: React.FC<SearchBarProps> = ({
+  placeholder = translate({
+    id: 'search.placeholder',
+    message: '搜索文档...',
+    description: 'Search input placeholder',
+  }),
+}) => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +33,11 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholder = '搜索文档...' }
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const history = useHistory();
-  const searchDataUrl = useBaseUrl('/search-data.json');
+  const { i18n } = useDocusaurusContext();
+  // 按当前语言加载对应的搜索索引（英文站使用独立索引）
+  const searchDataUrl = useBaseUrl(
+    i18n.currentLocale === 'en' ? '/search-data.en.json' : '/search-data.json',
+  );
 
   // 初始化搜索索引
   useEffect(() => {
@@ -224,7 +236,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ placeholder = '搜索文档...' }
             </ul>
           ) : query ? (
             <div className="search-no-results">
-              没有找到相关结果
+              <Translate id="search.noResults" description="Empty state in the navbar search dropdown">
+                没有找到相关结果
+              </Translate>
             </div>
           ) : null}
         </div>

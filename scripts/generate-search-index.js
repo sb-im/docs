@@ -4,28 +4,12 @@ const matter = require('gray-matter');
 
 // 搜索索引生成器
 class SearchIndexGenerator {
-  constructor() {
+  constructor(config) {
     this.searchData = [];
-    this.outputPath = path.join(__dirname, '../static/search-data.json');
-
+    this.label = config.label;
+    this.outputPath = config.outputPath;
     // 定义多个文档实例的配置
-    this.docInstances = [
-      {
-        path: path.join(__dirname, '../docs'),
-        routeBasePath: '/api-integration',
-        category: 'API对接'
-      },
-      {
-        path: path.join(__dirname, '../product-intro-docs'),
-        routeBasePath: '/product-intro',
-        category: '产品介绍'
-      },
-      {
-        path: path.join(__dirname, '../installation-docs'),
-        routeBasePath: '/installation',
-        category: '安装部署'
-      }
-    ];
+    this.docInstances = config.docInstances;
   }
 
   // 递归读取所有 markdown 文件
@@ -184,7 +168,7 @@ class SearchIndexGenerator {
         // 2. 纯英文词
         // 3. 纯数字（如错误码 620006）
         // 4. 字母+数字+下划线组合（如 API 属性名 battery_percent_reserve_home）
-        return /^[\u4e00-\u9fa5]+$/.test(word) ||           // 纯中文
+        return /^[一-龥]+$/.test(word) ||    // 纯中文
                /^[a-zA-Z]+$/.test(word) ||                  // 纯英文
                /^[0-9]+$/.test(word) ||                     // 纯数字
                /^[a-zA-Z0-9_]+$/.test(word);                // 字母数字下划线组合（API属性名）
@@ -208,7 +192,7 @@ class SearchIndexGenerator {
 
   // 生成搜索索引
   generate() {
-    console.log('开始生成搜索索引...');
+    console.log(`开始生成搜索索引 [${this.label}] ...`);
 
     // 处理所有文档实例
     this.docInstances.forEach(instance => {
@@ -237,10 +221,59 @@ class SearchIndexGenerator {
   }
 }
 
+// 各语言的搜索索引配置
+// 注意：英文条目的 URL 需带 /en 前缀，category 使用英文，保证英文站搜索结果跳转正确。
+const LOCALE_CONFIGS = [
+  {
+    label: 'zh-Hans',
+    outputPath: path.join(__dirname, '../static/search-data.json'),
+    docInstances: [
+      {
+        path: path.join(__dirname, '../docs'),
+        routeBasePath: '/api-integration',
+        category: 'API对接'
+      },
+      {
+        path: path.join(__dirname, '../product-intro-docs'),
+        routeBasePath: '/product-intro',
+        category: '产品介绍'
+      },
+      {
+        path: path.join(__dirname, '../installation-docs'),
+        routeBasePath: '/installation',
+        category: '安装部署'
+      }
+    ]
+  },
+  {
+    label: 'en',
+    outputPath: path.join(__dirname, '../static/search-data.en.json'),
+    docInstances: [
+      {
+        path: path.join(__dirname, '../i18n/en/docusaurus-plugin-content-docs/current'),
+        routeBasePath: '/en/api-integration',
+        category: 'API Integration'
+      },
+      {
+        path: path.join(__dirname, '../i18n/en/docusaurus-plugin-content-docs-product-intro/current'),
+        routeBasePath: '/en/product-intro',
+        category: 'Product Introduction'
+      },
+      {
+        path: path.join(__dirname, '../i18n/en/docusaurus-plugin-content-docs-installation/current'),
+        routeBasePath: '/en/installation',
+        category: 'Installation'
+      }
+    ]
+  }
+];
+
 // 如果直接运行此脚本
 if (require.main === module) {
-  const generator = new SearchIndexGenerator();
-  generator.generate();
+  LOCALE_CONFIGS.forEach(config => {
+    const generator = new SearchIndexGenerator(config);
+    generator.generate();
+  });
 }
 
 module.exports = SearchIndexGenerator;

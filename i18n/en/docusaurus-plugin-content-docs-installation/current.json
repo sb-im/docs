@@ -1,0 +1,14 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.installationSidebar.doc.安装部署概述": {
+    "message": "Installation Overview",
+    "description": "The label for the doc item 安装部署概述 in sidebar installationSidebar, linking to the doc index"
+  },
+  "sidebar.installationSidebar.doc.开箱与安装": {
+    "message": "Unboxing & Installation",
+    "description": "The label for the doc item 开箱与安装 in sidebar installationSidebar, linking to the doc getting-started"
+  }
+}
