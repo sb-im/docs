@@ -2,8 +2,16 @@
 title: 更新记录
 description: SuperDock API 文档版本更新记录
 last_update:
-  date: 2026-04-24
+  date: 2026-08-20
   author: SuperDock 团队
+---
+
+## 2026-08-20
+
+### 新增
+
+- 新增[自定义飞行区接入指南](./developers/custom-flight-area)，介绍飞行区文件格式、云端同步、状态上报、边界行为以及 Demo 与参考资料。
+
 ---
 
 ## 2026-04-24

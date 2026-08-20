@@ -16,6 +16,11 @@ sidebar_position: 2
 
 | 错误码 | 错误名称 | 描述 |
 |--------|----------|------|
+| 321528 | CUSTOM_FLIGHT_AREA_BOUNDARY_PAUSED | 触碰自定义飞行区边界，航线任务已暂停 |
+| 337546 | CUSTOM_FLIGHT_AREA_BOUNDARY_REACHED | 已触碰自定义飞行区边界 |
+| 338006 | CUSTOM_FLIGHT_AREA_CONSTRAINT_VIOLATION | 无法执行飞行任务，请检查降落机场是否已申请解禁证书、是否位于自定义禁飞区或是否位于自定义飞行区外 |
+| 319028 | CUSTOM_FLIGHT_AREA_UPDATE_IN_PROGRESS | 正在更新自定义飞行区 |
+| 325010 | DOCK_CUSTOM_FLIGHT_AREA_UPDATE_IN_PROGRESS | 当前机场正在更新自定义飞行区，请稍后重试 |
 | 314018 | RTK_POSITIONING_ERROR | RTK 定位异常 |
 | 316009 | LOW_BATTERY_BELOW_30_PERCENT | 飞行器电量低于30% |
 | 316026 | EMERGENCY_STOP_BUTTON_PRESSED | 机场急停按钮被按下 |

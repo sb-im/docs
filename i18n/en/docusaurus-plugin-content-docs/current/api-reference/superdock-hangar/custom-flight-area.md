@@ -3,7 +3,13 @@ sidebar_label: Custom Flight Area
 sidebar_position: 14
 ---
 
-# Custom Flight Area [In Development]
+# Custom Flight Area
+
+:::info Current support
+
+Custom flight areas currently support only the M400 and M4 aircraft models. No-landing zones are not currently supported.
+
+:::
 
 1. The custom flight area file must be named as follows: geofence_`{fileMD5}`.json, where fileMD5 is a placeholder for the MD5 value of the file.
 2. Click to download the custom flight area template file: [Custom Flight Area File Template](/files/api-reference/custom-flight-area-template.json)

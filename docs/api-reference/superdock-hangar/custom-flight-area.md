@@ -3,7 +3,13 @@ sidebar_label: 自定义飞行区
 sidebar_position: 14
 ---
 
-# 自定义飞行区 【正在开发】
+# 自定义飞行区
+
+:::info 当前支持范围
+
+自定义飞行区目前仅支持 M400 和 M4 机型，暂不支持禁降区。
+
+:::
 
 1. 自定义飞行区文件名需满足以下要求：geofence_`{fileMD5}`.json。其中 fileMD5 为文件 MD5 值的占位。
 2. 点击下载自定义飞行区模板文件：[自定义飞行区文件协议模板](/files/api-reference/custom-flight-area-template.json)

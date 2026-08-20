@@ -2,7 +2,7 @@
 id: compatibility-comparison
 title: Cloud API Feature Comparison
 sidebar_label: Cloud API Feature Comparison
-sidebar_position: 3
+sidebar_position: 4
 description: A comparison of the differences in Cloud API features between the SuperDock product series and the DJI Dock
 ---
 

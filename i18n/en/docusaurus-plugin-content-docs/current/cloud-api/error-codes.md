@@ -16,6 +16,11 @@ This document lists the error codes that SuperDock series products may encounter
 
 | Error Code | Error Name | Description |
 |--------|----------|------|
+| 321528 | CUSTOM_FLIGHT_AREA_BOUNDARY_PAUSED | Approaching the custom flight area boundary; flight task paused |
+| 337546 | CUSTOM_FLIGHT_AREA_BOUNDARY_REACHED | Reached the custom flight area boundary |
+| 338006 | CUSTOM_FLIGHT_AREA_CONSTRAINT_VIOLATION | Unable to perform the task. Verify that an unlocking license has been applied for the landing area and that the Dock is not in a custom restricted zone or outside the custom flight area |
+| 319028 | CUSTOM_FLIGHT_AREA_UPDATE_IN_PROGRESS | Updating the custom flight area |
+| 325010 | DOCK_CUSTOM_FLIGHT_AREA_UPDATE_IN_PROGRESS | The Dock is updating its custom flight area; try again later |
 | 314018 | RTK_POSITIONING_ERROR | RTK positioning exception |
 | 316009 | LOW_BATTERY_BELOW_30_PERCENT | Aircraft battery level below 30% |
 | 316026 | EMERGENCY_STOP_BUTTON_PRESSED | Dock emergency stop button pressed |

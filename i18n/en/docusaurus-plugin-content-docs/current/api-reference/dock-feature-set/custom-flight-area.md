@@ -2,7 +2,13 @@
 sidebar_position: 11
 ---
 
-# Custom Flight Area [In Adaptation]
+# Custom Flight Area
+
+:::info Current support
+
+Custom flight areas currently support only the M400 and M4 aircraft models. No-landing zones are not currently supported.
+
+:::
 
 ## Function Overview
 

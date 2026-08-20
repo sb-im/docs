@@ -2,7 +2,7 @@
 id: compatibility-comparison
 title: 支持上云API功能对比
 sidebar_label: 支持上云API功能对比
-sidebar_position: 3
+sidebar_position: 4
 description: SuperDock系列产品与DJI机场在上云API功能方面的差异对比
 ---
 

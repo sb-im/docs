@@ -2,8 +2,16 @@
 title: Changelog
 description: SuperDock API documentation version changelog
 last_update:
-  date: 2026-04-24
+  date: 2026-08-20
   author: SuperDock Team
+---
+
+## 2026-08-20
+
+### Added
+
+- Added the [Custom Flight Area Integration Guide](./developers/custom-flight-area), covering the flight area file format, cloud synchronization, status reporting, boundary behavior, and Demo and reference resources.
+
 ---
 
 ## 2026-04-24
